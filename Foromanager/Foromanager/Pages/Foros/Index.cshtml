@@ -1,0 +1,96 @@
+@page
+@model Foromanager.Pages.Foros.IndexModel
+@{
+    ViewData["Title"] = "Index";
+    var prevDisabled = !Model.Foros.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Foros.HasNextPage ? "disabled" : "";
+}
+
+<h1>Foros</h1>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Encontrar por nombre:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Volver a la lista</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Foros[0].Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foros[0].Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foros[0].Categoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foros[0].Fecha)
+            </th>
+            <th>
+                Publicaciones
+            </th>
+            <th>
+                Estado
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Foros) {
+        <tr>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publicaciones.Count)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @if((await AuthorizationService.AuthorizeAsync(User,item,ForumOperations.Update)).Succeeded)
+                {
+                    <a asp-page="./Edit" asp-route-id="@item.ForoId">Edit</a>
+                    <text> | </text>
+                }
+                @if((await AuthorizationService.AuthorizeAsync(User,item,ForumOperations.Delete)).Succeeded)
+                {
+                    <a asp-page="./Delete" asp-route-id="@item.ForoId">Delete</a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Foros.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previo
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Foros.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Siguiente
+</a>

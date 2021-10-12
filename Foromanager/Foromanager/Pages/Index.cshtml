@@ -1,0 +1,29 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<link rel="stylesheet" href="~/css/Index.css">
+
+
+<div>
+    <h1 class="display-4">Tus foros</h1>    
+    <a asp-page="./Foros/Create">Crear Foro</a>
+    @foreach(var item in Model.Foros)
+    {
+        <h1><a asp-page="./Foros/Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)</a></h1>
+        <b>@Html.DisplayNameFor(model => item.Fecha)</b>
+        <ul>
+            <li>@Html.DisplayFor(model => item.Fecha)</li>                             
+        </ul>
+        <b>@Html.DisplayNameFor(model => item.Categoria)</b>
+        <ul>
+            <li>@Html.DisplayFor(model => item.Categoria)</li>
+        </ul>
+        <b>@Html.DisplayNameFor(model => item.Descripcion)</b>
+        <ul>
+            <li>@Html.DisplayFor(model => item.Descripcion)</li>
+        </ul>
+    }
+</div>

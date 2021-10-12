@@ -1,0 +1,23 @@
+div
+{
+    background-color: #f5f4f4;
+    border-radius: 15px;
+}
+.Cont-foros
+{
+    margin-top: 30px;
+    width: 60%;
+    margin-left: 10px;
+    border-width: 0.5mm;
+    border-style: solid;
+    border-color: #C7DBCB;
+}
+.Titulo
+{
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}
+.Foro1
+{
+    margin-bottom: 5rem;
+}

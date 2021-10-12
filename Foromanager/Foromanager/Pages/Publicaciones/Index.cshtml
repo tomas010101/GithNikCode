@@ -1,0 +1,60 @@
+@page
+@model Foromanager.Pages.Publicaciones.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Publicacion[0].Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publicacion[0].Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publicacion[0].Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publicacion[0].Foro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publicacion[0].Reaccion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Publicacion) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Foro.ForoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reaccion)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PublicacionId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PublicacionId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PublicacionId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

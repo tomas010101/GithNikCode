@@ -1,0 +1,124 @@
+@font-face {
+    font-family: perpetua;
+    src: url("~/css/Perpetua.ttf");
+}
+
+body
+{
+    background-color: #FEF2DB;
+}
+
+header
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 60px; 
+    border-radius: 3px;
+}
+
+
+.navheight
+{
+    height: 60px; 
+    width: 85%;
+    float: right;
+}
+.navcolor 
+{
+    background-color: #c70038e0;
+    border-bottom: solid;
+    border-width: 1mm;
+    border-color: #D0AC45;
+}
+.div-color
+{
+    background-color: rgba(0, 0, 0, 0);
+}
+.main
+{
+    padding-top: 3rem;
+}
+
+.Titulonav
+{
+    position: fixed;
+
+    width: 15%;
+    height: 60px;
+    padding-left: 10px;
+    background-color: #900c29de;
+    
+    border-right: solid;
+    border-color: #D0AC45;
+    border-right-width: 0.5mm;
+    border-radius: 3px;
+}
+.Logo-titulo
+{   
+    margin-right: 2rem;
+    font-size: 40px;
+    font-family: perpetua;
+    font-weight: bold;
+    font-style: italic;
+    color: #000;
+    text-shadow: -2px 3px 3px rgb(129, 10, 34);
+}
+.Logo-titulo:hover
+{
+    text-decoration: none;
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.473);
+    background: linear-gradient(90deg, #E90A33, #e6ae14);
+    
+    /*-webkit-text-stroke: 1px #000;*/
+
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.container ul
+{
+    text-align: center;
+}
+.opciones-pags
+{
+    padding: 18px 18px;
+    margin-left: 10px;
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: bold;
+    border-radius: 5px;
+    color: #000000;
+
+    text-shadow: -2px 3px 3px rgb(150, 1, 43);
+}
+.opciones-pags:hover
+{
+    text-decoration: none;
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.651);
+    background-color: #bb0136b4;
+    color: #D0AC45;
+}
+
+
+.container
+{
+    flex-wrap: wrap;
+}
+
+.footer
+{
+    margin-left: 16rem;
+    width: 35rem;
+    border-radius: 3px;
+    text-align: center;
+    border-width: 0.3mm;
+    border-style: solid;
+    border-color: #000;
+}
+
+@media (max-width: 870px) 
+{   
+    
+}

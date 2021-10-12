@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GithNik</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Layout.css" />
+</head>
+<body>
+    <header class="Header-Shadow">
+        <div>
+            <nav class="Titulonav navcolor"><a class="Logo-titulo" asp-area="" asp-page="/Index">GithNik</a></nav>
+            <nav class="navheight navcolor navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3">
+                <div class="div-color container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="opciones-pags" asp-area="" asp-page="/Index">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="opciones-pags" asp-area="" asp-page="/Privacy">Privacidad</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="opciones-pags" asp-area="" asp-page="/Foros/Index">Foros</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </nav>
+        </div>
+        
+    </header>
+        <main role="main" class="pb-3 main">
+            @RenderBody()
+        </main>
+
+    <footer class="text-muted">
+        <div class="container footer">
+            &copy; 2021 - GithNik - <a asp-area="" asp-page="/Privacy">Privacidad</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

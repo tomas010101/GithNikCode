@@ -1,0 +1,109 @@
+@page
+@model Foromanager.Pages.Foros.DetailsModel
+@using Microsoft.AspNetCore.Identity
+@using Foromanager.Pages.Foros
+@using Foromanager.Models
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<div>
+    <br/>
+    <h2>@Html.DisplayFor(model => model.Foro.Nombre)</h2>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Foro.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Foro.Descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Foro.Categoria)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Foro.Categoria)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Foro.Fecha)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Foro.Fecha)
+        </dd>
+    </dl>
+    <hr/>
+    <strong>PUBLICACIONES:</strong>
+    <br/>
+    @foreach (var item in Model.Foro.Publicaciones)
+    {
+        <br/>
+        <div>
+            <strong>@Html.DisplayFor(modelItem => item.Usuario)</strong>
+            <br/>
+            Titulo:@Html.DisplayFor(modelItem => item.Titulo)
+            <br/>
+            Descripcion:
+            @Html.DisplayFor(modelItem => item.Descripcion)
+            
+            @if(item.Usuario==@User.Identity.Name)
+            {
+                <br/>
+                <a asp-page="../Publicaciones/Delete" asp-route-id="@item.PublicacionId">Borrar |</a>
+                <a asp-page="../Publicaciones/Edit" asp-route-id="@item.PublicacionId">Editar</a>               
+            }
+            @Html.DisplayFor(modelItem => item.Reaccion)
+        </div>
+    }
+    <br/>
+    <form class="col-sm-10 row-sm-10" method="post">
+        <hr/>
+        <label asp-for="Publicacion.Titulo" class="control-label"></label>
+        <input asp-for="Publicacion.Titulo" class="form-control" type="text"/>
+        <span asp-validation-for="Publicacion.Titulo" class="text-danger"></span>
+
+        <label asp-for="Publicacion.Descripcion" class="control-label"></label>
+        <textarea asp-for="Publicacion.Descripcion" rows="5" cols="40"></textarea>
+        <span asp-validation-for="Publicacion.Descripcion" class="text-danger"></span>
+            
+        <br />
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" asp-for="@Acciones.postear">Postear</button>
+        </div>
+    </form>
+</div>
+
+@if (Model.Foro.Status != ForumStatus.Approved)
+{
+    @if ((await AuthorizationService.AuthorizeAsync(User, Model.Foro, ForumOperations.Approve)).Succeeded)
+    {
+        <form style="display:inline;" method="post">
+            <input type="hidden" name="id" value="@Model.Foro.ForoId" />
+            <input type="hidden" name="status" value="@ForumStatus.Approved" />
+            <button asp-for="@Acciones.aprobar" type="submit" class="btn btn-xs btn-success">Approve</button>
+        </form>
+    }
+}
+
+@if (Model.Foro.Status != ForumStatus.Rejected)
+{
+    @if ((await AuthorizationService.AuthorizeAsync(User, Model.Foro, ForumOperations.Reject)).Succeeded)
+    {
+        <form style="display:inline;" method="post">
+            <input type="hidden" name="id" value="@Model.Foro.ForoId" />
+            <input  type="hidden" name="status" value="@ForumStatus.Rejected" />
+            <button asp-for="@Acciones.descartar" type="submit" class="btn btn-xs btn-danger">Reject</button>
+        </form>
+    }
+}
+
+<div>
+    @if ((await AuthorizationService.AuthorizeAsync(User, Model.Foro,ForumOperations.Update)).Succeeded)
+    {
+        <a asp-page="./Edit" asp-route-id="@Model.Foro.ForoId">Editar</a>
+        <text> | </text>
+    }
+    <a asp-page="./Index">Volver a la Lista</a> |
+    <a asp-page="../Index">Volver a Inicio</a>
+</div>
