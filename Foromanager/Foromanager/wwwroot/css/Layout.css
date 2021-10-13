@@ -27,7 +27,7 @@ header
 }
 .navcolor 
 {
-    background-color: #c70038e0;
+    background-color: #c70038;
     border-bottom: solid;
     border-width: 1mm;
     border-color: #D0AC45;
@@ -38,7 +38,7 @@ header
 }
 .main
 {
-    padding-top: 3rem;
+    padding-top: 2.5rem;
 }
 
 .Titulonav
@@ -48,7 +48,7 @@ header
     width: 15%;
     height: 60px;
     padding-left: 10px;
-    background-color: #900c29de;
+    background-color: #900c29;
     
     border-right: solid;
     border-color: #D0AC45;
@@ -97,7 +97,7 @@ header
 {
     text-decoration: none;
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.651);
-    background-color: #bb0136b4;
+    background-color: #bb0136;
     color: #D0AC45;
 }
 
