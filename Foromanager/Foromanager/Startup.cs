@@ -47,12 +47,18 @@ namespace Foromanager
                     .Build();
             });
 
+           
             services.AddScoped<IAuthorizationHandler,ForumIsOwnerAuthorizationHandler>();
             services.AddScoped<IAuthorizationHandler,ForumAdministratorsAuthorizationHandler>();
             services.AddScoped<IAuthorizationHandler,ForumManagerAuthorizationHandler>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
-               
+            services.ConfigureApplicationCookie(o => {
+                o.ExpireTimeSpan = TimeSpan.FromDays(5);
+                o.SlidingExpiration = true;
+            });
+            services.Configure<DataProtectionTokenProviderOptions>(o =>
+      o.TokenLifespan = TimeSpan.FromHours(3));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
