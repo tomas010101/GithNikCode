@@ -1,4 +1,4 @@
-@page
+@page "{id:int?}"
 @model Foromanager.Pages.Foros.DetailsModel
 @using Microsoft.AspNetCore.Identity
 @using Foromanager.Pages.Foros
@@ -9,7 +9,7 @@
     ViewData["Title"] = "Detalles";
 }
 
-<div>
+<div class="col-md-4">
     <br/>
     <h2>@Html.DisplayFor(model => model.Foro.Nombre)</h2>
     <hr />
@@ -40,35 +40,50 @@
     {
         <br/>
         <div>
-            <strong>@Html.DisplayFor(modelItem => item.Usuario)</strong>
-            <br/>
-            Titulo:@Html.DisplayFor(modelItem => item.Titulo)
-            <br/>
-            Descripcion:
-            @Html.DisplayFor(modelItem => item.Descripcion)
+            <div>
+                <strong>@Html.DisplayFor(modelItem => item.Usuario)</strong>
+            </div>
+            <div>
+                Titulo:@Html.DisplayFor(modelItem => item.Titulo)    
+            </div>
+            <div>
+                Descripcion:<br/>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </div>
+            <div>
+                @if(item.Usuario==@User.Identity.Name)
+                {
+                    <br/>
+                    <a asp-page="../Publicaciones/Delete" asp-route-id="@item.PublicacionId">Borrar |</a>
+                    <a asp-page="../Publicaciones/Edit" asp-route-id="@item.PublicacionId">Editar</a>               
+                }    
+            </div>
             
-            @if(item.Usuario==@User.Identity.Name)
-            {
-                <br/>
-                <a asp-page="../Publicaciones/Delete" asp-route-id="@item.PublicacionId">Borrar |</a>
-                <a asp-page="../Publicaciones/Edit" asp-route-id="@item.PublicacionId">Editar</a>               
-            }
-            @Html.DisplayFor(modelItem => item.Reaccion)
+            <form method="post">
+                <button type="submit" asp-for="@Acciones.darlike" asp-route-id="@item.PublicacionId">Like</button>
+                <button type="submit" asp-for="@Acciones.dardislike">Dislike</button>     
+            </form>
+            <div>
+                Likes: @item.Likes | Dislikes: @item.Dislikes
+            </div>
         </div>
     }
     <br/>
+    <hr/>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <form class="col-sm-10 row-sm-10" method="post">
-        <hr/>
-        <label asp-for="Publicacion.Titulo" class="control-label"></label>
-        <input asp-for="Publicacion.Titulo" class="form-control" type="text"/>
-        <span asp-validation-for="Publicacion.Titulo" class="text-danger"></span>
-
-        <label asp-for="Publicacion.Descripcion" class="control-label"></label>
-        <textarea asp-for="Publicacion.Descripcion" rows="5" cols="40"></textarea>
-        <span asp-validation-for="Publicacion.Descripcion" class="text-danger"></span>
-            
-        <br />
         <div class="form-group">
+            <label asp-for="Publicacion.Titulo" class="control-label"></label>
+            <input asp-for="Publicacion.Titulo" class="form-control" type="text"/>
+            <span asp-validation-for="Publicacion.Titulo" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Publicacion.Descripcion" class="control-label"></label>
+            <textarea asp-for="Publicacion.Descripcion" rows="5" cols="50"></textarea>
+            <span asp-validation-for="Publicacion.Descripcion" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="hidden" onclick="document.getElementById('myInput').value = ''"></input>
             <button type="submit" class="btn btn-primary" asp-for="@Acciones.postear">Postear</button>
         </div>
     </form>

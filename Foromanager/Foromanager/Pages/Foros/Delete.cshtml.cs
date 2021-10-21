@@ -74,5 +74,6 @@ namespace Foromanager.Pages.Foros
 
             return RedirectToPage("./Index");
         }
+
     }
 }

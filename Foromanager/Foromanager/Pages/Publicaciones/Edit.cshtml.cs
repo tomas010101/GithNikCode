@@ -37,20 +37,34 @@ namespace Foromanager.Pages.Publicaciones
             {
                 return NotFound();
             }
-           ViewData["ForoId"] = new SelectList(_context.Foro, "ForoId", "ForoId");
+            //ViewData["ForoId"] = new SelectList(_context.Foro, "ForoId", "ForoId");
             return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
+            var p = await _context.Publicacion.FindAsync(id);
+
+            if(p ==null)
+            {
+                return NotFound();
+            }
+
+            if(await TryUpdateModelAsync<Publicacion>(p,"publicacion",p => p.Titulo, p => p.Descripcion))
+            {
+                await _context.SaveChangesAsync();
+                return RedirectToPage("../Foros/Index");
+            }
+            return Page();
+            /*
+            _context.Attach(Publicacion).State = EntityState.Modified;
+            
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
-            _context.Attach(Publicacion).State = EntityState.Modified;
 
             try
             {
@@ -69,6 +83,7 @@ namespace Foromanager.Pages.Publicaciones
             }
 
             return RedirectToPage("../Foros/Index");
+            */
         }
 
         private bool PublicacionExists(int id)
