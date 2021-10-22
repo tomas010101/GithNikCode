@@ -16,10 +16,10 @@ namespace Foromanager.Pages.Foros
     public enum Acciones
     {
         postear,
-        editar,
-        eliminar,
         aprobar,
-        descartar
+        descartar,
+        darlike,
+        dardislike
     }
     
     public class DetailsModel : DI_BasePageModel
@@ -36,11 +36,10 @@ namespace Foromanager.Pages.Foros
         public Publicacion Publicacion { get; set; }
 
         public Acciones acciones {get;set;}
-        
-        public int PublicacionId {get;set;}
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            
             Foro = await _context.Foro
                         .Include(s=>s.Publicaciones)
                         .AsNoTracking()
@@ -65,7 +64,12 @@ namespace Foromanager.Pages.Foros
         public async Task<IActionResult> OnPostAsync(int id)
         {
             Foro = await _context.Foro.FirstOrDefaultAsync(m=>m.ForoId==id);
-
+            //Publicacion = await _context.Publicacion.FirstOrDefaultAsync(p=>m.PublicacionId==idp);
+            
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
             if(Foro == null)
             {
                 return NotFound();
@@ -80,10 +84,6 @@ namespace Foromanager.Pages.Foros
             }
             switch(acciones)
             {
-                case Acciones.eliminar:
-                    var p = await _context.Publicacion.FirstOrDefaultAsync(m=>m.PublicacionId==PublicacionId);
-                    _context.Publicacion.Remove(p);
-                    break;
                 case Acciones.aprobar:
                     Foro.Status = ForumStatus.Approved;
                     break;
@@ -95,12 +95,13 @@ namespace Foromanager.Pages.Foros
                     Publicacion.Usuario = User.Identity.Name;
                     _context.Publicacion.Add(Publicacion);
                     break;
-                case Acciones.editar:
+                case Acciones.darlike:
+                    Publicacion.Likes++;
+                    
                     break;
             }
             
             await _context.SaveChangesAsync();
-
             return RedirectToPage("./Index");
         }
     }
