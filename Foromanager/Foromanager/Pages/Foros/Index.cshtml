@@ -23,13 +23,13 @@
     <thead>
         <tr>
             <th>
-                <a asp-route-sortOrder="@Model.NameSort">@Html.DisplayNameFor(model => model.Foros[0].Nombre)</a>
+                @Html.DisplayNameFor(model => model.Foros[0].Nombre)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Foros[0].Descripcion)
             </th>
             <th>
-                <a asp-route-sortOrder="@Model.CurrentFilter">@Html.DisplayNameFor(model => model.Foros[0].Categoria)</a>
+                @Html.DisplayNameFor(model => model.Foros[0].Categoria)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Foros[0].Fecha)

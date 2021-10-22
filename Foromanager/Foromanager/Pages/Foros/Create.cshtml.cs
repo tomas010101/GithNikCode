@@ -37,9 +37,7 @@ namespace Foromanager.Pages.Foros
             {
                 return Page();
             }
-
-            Foro.Fecha = DateTime.Now;
-
+            
             Foro.OwnerID = UserManager.GetUserId(User);
             var isAuthorizated = await AuthorizationService.AuthorizeAsync(User,Foro,ForumOperations.Create);
 
