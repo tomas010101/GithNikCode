@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Foromanager.Authorization;
+using System.Collections.Generic;
 // dotnet aspnet-codegenerator razorpage -m Contact -dc ApplicationDbContext -udl -outDir Pages\Contacts --referenceScriptLibraries
 
 namespace Foromanager.Data
@@ -90,10 +91,10 @@ namespace Foromanager.Data
             }
             var foros = new Foro[]
             {
-                new Foro{Nombre="GithNik",Descripcion="Foro Principal",Categoria="Principal",Fecha=DateTime.Parse("2020-09-01"),Status=ForumStatus.Approved,OwnerID=adminID},
-                new Foro{Nombre="Genshin",Descripcion="Foro de Genshin",Categoria="Genshin",Fecha=DateTime.Parse("2020-09-02")},
-                new Foro{Nombre="Minecraft",Descripcion="Foro de Minecraft",Categoria="Principal",Fecha=DateTime.Parse("2020-09-03")},
-                new Foro{Nombre="ElRichMC",Descripcion="Foro del rich",Categoria="Principal",Fecha=DateTime.Parse("2020-09-04")}
+                new Foro{Nombre="GithNik",Descripcion="Foro Principal",Categorias=new List<Categoria>(){new Categoria{CategoriaNombre="Categoria1"}} ,Fecha=DateTime.Parse("2020-09-01"),Status=ForumStatus.Approved,OwnerID=adminID},
+                new Foro{Nombre="Genshin",Descripcion="Foro de Genshin",Categorias=new List<Categoria>(){new Categoria{CategoriaNombre="Categoria1"}} ,Fecha=DateTime.Parse("2020-09-02")},
+                new Foro{Nombre="Minecraft",Descripcion="Foro de Minecraft",Categorias= new List<Categoria>(){new Categoria{CategoriaNombre="Categoria1"}} ,Fecha=DateTime.Parse("2020-09-03")},
+                new Foro{Nombre="ElRichMC",Descripcion="Foro del rich",Categorias= new List<Categoria>(){new Categoria{CategoriaNombre="Categoria1"}} ,Fecha=DateTime.Parse("2020-09-04")}
             };
             context.Foro.AddRange(foros);
             context.SaveChanges();

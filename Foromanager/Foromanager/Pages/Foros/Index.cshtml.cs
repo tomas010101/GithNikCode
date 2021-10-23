@@ -54,7 +54,7 @@ namespace Foromanager.Pages.Foros
                 IQueryable<Foro> ForosIQ = from f in _context.Foro.Include(s=>s.Publicaciones).AsNoTracking() select f;
                 if(!String.IsNullOrEmpty(searchString))
                 {
-                    ForosIQ = ForosIQ.Where(f => f.Nombre.ToUpper().Contains(searchString.ToUpper()) || f.Categoria.ToUpper().Contains(searchString.ToUpper()));
+                    ForosIQ = ForosIQ.Where(f => f.Nombre.ToUpper().Contains(searchString.ToUpper())); //|| f.Categorias.ToUpper().Contains(searchString.ToUpper()));
                 }
 
                 switch (sortOrder)
@@ -66,7 +66,7 @@ namespace Foromanager.Pages.Foros
                         ForosIQ = ForosIQ.OrderBy(f => f.Fecha);
                         break;
                     case "categoria":
-                        ForosIQ = ForosIQ.OrderByDescending(f => f.Categoria);
+                        ForosIQ = ForosIQ.OrderByDescending(f => f.Categorias);
                         break;
                     default:
                         ForosIQ = ForosIQ.OrderBy(f => f.Nombre);
