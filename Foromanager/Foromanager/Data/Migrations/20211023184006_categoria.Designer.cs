@@ -4,14 +4,16 @@ using Foromanager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Foromanager.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211023184006_categoria")]
+    partial class categoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -297,13 +299,11 @@ namespace Foromanager.Data.Migrations
 
             modelBuilder.Entity("Foromanager.Models.Categoria", b =>
                 {
-                    b.HasOne("Foromanager.Models.Foro", "Foro")
+                    b.HasOne("Foromanager.Models.Foro", null)
                         .WithMany("Categorias")
                         .HasForeignKey("ForoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Foro");
                 });
 
             modelBuilder.Entity("Foromanager.Models.Publicacion", b =>

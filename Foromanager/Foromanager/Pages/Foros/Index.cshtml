@@ -29,7 +29,7 @@
                 @Html.DisplayNameFor(model => model.Foros[0].Descripcion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Foros[0].Categoria)
+                @Html.DisplayNameFor(model => model.Foros[0].Categorias)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Foros[0].Fecha)
@@ -53,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Categoria)
+                @Html.DisplayFor(modelItem => item.Categorias.Count)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Fecha)

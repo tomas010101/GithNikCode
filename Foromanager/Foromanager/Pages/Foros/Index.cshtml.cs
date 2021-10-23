@@ -51,7 +51,7 @@ namespace Foromanager.Pages.Foros
                 {
                     searchString = currentFilter;
                 }
-                IQueryable<Foro> ForosIQ = from f in _context.Foro.Include(s=>s.Publicaciones).AsNoTracking() select f;
+                IQueryable<Foro> ForosIQ = from f in _context.Foro.Include(s=>s.Publicaciones).Include(c=>c.Categorias).AsNoTracking() select f;
                 if(!String.IsNullOrEmpty(searchString))
                 {
                     ForosIQ = ForosIQ.Where(f => f.Nombre.ToUpper().Contains(searchString.ToUpper())); //|| f.Categorias.ToUpper().Contains(searchString.ToUpper()));
