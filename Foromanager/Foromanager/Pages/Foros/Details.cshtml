@@ -7,6 +7,8 @@
 
 @{
     ViewData["Title"] = "Detalles";
+    int Likes=0;
+    int DisLikes=0;
 }
 
 <div>
@@ -53,14 +55,13 @@
                 <a asp-page="../Publicaciones/Delete" asp-route-id="@item.PublicacionId">Borrar |</a>
                 <a asp-page="../Publicaciones/Edit" asp-route-id="@item.PublicacionId">Editar</a>               
             }
-            @Html.DisplayFor(modelItem => item.Reaccion)
         </div>
     }
     <br/>
     <form class="col-sm-10 row-sm-10" method="post">
         <hr/>
         <label asp-for="Publicacion.Titulo" class="control-label"></label>
-        <input asp-for="Publicacion.Titulo" class="form-control" type="text"/>
+        <input asp-for="Publicacion.Titulo" class="form-control" type="text"></input>
         <span asp-validation-for="Publicacion.Titulo" class="text-danger"></span>
 
         <label asp-for="Publicacion.Descripcion" class="control-label"></label>

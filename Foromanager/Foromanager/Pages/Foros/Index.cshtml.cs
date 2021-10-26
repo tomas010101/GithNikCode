@@ -28,7 +28,7 @@ namespace Foromanager.Pages.Foros
         }
 
         public IList<Foro> Foro { get;set; }
-
+        public string CurrentUserId {get;set;}
         public string NameSort { get; set; }
         public string DateSort { get; set; }
         public string CurrentFilter { get; set; }
@@ -42,6 +42,8 @@ namespace Foromanager.Pages.Foros
                 NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
                 DateSort = sortOrder == "Date" ? "date_desc" : "Date";
                 CurrentFilter = searchString;
+                
+                CurrentUserId = UserManager.GetUserId(User);
 
                 if (searchString != null)
                 {
@@ -54,7 +56,7 @@ namespace Foromanager.Pages.Foros
                 IQueryable<Foro> ForosIQ = from f in _context.Foro.Include(s=>s.Publicaciones).Include(c=>c.Categorias).AsNoTracking() select f;
                 if(!String.IsNullOrEmpty(searchString))
                 {
-                    ForosIQ = ForosIQ.Where(f => f.Nombre.ToUpper().Contains(searchString.ToUpper())); //|| f.Categorias.ToUpper().Contains(searchString.ToUpper()));
+                    ForosIQ = ForosIQ.Where(f => f.Nombre.ToUpper().Contains(searchString.ToUpper()));// || f.Categorias[0].ToUpper().Contains(searchString.ToUpper())));
                 }
 
                 switch (sortOrder)

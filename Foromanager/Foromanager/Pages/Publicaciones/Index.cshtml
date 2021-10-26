@@ -25,9 +25,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Publicacion[0].Foro)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Publicacion[0].Reaccion)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -45,9 +42,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Foro.ForoId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reaccion)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.PublicacionId">Edit</a> |

@@ -1,9 +1,7 @@
+using System.Collections.Generic;
+
 namespace Foromanager.Models
 {
-	public enum Reaccion
-	{
-		Like,Love,Haha,Wow,Sad,Angry
-	}
 	public class Publicacion
 	{
 		public int PublicacionId {get; set;}
@@ -15,7 +13,7 @@ namespace Foromanager.Models
 		public string Titulo {get;set;}
 		public string Descripcion {get;set;}
 		public Foro Foro {get;set;}
-		public Reaccion? Reaccion {get;set;}
+		public List<Reaccion> Reacciones {get;set;}
 		
 	}
 }

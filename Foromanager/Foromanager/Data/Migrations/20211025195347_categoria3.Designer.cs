@@ -4,14 +4,16 @@ using Foromanager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Foromanager.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211025195347_categoria3")]
+    partial class categoria3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,6 +81,9 @@ namespace Foromanager.Data.Migrations
                     b.Property<int>("ForoId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("Reaccion")
+                        .HasColumnType("int");
+
                     b.Property<string>("Titulo")
                         .HasColumnType("nvarchar(max)");
 
@@ -90,29 +95,6 @@ namespace Foromanager.Data.Migrations
                     b.HasIndex("ForoId");
 
                     b.ToTable("Publicacion");
-                });
-
-            modelBuilder.Entity("Foromanager.Models.Reaccion", b =>
-                {
-                    b.Property<int>("ReaccionID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("DisLike")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Like")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("PublicacionID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ReaccionID");
-
-                    b.HasIndex("PublicacionID");
-
-                    b.ToTable("Reaccion");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -337,17 +319,6 @@ namespace Foromanager.Data.Migrations
                     b.Navigation("Foro");
                 });
 
-            modelBuilder.Entity("Foromanager.Models.Reaccion", b =>
-                {
-                    b.HasOne("Foromanager.Models.Publicacion", "Publicacion")
-                        .WithMany("Reacciones")
-                        .HasForeignKey("PublicacionID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Publicacion");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -404,11 +375,6 @@ namespace Foromanager.Data.Migrations
                     b.Navigation("Categorias");
 
                     b.Navigation("Publicaciones");
-                });
-
-            modelBuilder.Entity("Foromanager.Models.Publicacion", b =>
-                {
-                    b.Navigation("Reacciones");
                 });
 #pragma warning restore 612, 618
         }

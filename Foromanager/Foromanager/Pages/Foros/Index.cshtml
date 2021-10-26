@@ -54,6 +54,10 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Categorias.Count)
+                @foreach(var cat in item.Categorias)
+                {
+                    @Html.DisplayFor(modelItem => cat.CategoriaNombre)
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Fecha)
@@ -65,12 +69,12 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @if((await AuthorizationService.AuthorizeAsync(User,item,ForumOperations.Update)).Succeeded)
+                @if((await AuthorizationService.AuthorizeAsync(User,item,ForumOperations.Update)).Succeeded && Model.CurrentUserId== item.OwnerID)
                 {
                     <a asp-page="./Edit" asp-route-id="@item.ForoId">Edit</a>
                     <text> | </text>
                 }
-                @if((await AuthorizationService.AuthorizeAsync(User,item,ForumOperations.Delete)).Succeeded)
+                @if((await AuthorizationService.AuthorizeAsync(User,item,ForumOperations.Delete)).Succeeded && Model.CurrentUserId== item.OwnerID)
                 {
                     <a asp-page="./Delete" asp-route-id="@item.ForoId">Delete</a>
                 }
