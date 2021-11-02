@@ -13,8 +13,8 @@ h1
 }
 
 /* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+a, h1, h2, h3, h4, p, span, tr, td, label {
+    color: #FFFFFF;
 }
 
 .btn-primary {
