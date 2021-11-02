@@ -13,7 +13,7 @@ namespace Foromanager.Models
 		public string Titulo {get;set;}
 		public string Descripcion {get;set;}
 		public Foro Foro {get;set;}
-		public List<Reaccion> Reacciones {get;set;}
+		public ICollection<Reaccion> Reacciones {get;set;}
 		
 	}
 }

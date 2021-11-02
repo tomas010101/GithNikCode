@@ -15,7 +15,7 @@ namespace Foromanager.Models
 		
 		public ICollection<Publicacion> Publicaciones {get;set;}
 		public ForumStatus Status {get;set;}
-		public List<Categoria> Categorias { get; set; }
+		public ICollection<Categoria> Categorias { get; set; }
 	}
 	public enum ForumStatus
 	{
