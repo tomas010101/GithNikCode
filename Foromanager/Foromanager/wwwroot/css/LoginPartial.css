@@ -3,36 +3,61 @@
     src: url("~/css/Perpetua.ttf");
 }
 
-.btn-group-sm > .btn, .btn-sm 
-{
-
+.btn-group-sm > .btn, .btn-sm {
     margin-right: 0.5rem;
     font-size: 16px;
     font-family: Roboto;
     font-weight: bold;
     line-height: 1.5;
     border-radius: 1.2rem;
-    font-variant:small-caps;
+    font-variant: small-caps;
     color: #000;
     width: 95px;
-
     text-shadow: -2px 3px 3px rgb(150, 1, 43);
 }
-.btn:hover
-{
-    background-color: #bb0136;
-    color: #cca845;    
+
+.btn:hover {
+    background-color: #DE2121;
+    color: #cca845;
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.651);
 }
-.rwidth 
-{
+
+.rwidth {
     width: 120px;
 }
 
-@media (max-width: 870px) 
-{   
-    .botones
-    {
-        width: 50px;
+@media (max-width: 900px) {
+    .btn-group-sm > .btn, .btn-sm {
+        font-size: 15px;
+        margin-right: 0.2rem;
+        width: 70px;
+    }
+
+    .rwidth {
+        width: 95px;
+    }
+}
+
+@media (max-width: 810px) {
+    .btn-group-sm > .btn, .btn-sm {
+        font-size: 13px;
+        margin-right: 0.2rem;
+        width: 70px;
+    }
+
+    .rwidth {
+        width: 95px;
+    }
+}
+
+@media (max-width: 700px) {
+    .btn-group-sm > .btn, .btn-sm {
+        font-size: 11px;
+        margin-right: 0.2rem;
+        width: 60px;
+    }
+
+    .rwidth {
+        width: 85px;
     }
 }

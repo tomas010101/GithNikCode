@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/Layout.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 </head>
 <body>
     <header class="Header-Shadow">
@@ -33,21 +34,31 @@
                 </div>
             </nav>
         </div>
-        
-    </header>
-        <main role="main" class="pb-3 main">
-            @RenderBody()
-        </main>
 
-    <footer class="text-muted">
-        <div class="container footer">
-            &copy; 2021 - GithNik - <a asp-area="" asp-page="/Privacy">Privacidad</a>
-        </div>
-    </footer>
+    </header>
+    <main role="main" class="pb-3 main">
+        @RenderBody()
+    </main>
+
+    <div class="footer">
+        <footer class="text-muted">
+            <div id="Codito-boton" class="Codito"><i class="fas fa-chevron-left"></i></div>
+            <div id="Barra" class="div-redes">
+                <ul class="redes">
+                    <li><a href="https://instagram.com/githnik?utm_medium=copy_link"><img src="~/pictures/Logoinsta.png" alt="Instagram"></a></li>
+                    <li><a href="https://twitter.com/githnik"><img src="~/pictures/Logotwitter.png" alt="Twitter"></a></li>
+                </ul>
+            </div>
+            @*<div class="container footer">
+                  &copy; 2021 - GithNik - <a asp-area="" asp-page="/Privacy">Privacidad</a>
+            </div>*@
+        </footer>
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/Layout.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
