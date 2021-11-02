@@ -3,111 +3,113 @@
 @{
     ViewData["Title"] = "WIKI";
 }
-<h1 style="margin-bottom: 3rem;">@ViewData["Title"]</h1>
 <style>
     div {
     text-align: justify;
     text-justify: inter-word;
     }
 </style>
-<p>
+
+<h1 style="margin-bottom: 3rem;">@ViewData["Title"]</h1>
+<div style="padding-left:20px">
     <h3><strong>GithNikForums.NET Wiki</strong></h3>
     <br/>
-    <i>Última edición: 21/10</i>
-    <br/>
-    <br/>
-    <div style="padding-left:20px;">
+    <p><i>Última edición: 21/10</i></p>
+</div>
+<div style="padding-left:20px">
+    <p>
         <h4><strong>Entramado del Foro</strong></h4>
-        <br/>
-        Al entrar a la pagina GithNik aparecerás en el inicio de la misma donde se le dará la bien venida al usuario, en esta aparecerán las siguientes opciones:
-        <br/>
+        <p>
+            Al entrar a la pagina GithNik aparecerás en el inicio de la misma donde se le dará la bien venida al usuario, en esta aparecerán las siguientes opciones:
+        </p>
         <ul>
-            <li><strong>Inicio.</strong></li>
-            <li><strong>Privacidad.</strong></li>
-            <li><strong>Foros.</strong></li>
-            <li><strong>Crear foro.</strong></li>
-            <li><strong>Registrarse.</strong></li>
-            <li><strong>Acceder.</strong></li>
+            <li><p><strong>Inicio.</strong></p></li>
+            <li><p><strong>Privacidad.</strong></p></li>
+            <li><p><strong>Foros.</strong></p></li>
+            <li><p><strong>Crear foro.</strong></p></li>
+            <li><p><strong>Registrarse.</strong></p></li>
+            <li><p><strong>Acceder.</strong></p></li>
         </ul>
-        Una vez el usuario de haya logeado aparecerán opciones nuevas, estas son:
-        <br/>
-        <strong>Foros favoritos</strong>, <strong>Foros en los que es administrador</strong> (ósea que es el creador), <strong>botón para acceder a su perfil</strong>, <strong>acceso a configuración de la pagina</strong> (ajustes).
-        <br/>
-        A continuación explicare las funciones de cada una de las opciones:
-        <br/>
+        <p>
+            Una vez el usuario de haya logeado aparecerán opciones nuevas, estas son:
+            <strong>Foros favoritos</strong>, <strong>Foros en los que es administrador</strong> (ósea que es el creador), <strong>botón para acceder a su perfil</strong>, <strong>acceso a configuración de la pagina</strong> (ajustes).
+            <br/>
+            A continuación explicare las funciones de cada una de las opciones:
+        </p>
         <ul>
-            <li><strong>Inicio:</strong> regresa al la pagina de inicio.</li>
-            <li><strong>Privacidad:</strong> aquí se explicara a detalle las políticas de privacidad del sitio en cuestión.</li>
-            <li><strong>Foros:</strong> muestra todos los foros existentes en la pagina, además del nombre de cada foro también aparece la Descripción, Categoría, Fecha de Creación, Cantidad de publicaciones y Estado. Al entrar a un foro se mostrara la información ya mencionada del mismo y las publicaciones que contenga además de nuevas opciones:
+            <li><p><strong>Inicio:</strong> regresa al la pagina de inicio.</p></li>
+            <li><p><strong>Privacidad:</strong> aquí se explicara a detalle las políticas de privacidad del sitio en cuestión.</p></li>
+            <li><p><strong>Foros:</strong> muestra todos los foros existentes en la pagina, además del nombre de cada foro también aparece la Descripción, Categoría, Fecha de Creación, Cantidad de publicaciones y Estado. Al entrar a un foro se mostrara la información ya mencionada del mismo y las publicaciones que contenga además de nuevas opciones:</p>
             </li>
                 <ul>
-                    <li><strong>Crear publicación:</strong> aparecerán opciones para colocar titulo, descripción..., y postear.</li>
-                    <li><strong>Reacciones:</strong> reaccionar a un post con Like (Me gusta), Dislike (No me gusta)</li>
-                    <li><strong>Publicación:</strong> contiene titulo, descripción, fecha y ora de creación, usuario que la posteo, contenido de la misma. También las opciones de editar o eliminar para el que la publico o el administrador del foro.</li>
+                    <li><p><strong>Crear publicación:</strong> aparecerán opciones para colocar titulo, descripción..., y postear.</p></li>
+                    <li><p><strong>Reacciones:</strong> reaccionar a un post con Like (Me gusta), Dislike (No me gusta)</p></li>
+                    <li><p><strong>Publicación:</strong> contiene titulo, descripción, fecha y ora de creación, usuario que la posteo, contenido de la misma. También las opciones de editar o eliminar para el que la publico o el administrador del foro.</p></li>
                 </ul>
             </li>
-            <li><strong>Crear nuevo foro:</strong> mostrará campos para completar con los datos de tu foro, los cuales son Nombre del foro, Descripción, categoría, Fecha y hora, un botón para crear el foro y otro para volver a la lista.</li>
-            <li><strong>Registrarse:</strong> Para crear una nueva cuenta, Se mostraran los campos Correo electrónico, Contraseña, Confirmar contraseña y el botón Registrarse para finalizar la operación.</li>
-            <li><strong>Acceder:</strong> Contiene los campos Correo electrónico y Acceder, Se puede activar la opción para que la pagina recuerde los datos.</li>
-            <li><strong>Nombre de usuario (Acceso al perfil):</strong> muestra el perfil del usuario, este contiene: Nombre, numero de teléfono, Correo, (opción para nuevo correo), contraseña (opción para cambiar contraseña), información personal.</li>
+            <li><p><strong>Crear nuevo foro:</strong> mostrará campos para completar con los datos de tu foro, los cuales son Nombre del foro, Descripción, categoría, Fecha y hora, un botón para crear el foro y otro para volver a la lista.</p></li>
+            <li><p><strong>Registrarse:</strong> Para crear una nueva cuenta, Se mostraran los campos Correo electrónico, Contraseña, Confirmar contraseña y el botón Registrarse para finalizar la operación.</p></li>
+            <li><p><strong>Acceder:</strong> Contiene los campos Correo electrónico y Acceder, Se puede activar la opción para que la pagina recuerde los datos.</p></li>
+            <li><p><strong>Nombre de usuario (Acceso al perfil):</strong> muestra el perfil del usuario, este contiene: Nombre, numero de teléfono, Correo, (opción para nuevo correo), contraseña (opción para cambiar contraseña), información personal.</p></li>
         </ul>
-    </div>
-    <div style="padding-left:20px">
-        <h4><strong>Alcance del Foro</strong></h4>    
-        <p>
-            <br>
-            La pagina tiene como principal alcance la gestión de usuarios funcionales a la creación, edición, eliminación y manipulación de sus publicaciones dentro de los foros (fórums o centros de discusión) de una manera sencilla y didáctica para el propio usuario. 
-            <br>
-            Los usuarios tendrán permisos sobre ciertos foros, asegurando de esa forma la integridad de las creaciones individuales. Además, contaran con la posibilidad de poder generar un chat privado, solo con los usuarios que generen los post, dentro de ese u otro foro ya creado, uniendo de esta forma, la comunicación privada a las facultades de la pagina.
-            <br>
-            La personalización del servicio es otro de los alcance que se propone el foro, esto sirve para generar una mejor experiencia en el usuario durante su uso y estimular la diversidad de estilos dentro de los foros.
-            <br>
-            El sistema de publicaciones propone ser simple y minimalista para encuadrar al foro dentro de un formato nuevo y moderno, con tipografías suaves y paletas de colores relajantes para los usuarios.
-        </p>
-    </div>
-    <div style="padding-left:20px">
-        <h4><strong>Manejo del Sitio ( Administrador)</strong></h4>
-        <p>
-            El usuario Administrador tendrá la facultad de poder aceptar o rechazar foros en estado de espera.
-            Posteriormente podrá eliminar publicaciones indebidas o de cualquier índole con el propósito de administrar el foro.
-            También posee el permiso para remover foros en caso de considerarlos no aptos.
-        </p>
-    </div>
-    <div style="padding-left:20px">
-        <h4><strong>Manejo del Sitio (Usuario)</strong></h4>
-        <p>
-            Cada foro será creado con el hipervínculo de <i>"crear foros"</i>, este se encontrara en el menú de inicio de cada usuario, sobre los foros del mismo usuario. Este link lo redirigirá a la pagina de Create.cshtml, donde el usuario ingresara el Nombre del foro, una breve Descripción y finalmente su Categoría. El foro adoptara la fecha de creación para poder tener registro de su inicialización.
-            <br>
-            El usuario podrá acceder a los foros desde desde la pestaña de foros, o si tiene alguno creado, desde el menú de inicio.
-            <br>
-            Una vez dentro del foro, el usuario podrá comentar realizando publicaciones con titulo y descripción.
-            <br>
-            Cada publicación será mostrada con el respectivo usuario que la creo. Por el momento no existe la posibilidad de responder a  las publicaciones de otros usuarios.
-        </p>
-    </div>
-    <div style="padding-left:20px"> 
-        <h4><strong>Repositorio del Proyecto</strong></h4>
-        <p>
-            Aun se encuentra en desarrollo. Se creo el 19 de Mayo del año 2021 con el fin de alojar los archivos del proyecto para su desarrollo colaborativo.
-            <br>
-            Es un repositorio privado que contiene todos los archivos necesarios para cargar la aplicación Blazor. Además, cuenta con un README, que contiene detalles sobre los autores y un link al informe del proyecto en sí.
-            <br>
-            El repositorio cuenta con un cuaderno de campo, primigenio al ya inscripto en esta plataforma. Dentro de él, se encuentran las ultimas actualizaciones que tiene el proyecto con sus respectivos identificadores, mas una breve descripción sobre lo hecho a modo de  poder caracterizar los cambios hechos por los colaboradores.
-            <br>
-            <a href="https://github.com/Bruno-powershell/Proyecto">Link del repositorio: https://github.com/Bruno-powershell/Proyecto</a>
-            <a href="https://github.com/tomas010101/GithNikCode">Link del nuevo repositorio: https://github.com/tomas010101/GithNikCode</a>
-        </p>
-    </div>
-    <div style="padding-left:20px">
-        <h4><strong>Informe del Proyecto</strong></h4>
-        <p>
-            Contiene información sobre las ideas y prototipos que se desarrollaron a la hora de comenzar el trabajo.
-            <br>
-            Parte de la breve descripción de las 5 partes importantes que compondrán al Foro una vez terminado. 
-            <br>
-            El informe muestra un panorama general de lo se desarrollara a lo largo de las pasantías y deja en claro sus objetivos principales.
-            <br>
-            <a href="https://docs.google.com/document/d/1hWJlmjzqOq_1JQLefz3b7pvreBCoFcxOWHkUg3B9bVM/edit#heading=h.f1cu1kwqvl3k">Link del Informe:  https://docs.google.com/document/d/1hWJlmjzqOq_1JQLefz3b7pvreBCoFcxOWHkUg3B9bVM/edit#heading=h.f1cu1kwqvl3k</a>
-        </p>
-    </div>
-</p>
+    </p>
+</div>
+<div style="padding-left:20px">
+    <h4><strong>Alcance del Foro</strong></h4>    
+    <p>
+        <br>
+        La pagina tiene como principal alcance la gestión de usuarios funcionales a la creación, edición, eliminación y manipulación de sus publicaciones dentro de los foros (fórums o centros de discusión) de una manera sencilla y didáctica para el propio usuario. 
+        <br>
+        Los usuarios tendrán permisos sobre ciertos foros, asegurando de esa forma la integridad de las creaciones individuales. Además, contaran con la posibilidad de poder generar un chat privado, solo con los usuarios que generen los post, dentro de ese u otro foro ya creado, uniendo de esta forma, la comunicación privada a las facultades de la pagina.
+        <br>
+        La personalización del servicio es otro de los alcance que se propone el foro, esto sirve para generar una mejor experiencia en el usuario durante su uso y estimular la diversidad de estilos dentro de los foros.
+        <br>
+        El sistema de publicaciones propone ser simple y minimalista para encuadrar al foro dentro de un formato nuevo y moderno, con tipografías suaves y paletas de colores relajantes para los usuarios.
+    </p>
+</div>
+<div style="padding-left:20px">
+    <h4><strong>Manejo del Sitio ( Administrador)</strong></h4>
+    <p>
+        El usuario Administrador tendrá la facultad de poder aceptar o rechazar foros en estado de espera.
+        Posteriormente podrá eliminar publicaciones indebidas o de cualquier índole con el propósito de administrar el foro.
+        También posee el permiso para remover foros en caso de considerarlos no aptos.
+    </p>
+</div>
+<div style="padding-left:20px">
+    <h4><strong>Manejo del Sitio (Usuario)</strong></h4>
+    <p>
+        Cada foro será creado con el hipervínculo de <i>"crear foros"</i>, este se encontrara en el menú de inicio de cada usuario, sobre los foros del mismo usuario. Este link lo redirigirá a la pagina de Create.cshtml, donde el usuario ingresara el Nombre del foro, una breve Descripción y finalmente su Categoría. El foro adoptara la fecha de creación para poder tener registro de su inicialización.
+        <br>
+        El usuario podrá acceder a los foros desde desde la pestaña de foros, o si tiene alguno creado, desde el menú de inicio.
+        <br>
+        Una vez dentro del foro, el usuario podrá comentar realizando publicaciones con titulo y descripción.
+        <br>
+        Cada publicación será mostrada con el respectivo usuario que la creo. Por el momento no existe la posibilidad de responder a  las publicaciones de otros usuarios.
+    </p>
+</div>
+<div style="padding-left:20px"> 
+    <h4><strong>Repositorio del Proyecto</strong></h4>
+    <p>
+        Aun se encuentra en desarrollo. Se creo el 19 de Mayo del año 2021 con el fin de alojar los archivos del proyecto para su desarrollo colaborativo.
+        <br>
+        Es un repositorio privado que contiene todos los archivos necesarios para cargar la aplicación Blazor. Además, cuenta con un README, que contiene detalles sobre los autores y un link al informe del proyecto en sí.
+        <br>
+        El repositorio cuenta con un cuaderno de campo, primigenio al ya inscripto en esta plataforma. Dentro de él, se encuentran las ultimas actualizaciones que tiene el proyecto con sus respectivos identificadores, mas una breve descripción sobre lo hecho a modo de  poder caracterizar los cambios hechos por los colaboradores.
+        <br>
+        <a href="https://github.com/Bruno-powershell/Proyecto">Link del repositorio: https://github.com/Bruno-powershell/Proyecto</a><br>
+        <a href="https://github.com/tomas010101/GithNikCode">Link del nuevo repositorio: https://github.com/tomas010101/GithNikCode</a>
+    </p>
+</div>
+<div style="padding-left:20px">
+    <h4><strong>Informe del Proyecto</strong></h4>
+    <p>
+        Contiene información sobre las ideas y prototipos que se desarrollaron a la hora de comenzar el trabajo.
+        <br>
+        Parte de la breve descripción de las 5 partes importantes que compondrán al Foro una vez terminado. 
+        <br>
+        El informe muestra un panorama general de lo se desarrollara a lo largo de las pasantías y deja en claro sus objetivos principales.
+        <br>
+        <a href="https://docs.google.com/document/d/1hWJlmjzqOq_1JQLefz3b7pvreBCoFcxOWHkUg3B9bVM/edit#heading=h.f1cu1kwqvl3k">Link del Informe:  https://docs.google.com/document/d/1hWJlmjzqOq_1JQLefz3b7pvreBCoFcxOWHkUg3B9bVM/edit#heading=h.f1cu1kwqvl3k</a>
+    </p>
+</div>
+

@@ -45,7 +45,8 @@ namespace Foromanager.Pages.Foros
             {
                 return Forbid();
             }
-
+            Foro.Status=ForumStatus.Approved;
+            Foro.Fecha = DateTime.Now;
             _context.Foro.Add(Foro);
             await _context.SaveChangesAsync();
 

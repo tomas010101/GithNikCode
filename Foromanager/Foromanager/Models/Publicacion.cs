@@ -14,6 +14,6 @@ namespace Foromanager.Models
 		public string Descripcion {get;set;}
 		public Foro Foro {get;set;}
 		public ICollection<Reaccion> Reacciones {get;set;}
-		
+		public Imagenes Imagen {get;set;}
 	}
 }
