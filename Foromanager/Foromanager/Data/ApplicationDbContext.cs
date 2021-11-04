@@ -13,7 +13,18 @@ namespace Foromanager.Data
             : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Foro>()
+                 .HasMany(f => f.Categorias)
+                 .WithMany(c => c.Foros)
+                 .UsingEntity(j => j.ToTable("ForoCategoria"));
+        }
+
         public DbSet<Foromanager.Models.Foro> Foro { get; set; }
-        public DbSet<Foromanager.Models.Publicacion> Publicacion {get;set;}
+        public DbSet<Foromanager.Models.Publicacion> Publicacion { get; set; }
+        public DbSet<Foromanager.Models.Categoria> Categoria { get; set; }
+        public DbSet<Foromanager.Models.Reaccion> Reaccion { get; set; }
     }
 }
