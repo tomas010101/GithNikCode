@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 
@@ -18,6 +19,7 @@ namespace Foromanager.Models
 		public ICollection<Categoria> Categorias { get; set; }
 		public byte[] ForoPerfil {get;set;}
 	}
+
 	public enum ForumStatus
 	{
 		Submitted,

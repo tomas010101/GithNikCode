@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Foromanager.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Foromanager.Data
 {
@@ -16,6 +17,11 @@ namespace Foromanager.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+          /*  modelBuilder.Entity<IdentityUserLogin<string>>().HasKey(i => i.UserId);
+            modelBuilder.Entity<IdentityUserRole<string>>().HasKey(i => i.RoleId);
+            modelBuilder.Entity<IdentityUserToken<string>>().HasKey(i => i.UserId);*/
+
             modelBuilder.Entity<Foro>()
                  .HasMany(f => f.Categorias)
                  .WithMany(c => c.Foros)

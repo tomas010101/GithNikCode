@@ -19,6 +19,21 @@ namespace Foromanager.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("CategoriaForo", b =>
+                {
+                    b.Property<int>("CategoriasCategoriaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ForosForoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CategoriasCategoriaId", "ForosForoId");
+
+                    b.HasIndex("ForosForoId");
+
+                    b.ToTable("ForoCategoria");
+                });
+
             modelBuilder.Entity("Foromanager.Models.Categoria", b =>
                 {
                     b.Property<int>("CategoriaId")
@@ -33,8 +48,6 @@ namespace Foromanager.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("CategoriaId");
-
-                    b.HasIndex("ForoId");
 
                     b.ToTable("Categoria");
                 });
@@ -342,15 +355,19 @@ namespace Foromanager.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Foromanager.Models.Categoria", b =>
+            modelBuilder.Entity("CategoriaForo", b =>
                 {
-                    b.HasOne("Foromanager.Models.Foro", "Foro")
-                        .WithMany("Categorias")
-                        .HasForeignKey("ForoId")
+                    b.HasOne("Foromanager.Models.Categoria", null)
+                        .WithMany()
+                        .HasForeignKey("CategoriasCategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Foro");
+                    b.HasOne("Foromanager.Models.Foro", null)
+                        .WithMany()
+                        .HasForeignKey("ForosForoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Foromanager.Models.Imagenes", b =>
@@ -437,8 +454,6 @@ namespace Foromanager.Data.Migrations
 
             modelBuilder.Entity("Foromanager.Models.Foro", b =>
                 {
-                    b.Navigation("Categorias");
-
                     b.Navigation("Publicaciones");
                 });
 
