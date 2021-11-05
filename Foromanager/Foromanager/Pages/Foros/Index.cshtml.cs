@@ -21,7 +21,7 @@ namespace Foromanager.Pages.Foros
         private readonly Foromanager.Data.ApplicationDbContext _context;
         private readonly IConfiguration Configuration;
 
-        public IndexModel(Foromanager.Data.ApplicationDbContext context,IAuthorizationService authorizationService, UserManager<IdentityUser> userManager, IConfiguration configuration):base(context,authorizationService,userManager)
+        public IndexModel(Foromanager.Data.ApplicationDbContext context,IAuthorizationService authorizationService, UserManager<Usuario> userManager, IConfiguration configuration):base(context,authorizationService,userManager)
         {
             _context = context;
             Configuration = configuration;

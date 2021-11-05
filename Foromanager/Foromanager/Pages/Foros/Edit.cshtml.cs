@@ -18,7 +18,7 @@ namespace Foromanager.Pages.Foros
     {
         private readonly Foromanager.Data.ApplicationDbContext _context;
 
-        public EditModel(Foromanager.Data.ApplicationDbContext context,IAuthorizationService authorizationService, UserManager<IdentityUser> userManager): base(context,authorizationService,userManager)
+        public EditModel(Foromanager.Data.ApplicationDbContext context,IAuthorizationService authorizationService, UserManager<Usuario> userManager): base(context,authorizationService,userManager)
         {
             _context = context;
         }

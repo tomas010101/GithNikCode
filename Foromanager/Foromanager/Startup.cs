@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 using Foromanager.Authorization;
 using WebPWrecover.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Foromanager.Models;
 
 namespace Foromanager
 {
@@ -35,7 +36,7 @@ namespace Foromanager
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<Usuario>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();

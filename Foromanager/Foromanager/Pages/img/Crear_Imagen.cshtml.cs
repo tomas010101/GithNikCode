@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,17 +7,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Foromanager.Data;
 using Foromanager.Models;
-using Foromanager.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
 
-namespace Foromanager.Pages.Foros
+namespace Foromanager.Pages.img
 {
-    public class CreateModel : DI_BasePageModel
+    public class Crear_ImagenModel : PageModel
     {
         private readonly Foromanager.Data.ApplicationDbContext _context;
 
-        public CreateModel(Foromanager.Data.ApplicationDbContext context,IAuthorizationService authorizationService, UserManager<Usuario> userManager): base(context,authorizationService,userManager)
+        public Crear_ImagenModel(Foromanager.Data.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -28,7 +25,7 @@ namespace Foromanager.Pages.Foros
         }
 
         [BindProperty]
-        public Foro Foro { get; set; }
+        public Imagenes Imagenes { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -37,17 +34,8 @@ namespace Foromanager.Pages.Foros
             {
                 return Page();
             }
-            
-            Foro.OwnerID = UserManager.GetUserId(User);
-            var isAuthorizated = await AuthorizationService.AuthorizeAsync(User,Foro,ForumOperations.Create);
 
-            if(!isAuthorizated.Succeeded)
-            {
-                return Forbid();
-            }
-            Foro.Status=ForumStatus.Approved;
-            Foro.Fecha = DateTime.Now;
-            _context.Foro.Add(Foro);
+            _context.Imagenes.Add(Imagenes);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

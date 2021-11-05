@@ -35,12 +35,12 @@ namespace Foromanager.Data
         }        
         private static async Task<string> EnsureUser(IServiceProvider serviceProvider,string testUserPw, string UserName)
         {
-            var userManager = serviceProvider.GetService<UserManager<IdentityUser>>();
+            var userManager = serviceProvider.GetService<UserManager<Usuario>>();
 
             var user = await userManager.FindByNameAsync(UserName);
             if (user == null)
             {
-                user = new IdentityUser {
+                user = new Usuario {
                     UserName = UserName,
                     EmailConfirmed = true
                 };
@@ -70,7 +70,7 @@ namespace Foromanager.Data
                 IR = await roleManager.CreateAsync(new IdentityRole(role));
             }
 
-            var userManager = serviceProvider.GetService<UserManager<IdentityUser>>();
+            var userManager = serviceProvider.GetService<UserManager<Usuario>>();
 
             var user = await userManager.FindByIdAsync(uid);
 

@@ -19,7 +19,7 @@ namespace Foromanager.Pages
         private readonly Foromanager.Data.ApplicationDbContext _context;
         private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger,Foromanager.Data.ApplicationDbContext context,IAuthorizationService authorizationService, UserManager<IdentityUser> userManager):base(context,authorizationService,userManager)
+        public IndexModel(ILogger<IndexModel> logger,Foromanager.Data.ApplicationDbContext context,IAuthorizationService authorizationService, UserManager<Usuario> userManager):base(context,authorizationService,userManager)
         {
             _context = context;
             _logger = logger;

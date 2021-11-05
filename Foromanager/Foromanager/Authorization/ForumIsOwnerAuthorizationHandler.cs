@@ -8,9 +8,9 @@ namespace Foromanager.Authorization
 {
 	public class ForumIsOwnerAuthorizationHandler: AuthorizationHandler<OperationAuthorizationRequirement, Foro>
 	{
-		UserManager<IdentityUser> _userManager;
+		UserManager<Usuario> _userManager;
 
-		public ForumIsOwnerAuthorizationHandler(UserManager<IdentityUser> usermanager)
+		public ForumIsOwnerAuthorizationHandler(UserManager<Usuario> usermanager)
 		{
 			_userManager = usermanager;
 		}
