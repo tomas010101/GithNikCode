@@ -1,6 +1,4 @@
-﻿
-.Lupaboton 
-{
+﻿.Lupaboton {
     width: 4rem;
     color: #FFFFFF;
     background-color: #CA3535;
@@ -9,20 +7,18 @@
     border-color: #D09045;
     border-radius: 0.25rem;
 }
-.lupa 
-{
+
+.lupa {
     margin-bottom: 0.25rem;
     text-align: center;
 }
 
-.reload 
-{
+.reload {
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
     width: 4rem;
     height: 1.98rem;
-
-    text-align:center;
+    text-align: center;
     color: #FFFFFF;
     background-color: #CA3535;
     border: solid;
@@ -31,31 +27,28 @@
     border-radius: 0.25rem;
     display: inline-block;
 }
+
 .Lupaboton:hover {
     text-shadow: 1px 1px 15px rgb(255, 213, 43);
-    background: linear-gradient(90deg, #CA3535, #E92828);
+    background: linear-gradient(90deg, #a16407, #FFD500);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
-.reload:hover 
-{
+
+.reload:hover {
     text-shadow: 1px 1px 15px rgb(255, 213, 43);
-    background: linear-gradient(90deg, #CA3535, #E92828);
+    background: linear-gradient(90deg, #a16407, #FFD500);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
 
 .Cont-add {
     margin-left: 40rem;
-
     text-align: center;
     font-size: 33px;
-    
 }
-.Foroadd 
-{
-    padding: 0% 0%;
 
+.Foroadd {
     border: solid;
     border-width: 0.75mm;
     border-color: #D09045;
