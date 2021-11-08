@@ -58,7 +58,7 @@
         </div>
     }
     <br/>
-    <form class="col-sm-10 row-sm-10" method="post">
+    <form enctype="multipart/form-data" class="col-sm-10 row-sm-10" method="post">
         <hr/>
         <label asp-for="Publicacion.Titulo" class="control-label"></label>
         <input asp-for="Publicacion.Titulo" class="form-control" type="text"></input>
@@ -68,7 +68,7 @@
         <textarea asp-for="Publicacion.Descripcion" rows="5" cols="40"></textarea>
         <span asp-validation-for="Publicacion.Descripcion" class="text-danger"></span>
         
-        <input type="file" name="imagen" />
+        <input asp-for="ImgCarga" type="file" name="imagen" />
         
         <br />
         <div class="form-group">

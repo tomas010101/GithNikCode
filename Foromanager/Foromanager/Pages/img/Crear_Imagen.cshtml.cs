@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Foromanager.Data;
 using Foromanager.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Foromanager.Pages.img
 {
@@ -26,10 +27,14 @@ namespace Foromanager.Pages.img
 
         [BindProperty]
         public Imagenes Imagenes { get; set; }
+        [BindProperty]
+        public IFormFile ImgCarga { get; set; }
+        
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
+         
             if (!ModelState.IsValid)
             {
                 return Page();

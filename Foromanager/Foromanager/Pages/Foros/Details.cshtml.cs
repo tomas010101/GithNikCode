@@ -10,6 +10,8 @@ using Foromanager.Models;
 using Foromanager.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Foromanager.Pages.Foros
 {
@@ -61,9 +63,19 @@ namespace Foromanager.Pages.Foros
             }
             return Page();
         }
+        [BindProperty]
+        public IFormFile ImgCarga { get; set; }
 
         public async Task<IActionResult> OnPostAsync(int id)
         {
+            var archivo = HttpContext.Request.Form.Files[0];
+            Imagenes imagen = new Imagenes();
+            using (var bReader = new BinaryReader(archivo.OpenReadStream()))
+            {
+               
+                imagen.Imagen = bReader.ReadBytes((int)archivo.Length);
+            }
+
             Foro = await _context.Foro.FirstOrDefaultAsync(m=>m.ForoId==id);
 
             if(Foro == null)
@@ -78,6 +90,7 @@ namespace Foromanager.Pages.Foros
             {
                 return Forbid();
             }
+
             switch(acciones)
             {
                 case Acciones.eliminar:
