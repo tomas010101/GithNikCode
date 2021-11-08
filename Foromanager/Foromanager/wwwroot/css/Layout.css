@@ -83,7 +83,7 @@ header {
     font-family: Roboto;
     font-weight: bold;
     border-radius: 5px;
-    color: #000000;
+    color: #EEEBDB;
     text-shadow: -2px 3px 3px rgb(150, 1, 43);
 }
 
@@ -114,8 +114,8 @@ header {
 }
 
 .Codito {
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 100%;
     font-size: 35px;
     background-color: #FF2424;
@@ -124,19 +124,21 @@ header {
     border: 3px solid;
     border-color: #D09045;
     position: fixed;
-    margin-left: 14%;
+    margin-left: 15%;
     margin-top: 3rem;
 }
 
     .Codito i {
-        margin-top: 1rem;
+        position: fixed;
+        margin-top: 0.5rem;
         margin-bottom: 1rem;
-        margin-left: 1rem;
+        margin-left: 0.7rem;
         margin-right: 1rem;
     }
 
 .div-redes {
     width: 15rem;
+    height: 3rem;
     background-color: #FF4F4B;
     margin-top: 3rem;
     display: none;
@@ -154,16 +156,20 @@ header {
 }
 
 .redes li img {
+    margin-bottom: 1rem;
     width: 35px;
     height: 35px;
 }
 
 .Codito:hover {
-    background-color: #DE2121;
+    text-shadow: 1px 1px 15px rgb(255, 213, 43);
+    background: linear-gradient(90deg, #CA3535, #E92828);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
     .Codito:hover i {
-        text-shadow: 2px 4px 6px rgb(150, 1, 43);
+        text-shadow: 1px 1px 15px rgb(255, 213, 43);
         background: linear-gradient(90deg, #a16407, #FFD500);
         -webkit-text-fill-color: transparent;
         -webkit-background-clip: text;
@@ -179,16 +185,59 @@ header {
 .Codito-change {
     transform: rotate(180deg);
     text-shadow: 2px 3px 3px rgb(150, 1, 43);
-    margin-left: -5%;
+    margin-left: -4.5%;
 }
 
     .Codito-change i {
-        margin-top: 20%;
-        margin-bottom: 30%;
-        margin-left: 22%;
-        margin-right: 28%;
+        position: fixed;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+        margin-left: 0.7rem;
+        margin-right: 1rem;
     }
+
 
     .Codito-change:hover {
         text-shadow: 2px 4px 6px rgb(150, 1, 43);
     }
+
+
+/*Responsive*/
+
+
+
+
+
+
+@media (min-width: 1300px) { /*Tamaño 90%*/
+    .Aparecer {
+        width: 13rem;
+        margin-left: 4rem;
+    }
+    .Aparecer .redes
+    {
+        margin-left: -1rem;
+    }
+
+}
+
+@media (min-width: 1350px) { /*Tamaño 80%*/
+
+    .Aparecer {
+        width: 12.5rem;
+    }
+
+    .Codito-change {
+        margin-left: 0%;
+    }
+}
+
+@media (min-width: 1450px) { /*Tamaño 75-70%*/
+    .Aparecer {
+        margin-left: 6.2rem;
+    }
+
+    .Codito-change {
+        margin-left: 2.7%;
+    }
+}
