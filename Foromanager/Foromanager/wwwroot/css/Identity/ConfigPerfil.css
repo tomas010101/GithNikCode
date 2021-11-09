@@ -55,4 +55,18 @@
 
 label{
     width: 90%;
-}    
+}
+
+.Managebotones {
+    color: #FFFFFF;
+    background-color: #CA3535;
+    border: solid;
+    border-width: 0.75mm;
+    border-color: #D09045;
+    border-radius: 0.25rem;
+}
+
+    .Managebotones:hover {
+        background-color: #B13737;
+        border-color: #BD833E;
+    }
