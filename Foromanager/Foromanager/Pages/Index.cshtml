@@ -9,7 +9,6 @@
 
 <div>
     <h1 class="display-4">Tus foros</h1>    
-    <a asp-page="./Foros/Create">Crear Foro</a>
     @foreach(var item in Model.Foros)
     {
         <h1><a asp-page="./Foros/Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)</a></h1>
