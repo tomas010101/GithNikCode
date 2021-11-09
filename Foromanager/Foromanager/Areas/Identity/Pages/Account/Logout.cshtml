@@ -1,11 +1,10 @@
-﻿@page
+﻿@page "/Cerrar_sesion"
 @model LogoutModel
 @{
-    ViewData["Title"] = "Log out";
+    ViewData["Title"] = "Cerrar sesión";
 }
 
-<header>
-    <h1>@ViewData["Title"]</h1>
+<p style="padding-top:3rem;">
     @{
         if (User.Identity.IsAuthenticated)
         {
@@ -15,7 +14,10 @@
         }
         else
         {
-            <p>You have successfully logged out of the application.</p>
+            <h2>Ha cerrado la sesión con éxito.</h2>
+
+            <h4 style="margin-top: 2rem;">Regresar a la página principal: <a asp-area="" asp-page="/Index">Inicio</a></h4>
         }
     }
-</header>
+</p>
+    
