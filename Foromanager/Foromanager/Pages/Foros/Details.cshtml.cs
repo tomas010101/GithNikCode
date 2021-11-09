@@ -71,9 +71,10 @@ namespace Foromanager.Pages.Foros
             var archivo = HttpContext.Request.Form.Files[0];
             Imagenes imagen = new Imagenes();
             using (var bReader = new BinaryReader(archivo.OpenReadStream()))
-            {
-               
+            {  
                 imagen.Imagen = bReader.ReadBytes((int)archivo.Length);
+                imagen.ImagenNombre = archivo.Name;
+
             }
 
             Foro = await _context.Foro.FirstOrDefaultAsync(m=>m.ForoId==id);
@@ -112,6 +113,13 @@ namespace Foromanager.Pages.Foros
                     break;
             }
             
+
+            await _context.SaveChangesAsync();
+
+            imagen.PublicacionID = Publicacion.PublicacionId;
+
+            _context.Add(imagen);
+
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
