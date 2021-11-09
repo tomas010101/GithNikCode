@@ -14,6 +14,7 @@ header {
     right: 0;
     height: 60px;
     border-radius: 3px;
+    z-index: 1;
 }
 
 /*Estilo del Nav-Bar*/
@@ -111,6 +112,7 @@ header {
     width: 14rem;
     height: 10rem;
     margin-left: 80.5%;
+    display: none;
 }
 
 .Codito {
