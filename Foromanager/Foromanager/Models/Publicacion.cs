@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Foromanager.Models
 {
@@ -18,6 +19,7 @@ namespace Foromanager.Models
 		public string Descripcion {get;set;}
 		public Foro Foro {get;set;}
 		public ICollection<Reaccion> Reacciones {get;set;}
+
 		public Imagenes Imagen {get;set;}
 		public DateTime Fecha {get;set;}
 	}

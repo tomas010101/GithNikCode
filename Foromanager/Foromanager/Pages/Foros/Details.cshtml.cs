@@ -113,14 +113,7 @@ namespace Foromanager.Pages.Foros
                     break;
             }
             
-
-            await _context.SaveChangesAsync();
-
-            imagen.PublicacionId = Publicacion.PublicacionId;
-
             Publicacion.Imagen = imagen;
-
-            _context.Add(imagen);
 
             await _context.SaveChangesAsync();
 

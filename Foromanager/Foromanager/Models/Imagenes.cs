@@ -1,4 +1,6 @@
-﻿namespace Foromanager.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Foromanager.Models
 {
     public class Imagenes
     {
@@ -6,6 +8,8 @@
         public string ImagenNombre { get; set; }
         public byte[] Imagen { get; set; }
         public Publicacion Publicacion {get;set;}
+
+        [ForeignKey(nameof(Publicacion))]
         public int PublicacionId {get;set;}
     }
 }

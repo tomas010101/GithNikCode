@@ -29,7 +29,9 @@ namespace Foromanager.Pages.Foros
 
         [BindProperty]
         public Foro Foro { get; set; }
-        public string Categorias;       
+        [BindProperty]
+        public string Categorias { get; set; }
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
