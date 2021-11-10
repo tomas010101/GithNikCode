@@ -8,6 +8,5 @@ namespace Foromanager.Models
         public int ForoId { get; set; }
         public string CategoriaNombre { get; set; }
         public ICollection<Foro> Foros { get; set; }
-
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Foromanager.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Foromanager.Models;
 using Foromanager.Data;
 
@@ -31,7 +32,7 @@ namespace Foromanager.Pages
         {
             await Task.Run(()=>
             { 
-                var foros = from f in _context.Foro.ToList() select f;
+                IQueryable<Foro> forosLista = from p in _context.Foro select p;
 
                 var isAuthorizated = User.IsInRole(Constants.ForumManagersRole) || User.IsInRole(Constants.ForumAdministratorsRole);
                 
@@ -39,9 +40,9 @@ namespace Foromanager.Pages
 
                 if(!isAuthorizated)
                 {
-                    foros = foros.Where(f => f.Status == ForumStatus.Approved && f.OwnerID == currentUserId);
+                    forosLista = forosLista.Where(f => f.Status == ForumStatus.Approved && f.OwnerID == currentUserId);
                 }
-                Foros = foros.ToList();
+                Foros = forosLista.ToList();
             });
         }
     }

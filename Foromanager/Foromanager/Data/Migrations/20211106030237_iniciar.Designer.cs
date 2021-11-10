@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Foromanager.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211104195734_X")]
-    partial class X
+    [Migration("20211106030237_iniciar")]
+    partial class iniciar
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,9 +67,6 @@ namespace Foromanager.Data.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<byte[]>("ForoPerfil")
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
@@ -116,12 +113,14 @@ namespace Foromanager.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Descripcion")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ForoId")
                         .HasColumnType("int");
 
                     b.Property<string>("Titulo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Usuario")
@@ -151,8 +150,6 @@ namespace Foromanager.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ReaccionId");
-
-                    b.HasIndex("PublicacionId");
 
                     b.ToTable("Reaccion");
                 });
@@ -360,6 +357,21 @@ namespace Foromanager.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("PublicacionReaccion", b =>
+                {
+                    b.Property<int>("PublicacionesPublicacionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReaccionesReaccionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PublicacionesPublicacionId", "ReaccionesReaccionId");
+
+                    b.HasIndex("ReaccionesReaccionId");
+
+                    b.ToTable("PublicacionReaccion");
+                });
+
             modelBuilder.Entity("CategoriaForo", b =>
                 {
                     b.HasOne("Foromanager.Models.Categoria", null)
@@ -393,17 +405,6 @@ namespace Foromanager.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Foro");
-                });
-
-            modelBuilder.Entity("Foromanager.Models.Reaccion", b =>
-                {
-                    b.HasOne("Foromanager.Models.Publicacion", "Publicacion")
-                        .WithMany("Reacciones")
-                        .HasForeignKey("PublicacionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Publicacion");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -457,6 +458,21 @@ namespace Foromanager.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PublicacionReaccion", b =>
+                {
+                    b.HasOne("Foromanager.Models.Publicacion", null)
+                        .WithMany()
+                        .HasForeignKey("PublicacionesPublicacionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Foromanager.Models.Reaccion", null)
+                        .WithMany()
+                        .HasForeignKey("ReaccionesReaccionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Foromanager.Models.Foro", b =>
                 {
                     b.Navigation("Publicaciones");
@@ -465,8 +481,6 @@ namespace Foromanager.Data.Migrations
             modelBuilder.Entity("Foromanager.Models.Publicacion", b =>
                 {
                     b.Navigation("Imagen");
-
-                    b.Navigation("Reacciones");
                 });
 #pragma warning restore 612, 618
         }

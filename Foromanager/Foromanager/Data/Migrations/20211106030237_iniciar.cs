@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Foromanager.Data.Migrations
 {
-    public partial class Pepeti : Migration
+    public partial class iniciar : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,13 +11,41 @@ namespace Foromanager.Data.Migrations
                 name: "FK_Categoria_Foro_ForoId",
                 table: "Categoria");
 
+            migrationBuilder.DropForeignKey(
+                name: "FK_Reaccion_Publicacion_PublicacionId",
+                table: "Reaccion");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Reaccion_PublicacionId",
+                table: "Reaccion");
+
             migrationBuilder.DropIndex(
                 name: "IX_Categoria_ForoId",
                 table: "Categoria");
 
+            migrationBuilder.AlterColumn<string>(
+                name: "Titulo",
+                table: "Publicacion",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Descripcion",
+                table: "Publicacion",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
             migrationBuilder.AddColumn<byte[]>(
-                name: "ForoPerfil",
-                table: "Foro",
+                name: "FotodePerfil",
+                table: "AspNetUsers",
                 type: "varbinary(max)",
                 nullable: true);
 
@@ -66,6 +94,30 @@ namespace Foromanager.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "PublicacionReaccion",
+                columns: table => new
+                {
+                    PublicacionesPublicacionId = table.Column<int>(type: "int", nullable: false),
+                    ReaccionesReaccionId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PublicacionReaccion", x => new { x.PublicacionesPublicacionId, x.ReaccionesReaccionId });
+                    table.ForeignKey(
+                        name: "FK_PublicacionReaccion_Publicacion_PublicacionesPublicacionId",
+                        column: x => x.PublicacionesPublicacionId,
+                        principalTable: "Publicacion",
+                        principalColumn: "PublicacionId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PublicacionReaccion_Reaccion_ReaccionesReaccionId",
+                        column: x => x.ReaccionesReaccionId,
+                        principalTable: "Reaccion",
+                        principalColumn: "ReaccionId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_ForoCategoria_ForosForoId",
                 table: "ForoCategoria",
@@ -76,6 +128,11 @@ namespace Foromanager.Data.Migrations
                 table: "Imagenes",
                 column: "PublicacionID",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PublicacionReaccion_ReaccionesReaccionId",
+                table: "PublicacionReaccion",
+                column: "ReaccionesReaccionId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -86,9 +143,33 @@ namespace Foromanager.Data.Migrations
             migrationBuilder.DropTable(
                 name: "Imagenes");
 
+            migrationBuilder.DropTable(
+                name: "PublicacionReaccion");
+
             migrationBuilder.DropColumn(
-                name: "ForoPerfil",
-                table: "Foro");
+                name: "FotodePerfil",
+                table: "AspNetUsers");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Titulo",
+                table: "Publicacion",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Descripcion",
+                table: "Publicacion",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reaccion_PublicacionId",
+                table: "Reaccion",
+                column: "PublicacionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categoria_ForoId",
@@ -101,6 +182,14 @@ namespace Foromanager.Data.Migrations
                 column: "ForoId",
                 principalTable: "Foro",
                 principalColumn: "ForoId",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Reaccion_Publicacion_PublicacionId",
+                table: "Reaccion",
+                column: "PublicacionId",
+                principalTable: "Publicacion",
+                principalColumn: "PublicacionId",
                 onDelete: ReferentialAction.Cascade);
         }
     }

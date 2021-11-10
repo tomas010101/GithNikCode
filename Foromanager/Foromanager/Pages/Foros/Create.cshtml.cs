@@ -29,6 +29,7 @@ namespace Foromanager.Pages.Foros
 
         [BindProperty]
         public Foro Foro { get; set; }
+        public string Categorias;       
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -37,7 +38,12 @@ namespace Foromanager.Pages.Foros
             {
                 return Page();
             }
-            
+            string[] categoriaLista = Categorias.Split('-');
+            foreach(var c in categoriaLista)
+            {
+                Foro.Categorias = new List<Categoria>();
+                Foro.Categorias.Add(new Categoria(){CategoriaNombre=c});    
+            }
             Foro.OwnerID = UserManager.GetUserId(User);
             var isAuthorizated = await AuthorizationService.AuthorizeAsync(User,Foro,ForumOperations.Create);
 

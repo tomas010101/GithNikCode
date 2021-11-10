@@ -116,7 +116,7 @@ namespace Foromanager.Pages.Foros
 
             await _context.SaveChangesAsync();
 
-            imagen.PublicacionID = Publicacion.PublicacionId;
+            imagen.PublicacionId = Publicacion.PublicacionId;
 
             _context.Add(imagen);
 

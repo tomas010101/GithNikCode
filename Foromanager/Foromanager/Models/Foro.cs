@@ -9,6 +9,8 @@ namespace Foromanager.Models
 		public int ForoId {get; set;}
 
 		public string OwnerID {get;set;}
+		
+		public Usuario Usuario {get;set;}
 
 		public string Nombre {get; set;}
 		public string Descripcion {get; set;}
@@ -17,7 +19,7 @@ namespace Foromanager.Models
 		public ICollection<Publicacion> Publicaciones {get;set;}
 		public ForumStatus Status {get;set;}
 		public ICollection<Categoria> Categorias { get; set; }
-		public byte[] ForoPerfil {get;set;}
+		//public byte[] ForoPerfil {get;set;}
 	}
 
 	public enum ForumStatus

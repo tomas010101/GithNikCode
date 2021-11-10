@@ -6,24 +6,104 @@
 
 <link rel="stylesheet" href="~/css/Index.css">
 
-
 <div>
-    <h1 class="display-4">Tus foros</h1>    
-    <a asp-page="./Foros/Create">Crear Foro</a>
-    @foreach(var item in Model.Foros)
-    {
-        <h1><a asp-page="./Foros/Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)</a></h1>
-        <b>@Html.DisplayNameFor(model => item.Fecha)</b>
-        <ul>
-            <li>@Html.DisplayFor(model => item.Fecha)</li>                             
-        </ul>
-        <b>@Html.DisplayNameFor(model => item.Categorias)</b>
-        <ul>
-            <li>@Html.DisplayFor(model => item.Categorias)</li>
-        </ul>
-        <b>@Html.DisplayNameFor(model => item.Descripcion)</b>
-        <ul>
-            <li>@Html.DisplayFor(model => item.Descripcion)</li>
-        </ul>
-    }
+    <section class="content px-4">
+        <section>
+            <div>
+                <h1>Foros</h1>
+            </div>
+            <section>
+                <p style="font-size: 20px;">
+                    Bienvenido a GithNik! este es un proyecto de indole escolar, por lo que todo es experimental y solo busca
+                    mostrar las funcionalidades de las paginas Razor con un entorno de desarrollo como lo es Entity Framework
+                    Core 5.0.2 para el desarrollo de sitios WEB.
+                </p>
+                <a href="/Foros/Create">Crear Foro</a>
+                <br/>
+                <br/>
+            </section>
+        </section>
+        @*<h1 class="display-4">Tus foros</h1>*@
+        <section>
+            <div class="row">
+                <div class="col-12 col-md-6" style="border-bottom: groove;">
+                    <div>
+                        <h3>Recientes</h3>
+                    </div>
+                    @foreach(var item in Model.Foros)
+                    {
+                    <ul class="forum-post-ul">
+                        <li class="p-2">
+                            <div class="home-post-item-container" style="display:flex;">
+                                <div style="float:left;padding-right: 0.5rem;font-size: 1.5rem;">
+                                    <span class="fas fa-question-circle text-orange" title="need"></span>
+                                </div>
+                                <div style="flex:1;">
+                                    <h6>
+                                       <a asp-page="./Foros/Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)</a>
+                                       <span class="text-nowrap">
+                                          0
+                                       </span> 
+                                    </h6>
+                                </div>
+                                <div style="flex:1;">
+                                    <span><i>@Html.DisplayFor(model => item.Fecha)</i></span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    }
+                </div>
+                <div class="col-12 col-md-6" style="border-bottom: groove;">
+                    <div>
+                        <h3>Personales</h3>
+                    </div>
+                    @foreach(var item in Model.Foros)
+                    {
+                        @if(item.Usuario==@User.Identity)
+                        {
+                        <ul class="forum-post-ul">
+                            <li class="p-2">
+                                <div class="home-post-item-container" style="display:flex;">
+                                    @if(item.Publicaciones.Count()==0)
+                                    {
+                                        <div style="float:left;padding-right: 0.5rem;font-size: 1.5rem;">
+                                            <span class="fas fa-question-circle text-orange"></span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div style="float:left;padding-right: 0.5rem;font-size: 1.5rem;">
+                                            <span class="fas fa-check-circle text-orange"></span>
+                                        </div>
+                                    }
+                                    <div style="flex:1;">
+                                        <h6>
+                                           <a asp-page="./Foros/Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)</a>
+                                           <span class="text-nowrap">
+                                               @Html.DisplayFor(modelItem => item.Publicaciones.Count())
+                                           </span> 
+                                        </h6>
+                                    </div>
+                                    <div style="flex:1;">
+                                        <span><i>@Html.DisplayFor(model => item.Fecha)</i></span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        }
+                    }
+                </div>
+            </div>    
+        </section>    
+    </section>
+    <section class="container-fluid px-4 mt-2">
+        <div class="row">
+            <div class="col-12">
+                <div class="">
+                    <p><i>Numero de Usuarios: </i></p>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
