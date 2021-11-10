@@ -44,10 +44,10 @@ namespace Foromanager.Pages.Foros
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             Foro = await _context.Foro
-                        .Include(s=>s.Publicaciones)
+                        .Include(s=>s.Publicaciones) 
                         .AsNoTracking()
                         .FirstOrDefaultAsync(m=>m.ForoId == id);
-
+            
 
             if (id == null || Foro == null)
             {
@@ -117,6 +117,8 @@ namespace Foromanager.Pages.Foros
             await _context.SaveChangesAsync();
 
             imagen.PublicacionID = Publicacion.PublicacionId;
+
+            Publicacion.Imagen = imagen;
 
             _context.Add(imagen);
 

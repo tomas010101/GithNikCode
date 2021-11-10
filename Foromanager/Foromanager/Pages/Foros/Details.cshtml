@@ -3,7 +3,10 @@
 @using Microsoft.AspNetCore.Identity
 @using Foromanager.Pages.Foros
 @using Foromanager.Models
+@using Microsoft.EntityFrameworkCore
 @inject UserManager<Usuario> UserManager
+@inject ApplicationDbContext DbContext
+
 
 @{
     ViewData["Title"] = "Detalles";
@@ -40,8 +43,10 @@
     <br/>
     @foreach (var item in Model.Foro.Publicaciones)
     {
+        @await DbContext.Publicacion.Where(p=>p.PublicacionId == item.PublicacionId).Include(p=>p.Imagen).ToListAsync();
         <br/>
         <div>
+            <image src = "data:image;base64,@Convert.ToBase64String(item.Imagen.Imagen)" ></image>
             <strong>@Html.DisplayFor(modelItem => item.Usuario)</strong>
             <br/>
             Titulo:@Html.DisplayFor(modelItem => item.Titulo)
