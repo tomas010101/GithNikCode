@@ -29,14 +29,14 @@
 }
 
 .Lupaboton:hover {
-    text-shadow: 1px 1px 15px rgb(255, 213, 43);
+    text-shadow: 2px 4px 28px rgb(0 0 0);
     background: linear-gradient(90deg, #a16407, #FFD500);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
 
 .reload:hover {
-    text-shadow: 1px 1px 15px rgb(255, 213, 43);
+    text-shadow: 2px 4px 28px rgb(0 0 0);
     background: linear-gradient(90deg, #a16407, #FFD500);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
@@ -46,11 +46,23 @@
     margin-left: 40rem;
     text-align: center;
     font-size: 33px;
-}
 
-.Foroadd {
+    background-color: #CA3535;
     border: solid;
     border-width: 0.75mm;
     border-color: #D09045;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
+    z-index: 1;
+}
+.Cont-add:hover {
+    background: linear-gradient(90deg, #a16407, #FFD500);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.Foroadd{
+    padding: 0.15rem 0.5rem;
+}
+.Foroadd:hover{
+    text-shadow: 2px 4px 28px rgb(0 0 0);
 }

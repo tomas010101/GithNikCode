@@ -1,0 +1,22 @@
+﻿@font-face {
+    font-family: perpetua;
+    src: url("~/css/Perpetua.ttf");
+}
+.ManageNav ul {
+    background: linear-gradient(45deg, #AD4141, #F47164);
+    font-family: perpetua;
+    font-size: 18px;
+    font-weight: bold;
+}
+    .ManageNav ul :hover {
+        background: linear-gradient(45deg, #A23E3E, #E3695D);
+    }
+    .ManageNav ul a:hover {
+        color: #FFD500;
+        text-shadow: 2px 4px 10px rgb(0 0 0);
+    }
+
+.nav-pills .nav-link.active {
+    background: linear-gradient(45deg, #E18A61, #F5CA61)
+}
+

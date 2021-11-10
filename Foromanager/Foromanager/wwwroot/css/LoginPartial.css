@@ -11,7 +11,7 @@
     line-height: 1.5;
     border-radius: 1.2rem;
     font-variant: small-caps;
-    color: #EEEBDB;
+    color: #F0EBD2;
     width: 95px;
     text-shadow: -2px 3px 3px rgb(150, 1, 43);
 }
@@ -25,6 +25,23 @@
 .rwidth {
     width: 120px;
 }
+
+.cerrar {
+    margin-right: 0.5rem;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.5;
+    border-radius: 0.5rem;
+    font-variant: small-caps;
+    color: #F0EBD2;
+    width: 150px;
+    text-shadow: -2px 3px 3px rgb(150, 1, 43);
+}
+    .cerrar:hover {
+        background-color: #DE2121;
+        color: #cca845;
+        text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.651);
+    }
 
 @media (max-width: 900px) {
     .btn-group-sm > .btn, .btn-sm {
