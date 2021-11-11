@@ -16,10 +16,12 @@ namespace Foromanager.Areas.Identity.Pages.Account
     public class ConfirmEmailModel : PageModel
     {
         private readonly UserManager<Usuario> _userManager;
+        private readonly SignInManager<Usuario> _signInManager;
 
-        public ConfirmEmailModel(UserManager<Usuario> userManager)
+        public ConfirmEmailModel(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [TempData]
@@ -40,8 +42,17 @@ namespace Foromanager.Areas.Identity.Pages.Account
 
             code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
             var result = await _userManager.ConfirmEmailAsync(user, code);
-            StatusMessage = result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email.";
-            return Page();
+            if (result.Succeeded)
+            {
+                StatusMessage = "Thank you for confirming your email.";
+                await _signInManager.SignInAsync(user, true);
+            }
+            else
+            {
+                StatusMessage = "Error confirming your email.";
+            }            
+            
+            return Redirect("~/Foros");
         }
     }
 }

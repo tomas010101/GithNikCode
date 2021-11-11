@@ -117,7 +117,7 @@ namespace Foromanager.Pages.Foros
 
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("Details", new { id = id });
         }
     }
 }
