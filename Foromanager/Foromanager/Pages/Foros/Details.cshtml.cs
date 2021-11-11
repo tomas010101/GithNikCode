@@ -68,14 +68,21 @@ namespace Foromanager.Pages.Foros
 
         public async Task<IActionResult> OnPostAsync(int id)
         {
-            var archivo = HttpContext.Request.Form.Files[0];
-            Imagenes imagen = new Imagenes();
-            using (var bReader = new BinaryReader(archivo.OpenReadStream()))
-            {  
-                imagen.Imagen = bReader.ReadBytes((int)archivo.Length);
-                imagen.ImagenNombre = archivo.Name;
+            var archivo = HttpContext.Request.Form.Files.FirstOrDefault();
+            Imagenes imagen = null;
 
+            if (archivo != null)
+            {
+                imagen = new Imagenes();
+                using (var bReader = new BinaryReader(archivo.OpenReadStream()))
+                {
+                    imagen.Imagen = bReader.ReadBytes((int)archivo.Length);
+                    imagen.ImagenNombre = archivo.Name;
+
+                }
             }
+            
+
 
             Foro = await _context.Foro.FirstOrDefaultAsync(m=>m.ForoId==id);
 

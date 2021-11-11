@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Foromanager.Data.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class Renacer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

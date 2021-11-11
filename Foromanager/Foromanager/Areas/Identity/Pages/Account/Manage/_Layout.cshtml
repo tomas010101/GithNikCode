@@ -11,15 +11,15 @@
 <head>
     <link rel="stylesheet" href="~/css/Identity/ConfigPerfil.css" />
 </head>
-
-<section class="perfil-usuario">
+<form>
+    <section class="perfil-usuario">
     <div class="perfil-header">
         <div class="perfil-portada">
             <div class="perfil-avatar">
-                <img src="https://i.pinimg.com/originals/bb/d5/8f/bbd58f9b068c652a91d67a1bcca43ab6.png" alt="img-avatar">
-                <button type="button" class="boton-avatar">
+                <img id= "UwU" src="https://i.pinimg.com/originals/bb/d5/8f/bbd58f9b068c652a91d67a1bcca43ab6.png" alt="img-avatar">
+                <input id="ImagenUsuario" type="file" class="boton-avatar">
                     <i class="far fa-image"></i>
-                </button>
+                </input>
             </div>
         </div>
     </div>
@@ -36,6 +36,29 @@
     </div>
 </div>
 
+</form>
+
     @section Scripts {
+        
         @RenderSection("Scripts", required: false)
+        <script> 
+            $('#ImagenUsuario').change(function(e) {
+
+     if(  e.originalEvent.srcElement.files.length > 0){
+
+          var file = e.originalEvent.srcElement.files[0];
+
+        
+        var reader = new FileReader();
+        reader.onload = function(e) {
+             $('#UwU').attr('src',e.target.result);
+        };
+        reader.readAsDataURL(file);
+
+
+     }       
+   
+});
+        
+        </script>
     }

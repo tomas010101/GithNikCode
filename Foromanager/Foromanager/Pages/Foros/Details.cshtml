@@ -48,7 +48,10 @@
 
             <br/>
             <div>
-                <image src = "data:image;base64,@Convert.ToBase64String(imagenes[0].Imagen)" ></image>
+                @if (imagenes.Count > 0)
+                {
+                    <image src = "data:image;base64,@Convert.ToBase64String(imagenes[0].Imagen)" ></image>
+                }
                 <strong>@Html.DisplayFor(modelItem => item.Usuario)</strong>
                 <br/>
                 Titulo:@Html.DisplayFor(modelItem => item.Titulo)
@@ -76,7 +79,8 @@
         <textarea asp-for="Publicacion.Descripcion" rows="5" cols="40"></textarea>
         <span asp-validation-for="Publicacion.Descripcion" class="text-danger"></span>
         
-        <input asp-for="ImgCarga" type="file" name="imagen" />
+        <input asp-for="ImgCarga" type="file" name="imagen" accept=".jpg, .png, .jpeg" /> 
+
         
         <br />
         <div class="form-group">
