@@ -13,7 +13,7 @@ h1
 }
 
 /* Provide sufficient contrast against white background */
-a, h1, h2, h3, h4, p, span, tr, td, label {
+a, h1, h2, h3, h4, p, span, tr, td, label, strong {
     color: #FFFFFF;
 }
 
