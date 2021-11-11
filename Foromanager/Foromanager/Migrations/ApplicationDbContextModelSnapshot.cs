@@ -31,7 +31,7 @@ namespace Foromanager.Migrations
 
                     b.HasIndex("ForosForoId");
 
-                    b.ToTable("ForoCategoria");
+                    b.ToTable("CategoriaForo");
                 });
 
             modelBuilder.Entity("Foromanager.Models.Categoria", b =>
@@ -43,9 +43,6 @@ namespace Foromanager.Migrations
 
                     b.Property<string>("CategoriaNombre")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ForoId")
-                        .HasColumnType("int");
 
                     b.HasKey("CategoriaId");
 

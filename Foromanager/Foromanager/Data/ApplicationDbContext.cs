@@ -21,8 +21,7 @@ namespace Foromanager.Data
 
             modelBuilder.Entity<Foro>()
                  .HasMany(f => f.Categorias)
-                 .WithMany(c => c.Foros)
-                 .UsingEntity(j => j.ToTable("ForoCategoria"));
+                 .WithMany(c => c.Foros);
 
             modelBuilder.Entity<Imagenes>()
                 .HasOne(i => i.Publicacion)
