@@ -1,0 +1,148 @@
+﻿
+/*Encabezado del Foro*/
+.TituloForo{
+    text-align: center;
+    font-size: 40px;
+}
+
+
+/*Encabezado de las publicaciones*/
+.DivNombreUsuario {
+    padding-top: 0.5rem;
+    width: 60%;
+    margin-left: 4rem;
+    margin-bottom: 0%;
+
+    border-bottom: solid;
+    border-width: 0.5mm;
+    border-color: #FFFFFF;
+    border-radius: 0.75rem 0.75rem 0 0;
+    background-color: #B64848;
+}
+/*Cuerpo de las Publicaciones*/
+.DivPublicaciones {
+    padding-top: 0.5rem;
+    width: 60%;
+    margin-left: 4rem;
+    margin-top: 0%;
+    border-radius: 0 0 0.75rem 0.75rem;
+    background-color: #C84A4A;
+    padding-bottom: 0.5rem;
+}
+
+
+/*Contenido de las Publicaciones*/
+.NombreUsuario {
+    margin-left: 2rem;
+    margin-bottom: 0%;
+    padding-bottom: 0.5rem;
+}
+
+.TituloPublicacion {
+    background-color: #B64848;
+    margin-top: 0%;
+
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.ComentarioPublicacion {
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    font-size: 18px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.DivImagen{
+    text-align:center;
+}
+.ImagenPublicacion{
+    max-width: 95%;
+    max-height: 40rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.BotonesPublicaciones{
+    text-align: center;
+    margin-top: 1rem;
+}
+.BorrarPublicacion {
+    margin-right: 0.5rem;
+    padding: 0.4rem 0.7rem;
+    text-align: center;
+    font-weight: bold;
+
+    color: #000000;
+    background-color: #F2BF72;
+    border: solid;
+    border-width: 1mm;
+    border-color: #C88420;
+    border-radius: 5px;
+}
+    .BorrarPublicacion:hover {
+        text-decoration: none;
+        background-color: #CB3A2B;
+        color: #000000;
+    }
+
+.EditarPublicacion {
+    margin-right: 0.5rem;
+    padding: 0.4rem 0.7rem;
+    text-align: center;
+    font-weight: bold;
+
+    color: #000000;
+    background-color: #F4C989;
+    border: solid;
+    border-width: 1mm;
+    border-color: #D18A21;
+    border-radius: 5px;
+}
+    .EditarPublicacion:hover {
+        text-decoration: none;
+        color: #000000;
+        background-color: #FFD26A;
+    }
+
+
+ /*Zona para crear una nueva publicación*/
+
+.FormCreacion{
+    margin-top: 6rem;
+}
+.Titulo-input {
+    width: 30%;
+}
+
+.CrearComentario{
+    margin-top: 2rem;
+}
+.Comentario-textarea{
+    width: 30%;
+}
+
+/*Boton para realizar la publicación*/
+.BotonPublicar {
+    width: 8rem;
+    height 4rem;
+    background-color: #E3A001;
+    color: #000000;
+    font-weight: bold;
+}
+    .BotonPublicar:hover {
+        color: #000000;
+        background-color: #C38D0C;
+    }
+
+/*Botones Extras*/
+.DivBotonesExtras{
+    margin-bottom: -4%;
+    margin-left: 80%;
+}
+.BotonesExtras{
+    margin-right: 0.7rem;
+}
