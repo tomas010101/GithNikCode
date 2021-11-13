@@ -4,11 +4,15 @@
 @{
     ViewData["Title"] = "Create";
 }
+<head>
+    <link rel="stylesheet" href="~/css/Foros/BotonesForos.css" />
+    <link rel="stylesheet" href="~/css/Foros/CreateForos.css" />
+</head>
 
-<h1>Create</h1>
 
-<h4>Foro</h4>
-<hr />
+<h1>Nuevo Foro</h1>
+
+<div class="LimHr"><hr color="white" /></div>
 <div class="row">
     <div class="col-md-4">
         <form enctype = "multipart/form-data" method="post">
@@ -27,25 +31,28 @@
                 <label asp-for="Categorias" class="control-label"></label>
                 <input asp-for="Categorias" class="form-control" type="text"/>
             </div>
+
              <input asp-for="ImgCargaForo" type="file" name="imagen" accept=".jpg, .png, .jpeg" /> 
+
             <div class="form-group">
 
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear" class="btn BotonForos" />
             </div>
         </form>
+
         @if (ViewData["Message"] != null)
-    {
-        <script type="text/javascript">
-            window.onload = function () {
-                alert("@ViewData["Message"]");
-            };
-        </script>
-    }
+        {
+            <script type="text/javascript">
+                window.onload = function () {
+                    alert("@ViewData["Message"]");
+                };
+            </script>
+         }
     </div>
 </div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
+<div class="DivBotonExtra">
+    <a asp-page="Index">Regresar</a>
 </div>
 
 @section Scripts {
