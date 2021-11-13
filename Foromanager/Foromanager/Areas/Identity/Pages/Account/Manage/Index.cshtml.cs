@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Foromanager.Models;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace Foromanager.Areas.Identity.Pages.Account.Manage
 {
@@ -62,10 +64,27 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
             await LoadAsync(user);
             return Page();
         }
+        [BindProperty]
+        public Usuario Usuario { get; set; }
+        [BindProperty]
+        public IFormFile ImgCargaUsuario { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var user = await _userManager.GetUserAsync(User);
+            var archivoUsuario = HttpContext.Request.Form.Files.FirstOrDefault();
+            Foro imagen = null;
+
+
+            if (archivoUsuario != null)
+            {
+                imagen = new Foro();
+                using (var bReader = new BinaryReader(archivoUsuario.OpenReadStream()))
+                {
+                    Usuario.FotodePerfil = bReader.ReadBytes((int)archivoUsuario.Length);
+
+                }
+            }
+                    var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
