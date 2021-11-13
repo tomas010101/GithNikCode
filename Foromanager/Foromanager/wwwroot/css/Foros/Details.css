@@ -124,25 +124,3 @@
 .Comentario-textarea{
     width: 30%;
 }
-
-/*Boton para realizar la publicación*/
-.BotonPublicar {
-    width: 8rem;
-    height 4rem;
-    background-color: #E3A001;
-    color: #000000;
-    font-weight: bold;
-}
-    .BotonPublicar:hover {
-        color: #000000;
-        background-color: #C38D0C;
-    }
-
-/*Botones Extras*/
-.DivBotonesExtras{
-    margin-bottom: -4%;
-    margin-left: 80%;
-}
-.BotonesExtras{
-    margin-right: 0.7rem;
-}

@@ -66,3 +66,16 @@
 .Foroadd:hover{
     text-shadow: 2px 4px 28px rgb(0 0 0);
 }
+
+.EditarForo{
+    padding-right: 0.5rem;
+    border-right: solid;
+    border-width: 0.7mm;
+    border-color: #FFFFFF;
+}
+.EditarForo:hover{
+    color: #D09045;
+}
+.EliminarForo:hover{
+    color: #CA3535;
+}

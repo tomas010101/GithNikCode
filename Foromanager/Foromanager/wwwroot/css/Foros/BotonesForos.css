@@ -1,0 +1,28 @@
+﻿/*Boton para realizar la publicación*/
+.BotonForos {
+    width: 8rem;
+    height 4rem;
+    background-color: #E3A001;
+    color: #000000;
+    font-weight: bold;
+}
+
+    .BotonForos:hover {
+        color: #000000;
+        background-color: #FFD777;
+    }
+
+/*Botones Extras*/
+.DivBotonesExtras {
+    margin-bottom: -4%;
+    margin-left: 80%;
+}
+
+.BotonesExtras {
+    margin-right: 0.7rem;
+}
+
+.DivBotonExtra {
+    margin-left: 93%;
+}
+
