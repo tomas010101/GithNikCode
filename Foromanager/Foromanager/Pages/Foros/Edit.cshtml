@@ -4,11 +4,14 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<head>
+    <link rel="stylesheet" href="~/css/Foros/BotonesForos.css" />
+    <link rel="stylesheet" href="~/css/Foros/EditarForos.css" />
+</head>
 
-<h1>Edit</h1>
 
-<h4>Foro</h4>
-<hr />
+<h1>Editar @Html.DisplayFor(model => model.Foro.Nombre)</h1>
+<div class="LimHr"><hr color="white" /></div>
 <div class="row">
     <div class="col-md-4">
         <form method="post">
@@ -16,33 +19,28 @@
             <input type="hidden" asp-for="Foro.ForoId" />
             <div class="form-group">
                 <label asp-for="Foro.Nombre" class="control-label"></label>
-                <input asp-for="Foro.Nombre" class="form-control" />
+                <input asp-for="Foro.Nombre" class="form-control EditarInputs" />
                 <span asp-validation-for="Foro.Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Foro.Descripcion" class="control-label"></label>
-                <textarea asp-for="Foro.Descripcion" rows="5" cols="40"></textarea>
+                <textarea asp-for="Foro.Descripcion" rows="5" cols="40" class="EditarInputs"></textarea>
                 <span asp-validation-for="Foro.Descripcion" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Foro.Categorias" class="control-label"></label>
-                <input asp-for="Foro.Categorias" class="form-control" />
+                <input asp-for="Foro.Categorias" class="form-control EditarInputs" />
                 <span asp-validation-for="Foro.Categorias" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Foro.Fecha" class="control-label"></label>
-                <input asp-for="Foro.Fecha" class="form-control" />
-                <span asp-validation-for="Foro.Fecha" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn BotonForos" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
+<div class="DivBotonExtra">
+    <a asp-page="./Index">Regresar</a>
 </div>
 
 @section Scripts {
