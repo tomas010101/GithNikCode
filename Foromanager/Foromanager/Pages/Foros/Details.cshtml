@@ -10,88 +10,90 @@
 
 @{
     ViewData["Title"] = "Detalles";
-    int Likes=0;
-    int DisLikes=0;
+    int Likes = 0;
+    int DisLikes = 0;
 }
+<head>
+    <link rel="stylesheet" href="~/css/Foros/Details.css" />
+    <link rel="stylesheet" href="~/css/Foros/BotonesForos.css" />
+</head>
+
 
 <div>
-    <br/>
-    <h2>@Html.DisplayFor(model => model.Foro.Nombre)</h2>
-    <hr />
+    <br />
+    <h2 class="TituloForo">@Html.DisplayFor(model => model.Foro.Nombre)</h2>
+
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Foro.Descripcion)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Foro.Descripcion)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Foro.Categorias)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Foro.Categorias)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Foro.Fecha)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Foro.Fecha)
-        </dd>
-        @if(Model.Foro.ForoPerfil == null){
-                                        
+        @*<dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Foro.Descripcion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Foro.Descripcion)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Foro.Categorias)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Foro.Categorias)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Foro.Fecha)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Foro.Fecha)
+            </dd>*@
+        @if (Model.Foro.ForoPerfil == null)
+        {
+
             <span class="fas fa-question-circle text-orange" title="need"></span>
         }
-        else{
-            <image src = "data:image;base64,@Convert.ToBase64String(Model.Foro.ForoPerfil)" ></image>
-        }
-    </dl>
-    <p>
-        <hr/>
-        <strong>PUBLICACIONES:</strong>
-        <br/>
-        @foreach (var item in Model.Foro.Publicaciones)
+        else
         {
-            var imagenes = await DbContext.Imagenes.Where(i => i.PublicacionId == item.PublicacionId).ToListAsync();
-
-            <br/>
-            <div>
-                @if (imagenes.Count > 0)
-                {
-                    <image src = "data:image;base64,@Convert.ToBase64String(imagenes[0].Imagen)" ></image>
-                }
-                <strong>@Html.DisplayFor(modelItem => item.Usuario)</strong>
-                <br/>
-                Titulo:@Html.DisplayFor(modelItem => item.Titulo)
-                <br/>
-                Descripcion:
-                @Html.DisplayFor(modelItem => item.Descripcion)
-                
-                @if(item.Usuario==@User.Identity.Name)
-                {
-                    <br/>
-                    <a asp-page="../Publicaciones/Delete" asp-route-id="@item.PublicacionId">Borrar |</a>
-                    <a asp-page="../Publicaciones/Edit" asp-route-id="@item.PublicacionId">Editar</a>               
-                }
-            </div>
+            <image src="data:image;base64,@Convert.ToBase64String(Model.Foro.ForoPerfil)"></image>
         }
-        <br/>
-    </p>
-    <form enctype="multipart/form-data" class="col-sm-10 row-sm-10" method="post">
-        <hr/>
-        <label asp-for="Publicacion.Titulo" class="control-label"></label>
-        <input asp-for="Publicacion.Titulo" class="form-control" type="text"></input>
-        <span asp-validation-for="Publicacion.Titulo" class="text-danger"></span>
+        <hr color="white" />
+    </dl>
+    @foreach (var item in Model.Foro.Publicaciones)
+    {
+        var imagenes = await DbContext.Imagenes.Where(i => i.PublicacionId == item.PublicacionId).ToListAsync();
 
-        <label asp-for="Publicacion.Descripcion" class="control-label"></label>
-        <textarea asp-for="Publicacion.Descripcion" rows="5" cols="40"></textarea>
-        <span asp-validation-for="Publicacion.Descripcion" class="text-danger"></span>
-        
-        <input asp-for="ImgCarga" type="file" name="imagen" accept=".jpg, .png, .jpeg" /> 
+        <br />
+        <div class="DivNombreUsuario">
+            <h3 class="NombreUsuario">@Html.DisplayFor(modelItem => item.Usuario):</h3>
+        </div>
+        <div class="DivPublicaciones">
+            <p class="TituloPublicacion">@Html.DisplayFor(modelItem => item.Titulo)</p>
+            <p class="ComentarioPublicacion">@Html.DisplayFor(modelItem => item.Descripcion)</p>
+            <div class="DivImagen"><image class="ImagenPublicacion" src="data:image;base64,@Convert.ToBase64String(imagenes[0].Imagen)"></image></div>
+            @if (item.Usuario == @User.Identity.Name)
+            {
+                <br />
+                <p class="BotonesPublicaciones">
+                    <a class="BorrarPublicacion" asp-page="../Publicaciones/Delete" asp-route-id="@item.PublicacionId">Borrar</a>
+                    <a class="EditarPublicacion" asp-page="../Publicaciones/Edit" asp-route-id="@item.PublicacionId">Editar</a>
+                </p>
+            }
+        </div>
+    }
+    <br />
+    <hr color="white" />
+    <form enctype="multipart/form-data" class="col-sm-10 row-sm-10 FormCreacion" method="post">
 
-        
+        <dv class="CrearTitulo">
+            <input asp-for="Publicacion.Titulo" class="form-control Titulo-input" type="text" placeholder="Titulo"></input>
+            <span asp-validation-for="Publicacion.Titulo" class="text-danger Titulo-span"></span>
+        </dv>
+
+        <div class="CrearComentario">
+            <textarea asp-for="Publicacion.Descripcion" rows="5" cols="40" class="Comentario-textarea" placeholder="Comentario"></textarea>
+            <span asp-validation-for="Publicacion.Descripcion" class="text-danger Comentario-span"></span>
+        </div>
+
+        <div class="CrearImagen"><input asp-for="ImgCarga" type="file" name="imagen" /></div>
+
         <br />
         <div class="form-group">
-            <button type="submit" class="btn btn-primary" asp-for="@Acciones.postear">Postear</button>
+            <button type="submit" class="btn BotonForos" asp-for="@Acciones.postear">Publicar</button>
         </div>
     </form>
 </div>
@@ -103,7 +105,7 @@
         <form style="display:inline;" method="post">
             <input type="hidden" name="id" value="@Model.Foro.ForoId" />
             <input type="hidden" name="status" value="@ForumStatus.Approved" />
-            <button asp-for="@Acciones.aprobar" type="submit" class="btn btn-xs btn-success">Approve</button>
+            <button asp-for="@Acciones.aprobar" type="submit" class="btn btn-xs btn-success">Aprobar</button>
         </form>
     }
 }
@@ -114,18 +116,17 @@
     {
         <form style="display:inline;" method="post">
             <input type="hidden" name="id" value="@Model.Foro.ForoId" />
-            <input  type="hidden" name="status" value="@ForumStatus.Rejected" />
-            <button asp-for="@Acciones.descartar" type="submit" class="btn btn-xs btn-danger">Reject</button>
+            <input type="hidden" name="status" value="@ForumStatus.Rejected" />
+            <button asp-for="@Acciones.descartar" type="submit" class="btn btn-xs btn-danger">Rechazar</button>
         </form>
     }
 }
 
-<div>
-    @if ((await AuthorizationService.AuthorizeAsync(User, Model.Foro,ForumOperations.Update)).Succeeded)
+<div class="DivBotonesExtras">
+    @if ((await AuthorizationService.AuthorizeAsync(User, Model.Foro, ForumOperations.Update)).Succeeded)
     {
-        <a asp-page="./Edit" asp-route-id="@Model.Foro.ForoId">Editar</a>
-        <text> | </text>
+        <a asp-page="./Edit" asp-route-id="@Model.Foro.ForoId" class="BotonesExtras">Editar</a>
     }
-    <a asp-page="./Index">Volver a la Lista</a> |
-    <a asp-page="../Index">Volver a Inicio</a>
+    <a asp-page="./Index" class="BotonesExtras">Regresar</a>
+    <a asp-page="../Index" class="BotonesExtras">Volver a Inicio</a>
 </div>
