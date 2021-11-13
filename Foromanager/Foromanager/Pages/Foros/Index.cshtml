@@ -81,14 +81,13 @@
             </td>
 
             <td>
-                @if((await AuthorizationService.AuthorizeAsync(User,item,ForumOperations.Update)).Succeeded && Model.CurrentUserId== item.OwnerID)
+                @if ((await AuthorizationService.AuthorizeAsync(User, item, ForumOperations.Update)).Succeeded && Model.CurrentUserId == item.OwnerID)
                 {
-                    <a asp-page="./Edit" asp-route-id="@item.ForoId">Edit</a>
-                    <text> | </text>
+                    <a asp-page="./Edit" asp-route-id="@item.ForoId" class="EditarForo">Editar</a>
                 }
-                @if((await AuthorizationService.AuthorizeAsync(User,item,ForumOperations.Delete)).Succeeded && Model.CurrentUserId== item.OwnerID)
+                @if ((await AuthorizationService.AuthorizeAsync(User, item, ForumOperations.Delete)).Succeeded && Model.CurrentUserId == item.OwnerID)
                 {
-                    <a asp-page="./Delete" asp-route-id="@item.ForoId">Delete</a>
+                    <a asp-page="./Delete" asp-route-id="@item.ForoId" class="EliminarForo">Eliminar</a>
                 }
             </td>
             <td>
