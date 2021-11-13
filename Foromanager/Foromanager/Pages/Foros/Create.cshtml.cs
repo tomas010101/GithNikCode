@@ -10,6 +10,8 @@ using Foromanager.Models;
 using Foromanager.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Foromanager.Pages.Foros
 {
@@ -31,21 +33,49 @@ namespace Foromanager.Pages.Foros
         public Foro Foro { get; set; }
         [BindProperty]
         public string Categorias { get; set; }
+        [BindProperty]
+        public IFormFile ImgCargaForo { get; set; }
 
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
+            var archivoForo = HttpContext.Request.Form.Files.FirstOrDefault();
+            Foro imagen = null;
+
+
+            if (archivoForo != null)
+            {
+                imagen = new Foro();
+                using (var bReader = new BinaryReader(archivoForo.OpenReadStream()))
+                {
+                    Foro.ForoPerfil = bReader.ReadBytes((int)archivoForo.Length);
+
+
+                }
+            }
+
+
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            string[] categoriaLista = Categorias.Split('-');
-            foreach(var c in categoriaLista)
+            try
             {
-                Foro.Categorias = new List<Categoria>();
-                Foro.Categorias.Add(new Categoria(){CategoriaNombre=c});    
+                string[] categoriaLista = Categorias.Split('-');
+
+                foreach (var c in categoriaLista)
+                {
+                    Foro.Categorias = new List<Categoria>();
+                    Foro.Categorias.Add(new Categoria() { CategoriaNombre = c });
+                }
             }
+            catch
+            {
+                ViewData["Message"] = "Alguno de los Campos esta vacio, por favor completelos todo";
+            }
+            
             Foro.OwnerID = UserManager.GetUserId(User);
             var isAuthorizated = await AuthorizationService.AuthorizeAsync(User,Foro,ForumOperations.Create);
 
@@ -56,7 +86,9 @@ namespace Foromanager.Pages.Foros
             Foro.Status=ForumStatus.Approved;
             Foro.Fecha = DateTime.Now;
             _context.Foro.Add(Foro);
+
             await _context.SaveChangesAsync();
+
 
             return RedirectToPage("./Index");
         }
