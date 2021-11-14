@@ -73,7 +73,7 @@ namespace Foromanager.Pages.Foros
             }
             catch
             {
-                ViewData["Message"] = "Alguno de los Campos esta vacio, por favor completelos todo";
+                ViewData["Message"] = "Alguno de los Campos esta vacio, por favor completelos todos";
             }
             
             Foro.OwnerID = UserManager.GetUserId(User);

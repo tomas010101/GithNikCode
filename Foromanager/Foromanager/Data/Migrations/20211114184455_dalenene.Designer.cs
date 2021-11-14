@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Foromanager.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211111153047_Renacer")]
-    partial class Renacer
+    [Migration("20211114184455_dalenene")]
+    partial class dalenene
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,6 +63,9 @@ namespace Foromanager.Data.Migrations
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("ForoPerfil")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Foromanager.Data.Migrations
 {
-    public partial class Renacer : Migration
+    public partial class dalenene : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,7 +37,8 @@ namespace Foromanager.Data.Migrations
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    ForoPerfil = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
                 },
                 constraints: table =>
                 {

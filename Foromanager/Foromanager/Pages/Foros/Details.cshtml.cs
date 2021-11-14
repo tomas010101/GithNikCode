@@ -114,6 +114,7 @@ namespace Foromanager.Pages.Foros
                 case Acciones.postear:
                     Publicacion.ForoId = id;
                     Publicacion.Usuario = User.Identity.Name;
+                    Publicacion.Fecha = DateTime.Now;
                     _context.Publicacion.Add(Publicacion);
                     break;
                 case Acciones.editar:

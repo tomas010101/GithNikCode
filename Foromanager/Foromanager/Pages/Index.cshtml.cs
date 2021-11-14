@@ -27,15 +27,19 @@ namespace Foromanager.Pages
         }
 
         public IList<Foro> Foros { get;set; }
+        public int Usuarios {get;set;}
 
         public async Task OnGetAsync()
         {
             await Task.Run(()=>
             { 
                 IQueryable<Foro> forosLista = from p in _context.Foro select p;
-
+                foreach(var usuario in _context.Users.ToList())
+                {
+                    Usuarios++;
+                }
                 var isAuthorizated = User.IsInRole(Constants.ForumManagersRole) || User.IsInRole(Constants.ForumAdministratorsRole);
-                
+                        
                 var currentUserId = UserManager.GetUserId(User);
 
                 if(!isAuthorizated)
