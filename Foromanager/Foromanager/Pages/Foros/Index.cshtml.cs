@@ -81,7 +81,7 @@ namespace Foromanager.Pages.Foros
 
                 if(!isAuthorizated)
                 {
-                    ForosIQ = ForosIQ.Where(f => f.Status == ForumStatus.Approved || f.OwnerID == currentUserId);
+                    ForosIQ = ForosIQ.Where(f => f.Status == ForumStatus.Aprobado || f.OwnerID == currentUserId);
                 }
 
                /* Foro = await _context.Foro

@@ -24,8 +24,8 @@ namespace Foromanager.Models
 
 	public enum ForumStatus
 	{
-		Submitted,
-		Approved,
-		Rejected
+		Enviado,
+		Aprobado,
+		Rechazado
 	}
 }

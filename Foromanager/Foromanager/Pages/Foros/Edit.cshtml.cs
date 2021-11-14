@@ -75,13 +75,13 @@ namespace Foromanager.Pages.Foros
             Foro.OwnerID = foro.OwnerID;
             _context.Attach(Foro).State = EntityState.Modified;
 
-            if(Foro.Status == ForumStatus.Approved)
+            if(Foro.Status == ForumStatus.Aprobado)
             {
                 var canApprove = await AuthorizationService.AuthorizeAsync(User,Foro,ForumOperations.Approve);
 
                 if(!canApprove.Succeeded)
                 {
-                    Foro.Status = ForumStatus.Submitted;
+                    Foro.Status = ForumStatus.Enviado;
                 }
             }
             await _context.SaveChangesAsync();

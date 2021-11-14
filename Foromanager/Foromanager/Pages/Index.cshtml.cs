@@ -40,7 +40,7 @@ namespace Foromanager.Pages
 
                 if(!isAuthorizated)
                 {
-                    forosLista = forosLista.Where(f => f.Status == ForumStatus.Approved && f.OwnerID == currentUserId);
+                    forosLista = forosLista.Where(f => f.Status == ForumStatus.Aprobado && f.OwnerID == currentUserId);
                 }
                 Foros = forosLista.ToList();
             });

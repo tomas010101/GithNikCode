@@ -91,7 +91,7 @@ namespace Foromanager.Data
             }
             var foros = new Foro[]
             {
-                new Foro{Nombre="GithNik",Descripcion="Foro Principal",Categorias=new List<Categoria>(){new Categoria{CategoriaNombre="Categoria1"}} ,Fecha=DateTime.Parse("2020-09-01"),Status=ForumStatus.Approved,OwnerID=adminID},
+                new Foro{Nombre="GithNik",Descripcion="Foro Principal",Categorias=new List<Categoria>(){new Categoria{CategoriaNombre="Categoria1"}} ,Fecha=DateTime.Parse("2020-09-01"),Status=ForumStatus.Aprobado,OwnerID=adminID},
                 new Foro{Nombre="Genshin",Descripcion="Foro de Genshin",Categorias=new List<Categoria>(){new Categoria{CategoriaNombre="Categoria1"}} ,Fecha=DateTime.Parse("2020-09-02")},
                 new Foro{Nombre="Minecraft",Descripcion="Foro de Minecraft",Categorias= new List<Categoria>(){new Categoria{CategoriaNombre="Categoria1"}} ,Fecha=DateTime.Parse("2020-09-03")},
                 new Foro{Nombre="ElRichMC",Descripcion="Foro del rich",Categorias= new List<Categoria>(){new Categoria{CategoriaNombre="Categoria1"}} ,Fecha=DateTime.Parse("2020-09-04")}

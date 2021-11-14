@@ -83,7 +83,7 @@ namespace Foromanager.Pages.Foros
             {
                 return Forbid();
             }
-            Foro.Status=ForumStatus.Approved;
+            Foro.Status=ForumStatus.Aprobado;
             Foro.Fecha = DateTime.Now;
             _context.Foro.Add(Foro);
 

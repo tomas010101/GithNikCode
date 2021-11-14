@@ -57,7 +57,7 @@ namespace Foromanager.Pages.Foros
             var isAuthorizated = User.IsInRole(Constants.ForumManagersRole) || User.IsInRole(Constants.ForumAdministratorsRole);
             var currentUserId = UserManager.GetUserId(User);
             
-            if(!isAuthorizated && currentUserId!=Foro.OwnerID && Foro.Status != ForumStatus.Approved)
+            if(!isAuthorizated && currentUserId!=Foro.OwnerID && Foro.Status != ForumStatus.Aprobado)
             {
                 return Forbid();
             }
@@ -91,10 +91,10 @@ namespace Foromanager.Pages.Foros
                 return NotFound();
             }
 
-            var forumOperation = (Foro.Status == ForumStatus.Approved)? ForumOperations.Approve : ForumOperations.Reject;
+            var forumOperation = (Foro.Status == ForumStatus.Aprobado)? ForumOperations.Approve : ForumOperations.Reject;
             var isAuthorizated = await AuthorizationService.AuthorizeAsync(User,Foro,forumOperation);
 
-            if (!isAuthorizated.Succeeded && UserManager.GetUserId(User)!=Foro.OwnerID && Foro.Status != ForumStatus.Approved)
+            if (!isAuthorizated.Succeeded && UserManager.GetUserId(User)!=Foro.OwnerID && Foro.Status != ForumStatus.Aprobado)
             {
                 return Forbid();
             }
@@ -106,10 +106,10 @@ namespace Foromanager.Pages.Foros
                     _context.Publicacion.Remove(p);
                     break;
                 case Acciones.aprobar:
-                    Foro.Status = ForumStatus.Approved;
+                    Foro.Status = ForumStatus.Aprobado;
                     break;
                 case Acciones.descartar:
-                    Foro.Status = ForumStatus.Rejected;
+                    Foro.Status = ForumStatus.Rechazado;
                     break;
                 case Acciones.postear:
                     Publicacion.ForoId = id;
