@@ -27,77 +27,40 @@
             <div class="row">
                 <div class="col-12 col-md-6" style="border-bottom: groove;">
                     <div>
-                        <h3>Recientes</h3>
+                        <h3>Tus Foros</h3>
                     </div>
                     @foreach(var item in Model.Foros)
                     {
-                    <ul class="forum-post-ul">
-                        <li class="p-2">
-                            <div class="home-post-item-container" style="display:flex;">
-                                <div style="float:left;padding-right: 0.5rem;font-size: 1.5rem;">
-                                    @*<h1 Nacho es el Padre, el hijo y el espiritu Santo, Amén</h1>*@
-                                   @if(item.ForoPerfil == null){
-                                        
-                                        <span class="fas fa-question-circle text-orange" title="need"></span>
-                                    }
-                                    else{
-                                        <image src = "data:image;base64,@Convert.ToBase64String(item.ForoPerfil)" ></image>
-                                    }
-                                </div>
-                                <div style="flex:1;">
-                                    <h6>
-                                       <a asp-page="./Foros/Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)</a>
-                                       <span class="text-nowrap">
-                                          0
-                                       </span> 
-                                    </h6>
-                                </div>
-                                <div style="flex:1;">
-                                    <span><i>@Html.DisplayFor(model => item.Fecha)</i></span>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    }
-                </div>
-                <div class="col-12 col-md-6" style="border-bottom: groove;">
-                    <div>
-                        <h3>Personales</h3>
-                    </div>
-                    @foreach(var item in Model.Foros)
-                    {
-                        @if(item.Usuario==@User.Identity)
-                        {
-                        <ul class="forum-post-ul">
-                            <li class="p-2">
-                                <div class="home-post-item-container" style="display:flex;">
-                                    @if(item.Publicaciones.Count()==0)
-                                    {
-                                        <div style="float:left;padding-right: 0.5rem;font-size: 1.5rem;">
-                                            <span class="fas fa-question-circle text-orange"></span>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div style="float:left;padding-right: 0.5rem;font-size: 1.5rem;">
-                                            <span class="fas fa-check-circle text-orange"></span>
-                                        </div>
-                                    }
-                                    <div style="flex:1;">
-                                        <h6>
-                                           <a asp-page="./Foros/Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)</a>
-                                           <span class="text-nowrap">
-                                               @Html.DisplayFor(modelItem => item.Publicaciones.Count())
-                                           </span> 
-                                        </h6>
+                        <table class="forum-post-ul DivInicio">
+                            <tr>
+                                <td class="p-2">
+                                    <div>
+                                        @if (item.ForoPerfil == null)
+                                        {
+
+                                            <div class="LimitadorImagenes">
+                                                <image class="HomeForosImagenes" src="https://www.bwikotamalang.net/assets/img/blank.jpg" alt=" Imagen de Foro"></image>
+                                                <div class="ForosDatos">
+                                                    <a class="ANombre" asp-page="./Foros/Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)<i class="PFecha">@Html.DisplayFor(model => item.Fecha)</i></a>
+                                                </div>
+                                            </div>
+                                            <span class="fas text-orange" title="need"></span>
+                                        }
+                                        else
+                                        {
+                                            <div class="LimitadorImagenes">
+                                                <image class="HomeForosImagenes" src="data:image;base64,@Convert.ToBase64String(item.ForoPerfil)" ></image>
+                                                <div class="ForosDatos">
+                                                    <a class="ANombre" asp-page="./Foros/Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)<i class="PFecha">@Html.DisplayFor(model => item.Fecha)</i></a>
+                                                </div>
+                                            </div>
+                                            
+                                        }
                                     </div>
-                                    <div style="flex:1;">
-                                        <span><i>@Html.DisplayFor(model => item.Fecha)</i></span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        }
+                                <td />
+                            </tr>
+                                
+                        </table>
                     }
                 </div>
             </div>    
