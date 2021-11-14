@@ -14,7 +14,7 @@ header {
     right: 0;
     height: 60px;
     border-radius: 3px;
-    z-index: 1;
+    z-index: 20;
 }
 
 /*Estilo del Nav-Bar*/
