@@ -7,14 +7,15 @@
 }
 <head>
     <link rel="stylesheet" href="~/css/Foros/ForosIndex.css" />
+    <link rel="stylesheet" href="~/css/Foros/BotonesForos.css" />
 </head>
 
 <h1>Foros</h1>
 
-<form asp-page="./Index" method="get">
+<form asp-page="./Index" method="get" class="FormBuscador">
     <div class="form-actions no-color">
         <p>
-            Encontrar por nombre:
+            <h5>Encontrar por nombre:</h5>
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
             <button type="submit" name="header_search_submit" class="button-reset Lupaboton db o-60 absolute center-v right-1 hover-primary6">
                 <a class="lupa">
@@ -24,7 +25,6 @@
             </button>
             @*<input type="submit" value="" class="btn btn-primary buscador fas fa-search " />*@
             <a asp-page="./Index" class="reload"><i class="fas fa-redo-alt "></i></a>
-            <a asp-page="./Create" class="Cont-add"><i class="fas fa-plus Foroadd"></i></a>
         </p>
     </div>
 </form>
@@ -32,6 +32,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th>Imagen</th>
             <th>
                 @Html.DisplayNameFor(model => model.Foros[0].Nombre)
             </th>
@@ -50,58 +51,58 @@
             <th>
                 Estado
             </th>
-            <th></th>
+            <th class="opciones-especiales"><a asp-page="./Create" class="Cont-add"><i class="fas fa-plus Foroadd"></i></a></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Foros) {
-        <tr>
-            <td>
-                <a asp-page="./Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
+        @foreach (var item in Model.Foros) {
+                <tr>
+                    <td class="TdImagenes" >
+                        @if (item.ForoPerfil == null)
+                        {
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Categorias.Count)
-                @foreach(var cat in item.Categorias)
-                {
-                    @Html.DisplayFor(modelItem => cat.CategoriaNombre)
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Publicaciones.Count)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
+                            <image src="https://www.bwikotamalang.net/assets/img/blank.jpg" alt=" Imagen de Foro" class="ImagenForos"></image>
+                        }
+                        else
+                        {
+                            <image src="data:image;base64,@Convert.ToBase64String(item.ForoPerfil)" class="ImagenForos"></image>
+                        }
+                    </td>
+                    <td>
+                        <a asp-page="./Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
 
-            <td>
-                @if ((await AuthorizationService.AuthorizeAsync(User, item, ForumOperations.Update)).Succeeded && Model.CurrentUserId == item.OwnerID)
-                {
-                    <a asp-page="./Edit" asp-route-id="@item.ForoId" class="EditarForo">Editar</a>
-                }
-                @if ((await AuthorizationService.AuthorizeAsync(User, item, ForumOperations.Delete)).Succeeded && Model.CurrentUserId == item.OwnerID)
-                {
-                    <a asp-page="./Delete" asp-route-id="@item.ForoId" class="EliminarForo">Eliminar</a>
-                }
-            </td>
-            <td>
-                @if(item.ForoPerfil == null){
-                                        
-                       <span class="fas fa-question-circle text-orange" title="need"></span>
-                }
-                else{
-                       <image src = "data:image;base64,@Convert.ToBase64String(item.ForoPerfil)" ></image>
-                }
+                    <td>
+                        @foreach (var cat in item.Categorias)
+                        {
+                            @Html.DisplayFor(modelItem => cat.CategoriaNombre)
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Publicaciones.Count)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
 
-            </td>
-        </tr>
-}
+                    <td class="opciones-especiales">
+                        @if ((await AuthorizationService.AuthorizeAsync(User, item, ForumOperations.Update)).Succeeded && Model.CurrentUserId == item.OwnerID)
+                        {
+                            <a asp-page="./Edit" asp-route-id="@item.ForoId" class="EditarForo">Editar</a>
+                        }
+                        @if ((await AuthorizationService.AuthorizeAsync(User, item, ForumOperations.Delete)).Succeeded && Model.CurrentUserId == item.OwnerID)
+                        {
+                            <a asp-page="./Delete" asp-route-id="@item.ForoId" class="EliminarForo">Eliminar</a>
+                        }
+                    </td>
+                </tr>
+         }
     </tbody>
 
 </table>
@@ -110,13 +111,13 @@
    asp-route-sortOrder="@Model.CurrentSort"
    asp-route-pageIndex="@(Model.Foros.PageIndex - 1)"
    asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-primary @prevDisabled">
+   class="btn mextprevious SiguienteAnterior @prevDisabled">
     Previo
 </a>
 <a asp-page="./Index"
    asp-route-sortOrder="@Model.CurrentSort"
    asp-route-pageIndex="@(Model.Foros.PageIndex + 1)"
    asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-primary @nextDisabled">
+   class="btn SiguienteAnterior @nextDisabled">
     Siguiente
 </a>

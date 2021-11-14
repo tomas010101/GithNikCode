@@ -1,4 +1,21 @@
-﻿.Lupaboton {
+﻿h1{
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 55px;
+}
+a:hover {
+    color: #e5cccc;
+}
+
+
+.FormBuscador{
+    margin-left: 3rem;
+}
+.FormBuscador input{
+    width: 13rem;
+}
+
+.Lupaboton {
     width: 4rem;
     color: #FFFFFF;
     background-color: #CA3535;
@@ -42,11 +59,14 @@
     -webkit-background-clip: text;
 }
 
+.opciones-especiales{
+    border-left: solid;
+    border-width: 0.2mm;
+    border-color: #FFFFFF;
+}
 .Cont-add {
-    margin-left: 40rem;
     text-align: center;
-    font-size: 33px;
-
+    font-size: 25px;
     background-color: #CA3535;
     border: solid;
     border-width: 0.75mm;
@@ -67,6 +87,34 @@
     text-shadow: 2px 4px 28px rgb(0 0 0);
 }
 
+.table{
+    width: 90%;
+    margin-top: 3rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+
+    border: solid;
+    border-width: 0.2mm;
+    border-color: #FFFFFF;
+}
+th{
+    text-align: center;
+}
+td{
+    text-align: center;
+}
+
+.TdImagenes {
+    width: 25rem;
+    height: 15rem;
+}
+.ImagenForos{
+    width: 100%;
+    max-width: 100%;
+    max-height: 30rem;
+}
+
+
 .EditarForo{
     padding-right: 0.5rem;
     border-right: solid;
@@ -79,3 +127,18 @@
 .EliminarForo:hover{
     color: #CA3535;
 }
+
+.mextprevious {
+    margin-left: 3rem;
+    margin-right: 1rem;
+}
+
+.SiguienteAnterior{
+    background-color: #E3A001;
+    color: #000000;
+    font-weight: bold;
+}
+    .SiguienteAnterior:hover {
+        color: #000000;
+        background-color: #FFD777;
+    }
