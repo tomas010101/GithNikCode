@@ -1,12 +1,13 @@
-.DivInicio{
-    width: 92rem;    
-    
+
+
+.DivInicio {
+    width: 90%;
     text-align: center;
 }
 
 .LimitadorImagenes {
     width: 57rem;
-    height: 28rem;
+    height: 30rem;
     position: relative;
     margin-top: 3rem;
     margin-bottom: 3rem;
@@ -27,7 +28,7 @@
 
 .ForosDatos {
     width: 100%;
-    height: 28rem;
+    height: 30rem;
     position: absolute;
     top: 0%;
     z-index: 10;
@@ -53,7 +54,7 @@
     transform: translate(20px);
     padding: 2rem;
     right: 1.3rem;
-    left: 3.9rem;
+    left: 3.8rem;
     bottom: 0;
     background: linear-gradient(45deg, #dc2e2e, transparent, #000000, transparent, #dc2e2e);
     color: #e5cccc;
@@ -65,4 +66,44 @@
     position: absolute;
     bottom: 0;
     right: 0;
+}
+
+@media (max-width: 550px) { /*Tamaño 250%*/
+
+    .PaginaInicio {
+        width: 60%;
+    }
+
+    .LimitadorImagenes {
+        width: 21rem;
+        height: 17rem;
+    }
+
+    .ForosDatos {
+        width: 21rem;
+        height: 17rem;
+        position: absolute;
+        top: 0%;
+    }
+    .ANombre {
+        font-size: 20px;
+    }
+
+    .ForosDatos:hover .ANombre {
+        transform: translate(20px);
+        padding: 2rem;
+        right: 1.3rem;
+        left: 3.6rem;
+        bottom: 0;
+        background: linear-gradient(45deg, #dc2e2e, transparent, #000000, transparent, #dc2e2e);
+        color: #e5cccc;
+    }
+
+    .PFecha {
+        font-size: 15px;
+        font-weight: bold;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
 }

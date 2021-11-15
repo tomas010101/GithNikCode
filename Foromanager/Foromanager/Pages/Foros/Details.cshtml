@@ -110,12 +110,4 @@
     }
 }
 
-<div class="DivBotonesExtras">
-    @if ((await AuthorizationService.AuthorizeAsync(User, Model.Foro, ForumOperations.Update)).Succeeded)
-    {
-        <a asp-page="./Edit" asp-route-id="@Model.Foro.ForoId" class="BotonesExtras">Editar</a>
-    }
-    <a asp-page="./Index" class="BotonesExtras">Regresar</a>
-    <a asp-page="../Index" class="BotonesExtras">Volver a Inicio</a>
-</div>
 

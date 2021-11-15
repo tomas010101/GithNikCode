@@ -13,19 +13,18 @@
 </head>
 <form>
     <section class="perfil-usuario">
-    <div class="perfil-header">
-        <div class="perfil-portada">
-            
-            <div class="perfil-avatar">
-                <img id= "UwU" src="https://i.pinimg.com/originals/bb/d5/8f/bbd58f9b068c652a91d67a1bcca43ab6.png" alt="img-avatar">
-                <input id="ImagenUsuario" type="file" class="boton-avatar">
-                    <i class="far fa-image"></i>
-                </input>
-            </div> 
+        <div class="perfil-header">
+            <div class="perfil-portada">
+
+                <div class="perfil-avatar">
+                    <img id="UwU" src="https://cdn.myminifactory.com/assets/object-assets/5a87156690514/images/720X720-i6jnn7b.jpg" alt="img-avatar">
+                    <div><i class="fas fa-images boton-avatar "></i></div>
+                    @*<input id="ImagenUsuario" type="file" class="boton-avatar">*@
+                </div>
+            </div>
         </div>
-    </div>
-</section>
-<div>
+    </section>
+
     <hr />
     <div class="row">
         <div class="col-md-3">
@@ -35,30 +34,27 @@
             @RenderBody()
         </div>
     </div>
-
 </form>
 
-    @section Scripts {
-        
-        @RenderSection("Scripts", required: false)
-        <script> 
-            $('#ImagenUsuario').change(function(e) {
+@section Scripts {
 
-            if(  e.originalEvent.srcElement.files.length > 0){
+    @RenderSection("Scripts", required: false)
+    <script>
+        $('#ImagenUsuario').change(function (e) {
+
+            if (e.originalEvent.srcElement.files.length > 0) {
 
                 var file = e.originalEvent.srcElement.files[0];
 
-        
+
                 var reader = new FileReader();
-               reader.onload = function(e) {
-                  $('#UwU').attr('src',e.target.result);
-               };
-               reader.readAsDataURL(file);
+                reader.onload = function (e) {
+                    $('#UwU').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
 
+        });
 
-           }       
-   
-});
-        
-        </script>
-    }
+    </script>
+}

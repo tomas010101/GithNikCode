@@ -34,7 +34,7 @@ namespace Foromanager.Areas.Identity.Pages.Account
             [BindProperty]
             [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "Recovery Code")]
+            [Display(Name = "Código de recuperación")]
             public string RecoveryCode { get; set; }
         }
 

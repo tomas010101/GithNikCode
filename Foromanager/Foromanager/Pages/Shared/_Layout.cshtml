@@ -32,11 +32,7 @@
         <div>
             <nav class="Titulonav navcolor"><a class="Logo-titulo" asp-area="" asp-page="/Index">GithNik</a></nav>
             <nav class="navheight navcolor navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3">
-                <div class="div-color container">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <div class="div-color container ">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="opciones-pags" asp-area="" asp-page="/Index">Inicio</a>
@@ -68,8 +64,8 @@
                 </ul>
             </div>
             @*<div class="container footer">
-                  &copy; 2021 - GithNik, Hecho por: Barrionuevo, Bolaño y Cavallo<a asp-area="" asp-page="/Privacy">Wiki</a>
-            </div>*@
+                      &copy; 2021 - GithNik, Hecho por: Barrionuevo, Bolaño y Cavallo<a asp-area="" asp-page="/Privacy">Wiki</a>
+                </div>*@
         </footer>
     </div>
 
@@ -77,6 +73,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/Layout.js"></script>
+    <script src="~/js/MenuCelular.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

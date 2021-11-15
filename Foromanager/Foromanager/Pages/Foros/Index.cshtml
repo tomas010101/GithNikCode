@@ -33,22 +33,22 @@
     <thead>
         <tr>
             <th>Imagen</th>
-            <th>
+            <th class="TdDatos">
                 @Html.DisplayNameFor(model => model.Foros[0].Nombre)
             </th>
-            <th>
+            <th class="TdDatos">
                 @Html.DisplayNameFor(model => model.Foros[0].Descripcion)
             </th>
-            <th>
+            <th class="TdDatos">
                 @Html.DisplayNameFor(model => model.Foros[0].Categorias)
             </th>
-            <th>
+            <th class="TdDatos">
                 @Html.DisplayNameFor(model => model.Foros[0].Fecha)
             </th>
-            <th>
+            <th class="TdDatos">
                 Publicaciones
             </th>
-            <th>
+            <th class="TdDatos">
                 Estado
             </th>
             <th class="opciones-especiales"><a asp-page="./Create" class="Cont-add"><i class="fas fa-plus Foroadd"></i></a></th>
@@ -68,26 +68,26 @@
                             <image src="data:image;base64,@Convert.ToBase64String(item.ForoPerfil)" class="ImagenForos"></image>
                         }
                     </td>
-                    <td>
+                    <td class="TdDatos">
                         <a asp-page="./Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)</a>
                     </td>
-                    <td>
+                    <td class="TdDatos">
                         @Html.DisplayFor(modelItem => item.Descripcion)
                     </td>
 
-                    <td>
+                    <td class="TdDatos">
                         @foreach (var cat in item.Categorias)
                         {
                             @Html.DisplayFor(modelItem => cat.CategoriaNombre)
                         }
                     </td>
-                    <td>
+                    <td class="TdDatos">
                         @Html.DisplayFor(modelItem => item.Fecha)
                     </td>
-                    <td>
+                    <td class="TdDatos">
                         @Html.DisplayFor(modelItem => item.Publicaciones.Count)
                     </td>
-                    <td>
+                    <td class="TdDatos">
                         @Html.DisplayFor(modelItem => item.Status)
                     </td>
 

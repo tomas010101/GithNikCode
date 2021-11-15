@@ -41,7 +41,8 @@
         border-radius: 50%;
     }
 
-    .perfil-usuario .perfil-avatar .boton-avatar {
+    .perfil-usuario .perfil-avatar div {
+        font-size: 25px;
         position: absolute;
         left: -2px;
         top: -2px;
@@ -51,6 +52,9 @@
         height: 45px;
         border-radius: 50%;
         cursor: pointer;
+    }
+    .perfil-usuario .perfil-avatar .boton-avatar {
+        margin-left: 0.5rem;
     }
 
 label{

@@ -105,8 +105,8 @@ td{
 }
 
 .TdImagenes {
-    width: 25rem;
-    height: 15rem;
+    width: 100%;
+    height: 100%;
 }
 .ImagenForos{
     width: 100%;
@@ -142,3 +142,125 @@ td{
         color: #000000;
         background-color: #FFD777;
     }
+
+
+
+
+
+@media (max-width: 550px) { /*Tamaño 250%*/
+    h1 {
+        text-align: initial;
+        margin-left: 3rem;
+    }
+
+    .table {
+        margin-left: 1rem;
+    }
+
+    .TdDatos {
+        width: 5rem;
+        font-size: 3px;
+    }
+
+    .ImagenForos {
+        width: 10rem;
+        max-width: 10rem;
+    }
+}
+@media (min-width: 550px) and (max-width: 650px) { /*Tamaño 200%*/
+    h1 {
+        text-align: initial;
+        margin-left: 3rem;
+    }
+
+    .table {
+        margin-left: 1rem;
+    }
+
+    .TdDatos {
+        width: 5rem;
+        font-size: 7px;
+    }
+
+    .ImagenForos {
+        width: 10rem;
+        max-width: 10rem;
+    }
+}
+
+@media (min-width: 650px) and (max-width: 750px) { /*Tamaño 175*/
+    h1 {
+        text-align: initial;
+        margin-left: 3rem;
+    }
+
+    .table {
+        margin-left: 1rem;
+    }
+
+    .TdDatos {
+        width: 5rem;
+        font-size: 10px;
+    }
+
+    .ImagenForos {
+        width: 10rem;
+        max-width: 10rem;
+    }
+
+    .SiguienteAnterior{
+        font-size: 7px;
+    }
+    .mextprevious {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+}
+
+@media (min-width: 750px) and (max-width: 850px) { /*Tamaño 150%*/
+
+    h1{
+        text-align: initial;
+        margin-left: 3rem;
+    }
+    .table {
+        margin-left: 1rem;
+    }
+    .TdDatos{
+        width: 5rem;
+        font-size: 12px;
+    }
+    .ImagenForos {
+        width: 10rem;
+        max-width: 10rem;
+    }
+
+    .EditarForo {
+        font-size: 12px;
+    }
+    .EliminarForo {
+        font-size: 12px;
+    }
+    .mextprevious {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+@media (min-width: 1350px){ /*Tamaño 90%*/
+    h1 {
+        text-align: initial;
+        margin-left: 3rem;
+    }
+
+    .table {
+        margin-left: 1rem;
+    }
+
+    .TdDatos {
+        width: 5rem;
+        font-size: 20px;
+    }
+
+}
