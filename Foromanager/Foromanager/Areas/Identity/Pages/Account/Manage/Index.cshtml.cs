@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Foromanager.Models;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Foromanager.Data;
 
 namespace Foromanager.Areas.Identity.Pages.Account.Manage
 {
@@ -16,13 +17,16 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<Usuario> _userManager;
         private readonly SignInManager<Usuario> _signInManager;
+        private readonly ApplicationDbContext _dbcontext;
 
         public IndexModel(
             UserManager<Usuario> userManager,
-            SignInManager<Usuario> signInManager)
+            SignInManager<Usuario> signInManager,
+            ApplicationDbContext dbcontex)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _dbcontext = dbcontex;
         }
 
         public string Username { get; set; }
@@ -71,20 +75,21 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostAsync()
         {
+            var usuarioActual = await _userManager.GetUserAsync(User);
             var archivoUsuario = HttpContext.Request.Form.Files.FirstOrDefault();
-            Foro imagen = null;
+            Usuario imagen = null;
 
 
             if (archivoUsuario != null)
             {
-                imagen = new Foro();
+                imagen = new Usuario();
                 using (var bReader = new BinaryReader(archivoUsuario.OpenReadStream()))
                 {
-                    Usuario.FotodePerfil = bReader.ReadBytes((int)archivoUsuario.Length);
+                    usuarioActual.FotodePerfil = bReader.ReadBytes((int)archivoUsuario.Length);
 
                 }
             }
-                    var user = await _userManager.GetUserAsync(User);
+            var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -106,10 +111,11 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
-
+            await _dbcontext.SaveChangesAsync();
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();
         }
     }
 }
+

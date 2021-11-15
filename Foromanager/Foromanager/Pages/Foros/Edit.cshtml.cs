@@ -11,10 +11,12 @@ using Foromanager.Models;
 using Foromanager.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Foromanager.Pages.Foros
 {
-    public class EditModel : DI_BasePageModel
+    public class EditModel : DI_BasePageModel 
     {
         private readonly Foromanager.Data.ApplicationDbContext _context;
 
@@ -25,6 +27,8 @@ namespace Foromanager.Pages.Foros
 
         [BindProperty]
         public Foro Foro { get; set; }
+        [BindProperty]
+        public IFormFile ImgCargaForo { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -53,11 +57,25 @@ namespace Foromanager.Pages.Foros
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync(int id)
         {
+
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
+
+            var ForoExistente = await _context.Foro.AsNoTracking().FirstOrDefaultAsync(m => m.ForoId == id);
+            var ArchivoDeForo = HttpContext.Request.Form.Files.FirstOrDefault();
+
+            if (ArchivoDeForo != null)
+            {
+                using (var bReader = new BinaryReader(ArchivoDeForo.OpenReadStream()))
+                {
+                    ForoExistente.ForoPerfil = bReader.ReadBytes((int)ArchivoDeForo.Length);
+                }
+            }
             
+
             var foro = await _context.Foro.AsNoTracking().FirstOrDefaultAsync(m=>m.ForoId == id);
 
             if(foro ==null)
@@ -71,9 +89,10 @@ namespace Foromanager.Pages.Foros
             {
                 return Forbid();
             }
-
+            Foro = ForoExistente;
             Foro.OwnerID = foro.OwnerID;
             _context.Attach(Foro).State = EntityState.Modified;
+
 
             if(Foro.Status == ForumStatus.Aprobado)
             {
