@@ -100,21 +100,43 @@
     }
 }
 
-@media (min-width: 550px) and (max-width: 750px) { /*Tamaño 175-200%*/
+@media (min-width: 550px) and (max-width: 650px) { /*Tamaño 200%*/
 
-    .btn {
-        font-size: 9px;
-        width: 3.5rem;
-    }
-
-    .rwidth {
-        width: 4.5rem;
+    .Textlogin .btn {
+        font-size: 7px;
+        width: 4rem;
     }
 
     .Textlogin {
-        margin-left: 3.5rem;
-        margin-right: 0.5rem;
-        width: 10px;
+        margin-left: 2rem;
+        margin-right: 1rem;
+        width: 30px;
+    }
+    .BotonesCuenta {
+        margin-right: -2rem;
+    }
+
+    .perfilboton {
+        font-size: 8px;
+    }
+
+    .cerrar {
+        width: 6rem;
+        font-size: 9px;
+        margin-right: -3rem;
+    }
+}
+@media (min-width: 650px) and (max-width: 750px) { /*Tamaño 175*/
+
+    .Textlogin .btn {
+        font-size: 10px;
+        width: 6rem;
+    }
+
+    .Textlogin {
+        margin-left: 3rem;
+        margin-right: 1.5rem;
+        width: 30px;
     }
 
     .perfilboton {
@@ -130,19 +152,14 @@
 
 @media (min-width: 750px) and (max-width: 850px) { /*Tamaño 150%*/
 
-    .btn {
-        font-size: 12px;
-        width: 4.5rem;
-    }
-
-    .rwidth {
-        width: 5rem;
+    .Textlogin .btn {
+        font-size: 11px;
     }
 
     .Textlogin {
-        margin-left: 1.5rem;
-        margin-right: 3.5rem;
-        width: 10px;
+        margin-left: 3rem;
+        margin-right: 1rem;
+        width: 30px;
     }
 
     .perfilboton {
@@ -158,13 +175,16 @@
 
 @media (min-width: 950px) and (max-width: 1050px) { /*Tamaño 125%*/
 
-    .btn{
-        font-size: 14px;
-        margin-right: -7px;
+    .Textlogin .btn{
+        font-size: 13px;
+    }
+
+    .BotonesCuenta {
+        margin-right: -2rem;
     }
 
     .Textlogin {
-        margin-left: 5rem;
+        margin-left: 3rem;
         margin-right: 1rem;
         width: 30px;
     }
@@ -190,9 +210,12 @@
         margin-right: -10rem;
     }
 
+    .BotonesCuenta {
+        margin-right: -10rem;
+    }
+
     .Textlogin {
         margin-left: 5rem;
-        margin-right: 1rem;
         width: 40px;
     }
 }
@@ -202,11 +225,16 @@
         font-size: 18px;
         margin-right: -26rem;
     }
-
+    .BotonesCuenta{
+        margin-right: -16rem;
+    }
     .Textlogin {
         margin-left: 5rem;
-        margin-right: 1rem;
         width: 40px;
+    }
+
+    .rwidth {
+        width: 150px;
     }
 
     .perfilboton {

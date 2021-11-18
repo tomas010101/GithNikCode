@@ -263,13 +263,18 @@ header {
         }
 }
 
-@media (min-width: 550px) and (max-width: 750px) { /*Tamaño 175-200%*/
+@media (min-width: 550px) and (max-width: 750px) { /*Tamaño 175*/
     .Titulonav {
         width: 25%;
+        height: 45px;
+    }
+    .Logo-titulo {
+        vertical-align: central;
     }
 
     .navheight {
         width: 75%;
+        height: 45px;
     }
 
     .container {
