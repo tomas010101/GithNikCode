@@ -10,9 +10,8 @@
     {
         Layout = "/Areas/Identity/Pages/_Layout.cshtml";
     }
-  @*  var controlador = ViewContext.FormContext;
-    controlador*@
-
+          @*  var controlador = ViewContext.FormContext;
+            controlador*@
 }
 <head>
     <link rel="stylesheet" href="~/css/Identity/ConfigPerfil.css" />
@@ -23,16 +22,15 @@
             
                 <div class="perfil-avatar">
 
-                 
                     @if (usuario.FotodePerfil == null) @*Tomás: la pase mal con edto, no se lo desea a nadie*@
-                            {@*NO TOCAR!!!, Esta hecho asi nomas pero funciona y es lo importante*@
+                     {@*NO TOCAR!!!, Esta hecho asi nomas pero funciona y es lo importante*@
 
-                                <img id= "UwU" src="https://cdn.myminifactory.com/assets/object-assets/5a87156690514/images/720X720-i6jnn7b.jpg" alt="img-avatar">
-                            }
-                            else
-                            {
-                                <image src="data:image;base64,@Convert.ToBase64String(usuario.FotodePerfil)" class="ImagenParfil"></image>
-                            }
+                           <img id= "UwU" src="https://cdn.myminifactory.com/assets/object-assets/5a87156690514/images/720X720-i6jnn7b.jpg" alt="img-avatar">
+                     }
+                     else
+                     {
+                          <image src="data:image;base64,@Convert.ToBase64String(usuario.FotodePerfil)" class="ImagenParfil"></image>
+                     }
 
                   @*  <input asp-for = "ImgCargaUsuario" id="ImagenUsuario" type="file" class="boton-avatar">
                         <i class="far fa-image"></i>

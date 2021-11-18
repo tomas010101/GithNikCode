@@ -1,32 +1,54 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<Usuario> SignInManager
 @inject UserManager<Usuario> UserManager
-
-<head>
-    <link rel="stylesheet" href="~/css/LoginPartial.css" />
-
-</head>
-
-
-<ul class="navbar-nav BotonesCuenta">
-@if (SignInManager.IsSignedIn(User))
-{
-    <li class="nav-item">
-        <a  class="nav-link perfilboton" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name</a>
-    </li>
-    <li class="nav-item">
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" >
-            <button  type="submit" class="btn cerrar">Cerrar sesión</button>
-        </form>
-    </li>
+@inject UserManager<Usuario> _userManager;
+@{
+    var usuario = await _userManager.GetUserAsync(User); 
 }
-else
-{
-    <li class="nav-item Textlogin">
-        <a class="btn btn-sm rwidth" asp-area="Identity" asp-page="/Account/Register">Registrarse</a>
-    </li>
-    <li class="nav-item Textlogin">
-        <a class="btn btn-sm" asp-area="Identity" asp-page="/Account/Login">Acceder</a>
-    </li>
-}
-</ul>
+    <head>
+        <link rel="stylesheet" href="~/css/LoginPartial.css" />
+
+    </head>
+
+
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <ul class="navbar-nav BotonesUsuario">
+            <li class="nav-item Opcion6">
+                <div class="perfil-avatar">
+                    <a class="nav-link perfilboton " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+
+                        @if (usuario.FotodePerfil == null)
+                        {
+
+                            <img id="UwU" src="https://cdn.myminifactory.com/assets/object-assets/5a87156690514/images/720X720-i6jnn7b.jpg" alt="img-avatar">
+                        }
+                        else
+                        {
+                            <image src="data:image;base64,@Convert.ToBase64String(usuario.FotodePerfil)" class="ImagenParfil"></image>
+                        }
+
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item Opcion7">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="btn cerrar">Salir</button>
+                </form>
+            </li>
+        </ul>
+
+    }
+    else
+    {
+        <ul class="navbar-nav BotonesCuenta">
+            <li class="nav-item Textlogin Opcion4">
+                <a class="btn btn-sm rwidth" asp-area="Identity" asp-page="/Account/Register">Registrarse</a>
+            </li>
+            <li class="nav-item Textlogin Opcion5">
+                <a class="btn btn-sm" asp-area="Identity" asp-page="/Account/Login">Acceder</a>
+            </li>
+        </ul>
+    }
+

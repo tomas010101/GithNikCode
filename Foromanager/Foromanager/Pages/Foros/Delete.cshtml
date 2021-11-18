@@ -1,14 +1,17 @@
-@page
+@page "/Eliminar_Foro"
 @model Foromanager.Pages.Foros.DeleteModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Eliminar Foro";
 }
+<head>
+    <link rel="stylesheet" href="~/css/Foros/EliminarForos.css" />º
+</head>
 
-<h1>Eliminar @Html.DisplayFor(model => model.Foro.Nombre)</h1>
+<h1 class="MarginIzquierda">Eliminar @Html.DisplayFor(model => model.Foro.Nombre)</h1>
 
-<h3>¿Esta seguro que desea eliminarlo?</h3>
-<div>
+<h3 class="MarginIzquierda">¿ Esta seguro que desea eliminarlo?</h3>
+<div class="MarginIzquierda">
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -37,9 +40,9 @@
         </dd>
     </dl>
 
-    <form method="post">
+    <form method="post" class="MarginIzquierda">
         <input type="hidden" asp-for="Foro.ForoId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <input type="submit" value="Eliminar" class="btn-danger" /> |
         <a asp-page="./Index">Regresar</a>
     </form>
 </div>
