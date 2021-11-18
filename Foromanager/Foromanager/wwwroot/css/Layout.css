@@ -12,14 +12,14 @@ header {
     left: 0;
     top: 0;
     right: 0;
-    height: 60px;
+    height: 70px;
     border-radius: 3px;
     z-index: 20;
 }
 
 /*Estilo del Nav-Bar*/
 .navheight {
-    height: 60px;
+    height: 70px;
     width: 85%;
     float: right;
 }
@@ -43,7 +43,7 @@ header {
 .Titulonav {
     position: fixed;
     width: 15%;
-    height: 60px;
+    height: 70px;
     padding-left: 10px;
     background-color: #DE2121;
     border-right: solid;
@@ -51,6 +51,13 @@ header {
     border-right-width: 0.75mm;
     border-radius: 3px;
 }
+.Titulonav img{
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-bottom: 0.5rem;
+    display: none;
+}
+
 /*Estilo del Titulo puesto en el Nav-bar*/
 .Logo-titulo {
     margin-right: 2rem;
@@ -213,7 +220,6 @@ header {
     .Titulonav {
         width: 100%;
         height: 48px;
-        text-align: center;
 
         border-bottom: solid;
         border-left: solid;
@@ -221,10 +227,14 @@ header {
         border-radius: 3px 3px 0 0;
         border-color: #D09045;
     }
+    .Titulonav img {
+        display: inline;
+    }
+
+
     .navheight {
-        float: left;
         width: 100%;
-        height: 75px;
+        height: 40px;
         margin-top: 3.4rem;
         text-align: center;
 
@@ -240,15 +250,20 @@ header {
         background-color: #921D11;
     }
 
+    .Logo-titulo {
+        position: absolute;
+        left: calc(50% - 90px);
+        font-size: 35px;
+    }
+
     .container {
         margin-top: -0.5rem;
-        margin-left: 3.5rem;
-        width: 80%;
+        width: 100%;
         height: 125%;
-        background-color: #ce2121;
     }
-    .container ul{
-        margin-top: -0.5rem;
+
+    .container ul {
+        display: inline;
     }
 
     .opciones-pags {
@@ -257,19 +272,58 @@ header {
         background-color: #c1853f;
         text-shadow: -2px 2px 2px #976123;
     }
+
         .opciones-pags:hover {
             background-color: #b67f3e;
             text-shadow: -2px 2px 2px #976123;
         }
+
+    .Opcion1{
+        width: 3rem;
+        float:left;
+    }
+    .Opcion2 {
+        width: 5rem;
+        float: left;
+    }
+    .Opcion3 {
+        width: 3rem;
+        float: left;
+    }
 }
 
-@media (min-width: 550px) and (max-width: 750px) { /*Tamaño 175*/
+@media (min-width: 550px) and (max-width: 650px) { /*Tamaño 200*/
+    .Titulonav {
+        width: 25%;
+        height: 45px;
+    }
+
+    .Logo-titulo {
+        font-size: 35px;
+    }
+
+    .navheight {
+        width: 75%;
+        height: 45px;
+    }
+
+    .container {
+        margin-left: -24px;
+    }
+
+    .opciones-pags {
+        padding: 20px 16px;
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 650px) and (max-width: 750px) { /*Tamaño 175*/
     .Titulonav {
         width: 25%;
         height: 45px;
     }
     .Logo-titulo {
-        vertical-align: central;
+        font-size: 35px;
     }
 
     .navheight {

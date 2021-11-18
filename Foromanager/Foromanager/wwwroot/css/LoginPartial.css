@@ -42,47 +42,83 @@
         color: #cca845;
         text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.651);
     }
-.perfilboton {
-    font-weight: bold;
+
+.Opcion6{
+    margin-right: 2rem;
 }
-    .perfilboton:hover {
-        border-radius: 0.5rem;
-        background-color: #DE2121;
-        color: #F0EBD2;
-        text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.651);
+
+.perfil-avatar {
+    display: flex;
+    width: 68px;
+    height: 68px;
+    margin-bottom: 2.3rem;
+
+    align-items: center;
+    border: 2px solid #A39355;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -40px;
+}
+
+    .perfil-avatar img {
+        width: 65px;
+        height: 65px;
+        position: relative;
+        border-radius: 50%;
+        left: calc(50% - 42px);
     }
+
+
+
+
 
 
 @media (max-width: 550px) { /*Tamaño 250%*/
 
-    .btn {
-        font-size: 9px;
+      .BotonesCuenta{
+          margin-top: -0.7rem;
+      }
+
+      .Textlogin .btn {
         width: 4.5rem;
-        padding: 4px 4px;
-        font-size: 10px;
+        padding: 2px 2px;
+        font-size: 7px;
         background-color: #c1853f;
         text-shadow: -2px 2px 2px #976123;
     }
-    .btn:hover {
-        background-color: #b67f3e;
-    }
+        .Textlogin .btn .btn:hover {
+            background-color: #b67f3e;
+        }
 
     .rwidth {
-        width: 4.5rem;
+        width: 4rem;
     }
 
     .Textlogin {
-        margin-top: 0.3rem;
-        margin-bottom: 0.3rem;
-        margin-left: 3.5rem;
-        margin-right: 3rem;
-        width: 10px;
+        margin-top: 0.6rem;
+        margin-left: 1rem;
+        width: 4rem;
+    }
+
+    .Opcion4{
+        float: left;
+    }
+    .Opcion5{
+        float:right;
+    }
+
+
+    .BotonesUsuario {
+        margin-top: -0.7rem;
+        float: right;
+        width: 10rem;
     }
 
     .perfilboton {
-        width: 8rem;
+        width: 4rem;
+        margin-top: 1.2rem;
         margin-right: 2rem;
-        font-size: 8px;
+        font-size: 6px;
         background-color: #b67f3e;
         text-shadow: -2px 2px 2px #976123;
         border-radius: 5px;
@@ -93,10 +129,20 @@
         }
 
     .cerrar {
-        width: 6rem;
+        width: 3rem;
         font-size: 9px;
         margin-right: -3rem;
-        margin-top: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .Opcion6 {
+        float: left;
+        width: 4rem;
+    }
+
+    .Opcion7 {
+        float: right;
+        width: 4rem;
     }
 }
 
@@ -121,21 +167,22 @@
     }
 
     .cerrar {
-        width: 6rem;
-        font-size: 9px;
-        margin-right: -3rem;
+        width: 4rem;
+        font-size: 10px;
+        margin-right: -2rem;
+        margin-left: 2rem;
     }
 }
 @media (min-width: 650px) and (max-width: 750px) { /*Tamaño 175*/
 
     .Textlogin .btn {
-        font-size: 10px;
+        font-size: 9px;
         width: 6rem;
     }
 
     .Textlogin {
         margin-left: 3rem;
-        margin-right: 1.5rem;
+        margin-right: 1rem;
         width: 30px;
     }
 
@@ -144,9 +191,10 @@
     }
 
     .cerrar {
-        width: 6rem;
-        font-size: 9px;
-        margin-right: -3rem;
+        width: 4rem;
+        font-size: 12px;
+        margin-right: -2rem;
+        margin-left: 2rem;
     }
 }
 
@@ -167,9 +215,10 @@
     }
 
     .cerrar {
-        width: 6rem;
-        font-size: 10px;
-        margin-right: -3rem;
+        width: 4rem;
+        font-size: 14px;
+        margin-right: -2rem;
+        margin-left: 2rem;
     }
 }
 
@@ -194,14 +243,35 @@
     }
 
     .cerrar {
-        font-size: 14px;
-        margin-right: -6rem;
+        width: 6rem;
+        font-size: 16px;
+        margin-right: -4rem;
+        margin-left: 3rem;
     }
 }
 
+@media (min-width: 1050px) and (max-width: 1150px) { /*Tamaño 110%*/
+    .cerrar {
+        width: 6rem;
+        margin-left: 3rem;
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1150px) and (max-width: 1250px) { /*Tamaño 100%*/
+    .cerrar {
+        width: 6rem;
+        margin-left: 3rem;
+        font-size: 18px;
+    }
+}
 
 @media (min-width: 1350px) and (max-width: 1450px) { /*Tamaño 90%*/
-
+    .cerrar {
+        width: 6rem;
+        margin-left: 3rem;
+        font-size: 20px;
+    }
 }
 
 @media (min-width: 1450px) and (max-width: 1550px) { /*Tamaño 80%*/
@@ -217,6 +287,11 @@
     .Textlogin {
         margin-left: 5rem;
         width: 40px;
+    }
+    .cerrar {
+        width: 6rem;
+        margin-left: 3rem;
+        font-size: 23px;
     }
 }
 
@@ -242,5 +317,6 @@
     }
     .cerrar {
         margin-left: 8rem;
+        font-size: 25px
     }
 }
