@@ -29,6 +29,8 @@ namespace Foromanager.Pages.Foros
         public Foro Foro { get; set; }
         [BindProperty]
         public IFormFile ImgCargaForo { get; set; }
+        [BindProperty]
+        public IFormFile ImgCargaBanner { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -74,7 +76,17 @@ namespace Foromanager.Pages.Foros
                     ForoExistente.ForoPerfil = bReader.ReadBytes((int)ArchivoDeForo.Length);
                 }
             }
-            
+
+            var ForoExistenteBanner = await _context.Foro.AsNoTracking().FirstOrDefaultAsync(m => m.ForoId == id);
+            var ArchivoDeForoBanner = HttpContext.Request.Form.Files.FirstOrDefault();
+
+            if (ArchivoDeForoBanner != null)
+            {
+                using (var bReader = new BinaryReader(ArchivoDeForoBanner.OpenReadStream()))
+                {
+                    ForoExistenteBanner.Forobanner = bReader.ReadBytes((int)ArchivoDeForoBanner.Length);
+                }
+            }
 
             var foro = await _context.Foro.AsNoTracking().FirstOrDefaultAsync(m=>m.ForoId == id);
 
