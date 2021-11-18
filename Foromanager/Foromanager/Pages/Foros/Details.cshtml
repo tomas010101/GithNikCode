@@ -9,6 +9,7 @@
 
 
 @{ ViewData["Title"] = "Detalles"; }
+
 <head>
     <link rel="stylesheet" href="~/css/Foros/Details.css" />
     <link rel="stylesheet" href="~/css/Foros/BotonesForos.css" />
@@ -61,6 +62,7 @@
                     <a class="EditarPublicacion" asp-page="../Publicaciones/Edit" asp-route-id="@item.PublicacionId">Editar</a>
                 </p>
              }
+            
         </div>
      }
     <br />
@@ -109,5 +111,3 @@
         </form>
     }
 }
-
-

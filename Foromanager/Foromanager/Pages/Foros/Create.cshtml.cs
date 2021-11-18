@@ -64,10 +64,9 @@ namespace Foromanager.Pages.Foros
             try
             {
                 string[] categoriaLista = Categorias.Split('-');
-
+                Foro.Categorias = new List<Categoria>();
                 foreach (var c in categoriaLista)
                 {
-                    Foro.Categorias = new List<Categoria>();
                     Foro.Categorias.Add(new Categoria() { CategoriaNombre = c });
                 }
             }

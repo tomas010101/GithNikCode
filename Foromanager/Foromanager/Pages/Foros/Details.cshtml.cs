@@ -23,7 +23,7 @@ namespace Foromanager.Pages.Foros
         aprobar,
         descartar
     }
-    
+
     public class DetailsModel : DI_BasePageModel
     {
         private readonly Foromanager.Data.ApplicationDbContext _context;
@@ -32,7 +32,7 @@ namespace Foromanager.Pages.Foros
         {
             _context = context;
         }
-
+        
         public Foro Foro { get; set; }
         [BindProperty]
         public Publicacion Publicacion { get; set; }
