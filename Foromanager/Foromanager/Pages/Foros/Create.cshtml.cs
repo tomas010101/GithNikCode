@@ -35,23 +35,44 @@ namespace Foromanager.Pages.Foros
         public string Categorias { get; set; }
         [BindProperty]
         public IFormFile ImgCargaForo { get; set; }
+        [BindProperty]
+        public IFormFile ImgCargaBanner { get; set; }
 
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            var archivoForo = HttpContext.Request.Form.Files.FirstOrDefault();
-            Foro imagen = null;
+
+                var archivoForo = HttpContext.Request.Form.Files.FirstOrDefault();
+                Foro imagen = null;
 
 
-            if (archivoForo != null)
-            {
-                imagen = new Foro();
-                using (var bReader = new BinaryReader(archivoForo.OpenReadStream()))
+                if (archivoForo != null)
                 {
-                    Foro.ForoPerfil = bReader.ReadBytes((int)archivoForo.Length);
+                    imagen = new Foro();
+                    using (var bReader = new BinaryReader(archivoForo.OpenReadStream()))
+                    {
+                        Foro.ForoPerfil = bReader.ReadBytes((int)archivoForo.Length);
 
 
+                    }
+                }
+
+            if (HttpContext.Request.Form.Files.Count == 2)
+            {
+                var archivoBanner = HttpContext.Request.Form.Files[1];
+                Foro imagenBanner = null;
+
+
+                if (archivoBanner != null)
+                {
+                    imagenBanner = new Foro();
+                    using (var bReader = new BinaryReader(archivoBanner.OpenReadStream()))
+                    {
+                        Foro.Forobanner = bReader.ReadBytes((int)archivoBanner.Length);
+
+
+                    }
                 }
             }
 
@@ -61,6 +82,8 @@ namespace Foromanager.Pages.Foros
             {
                 return Page();
             }
+
+            /*
             try
             {
                 string[] categoriaLista = Categorias.Split('-');
@@ -73,8 +96,9 @@ namespace Foromanager.Pages.Foros
             catch
             {
                 ViewData["Message"] = "Alguno de los Campos esta vacio, por favor completelos todos";
-            }
+            }*/
             
+
             Foro.OwnerID = UserManager.GetUserId(User);
             var isAuthorizated = await AuthorizationService.AuthorizeAsync(User,Foro,ForumOperations.Create);
 
