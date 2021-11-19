@@ -8,7 +8,9 @@
 @inject ApplicationDbContext DbContext
 
 
-@{ ViewData["Title"] = "Detalles"; }
+@{ 
+    ViewData["Title"] = "Detalles";
+}
 
 <head>
     <link rel="stylesheet" href="~/css/Foros/Details.css" />
@@ -38,21 +40,29 @@
     <br/>
 
     @foreach (var item in Model.Foro.Publicaciones)
-     {
-        var imagenes = await DbContext.Imagenes.Where(i => i.PublicacionId == item.PublicacionId).ToListAsync();
+    {
+        int Likes=0;
+        int Dislikes=0;
+        var Reacciones = await DbContext.Reaccion.Where(i=>i.PublicacionId == item.PublicacionId).ToListAsync();
 
+        var imagenes = await DbContext.Imagenes.Where(i => i.PublicacionId == item.PublicacionId).ToListAsync();
         <br />
         <div class="DivNombreUsuario">
             <h3 class="NombreUsuario">@Html.DisplayFor(modelItem => item.Usuario):</h3>
         </div>
+        <div>
+            <input type="hidden" name="PublicacionId" value="@item.PublicacionId" />
+            <input type="hidden" name="ForoId" value="@item.ForoId">
+        </div>
         <div class="DivPublicaciones">
             <p class="TituloPublicacion">@Html.DisplayFor(modelItem => item.Titulo)</p>
+            <p>@Html.DisplayFor(modelItem => item.Fecha)</p>
             <p class="ComentarioPublicacion">@Html.DisplayFor(modelItem => item.Descripcion)</p>
             <div class="DivImagen">
                 @if (imagenes.Count > 0)
-                 {
+                {
                     <image class="ImagenPublicacion" src="data:image;base64,@Convert.ToBase64String(imagenes[0].Imagen)"></image>
-                 }
+                }
             </div>
             @if (item.Usuario == @User.Identity.Name)
              {
@@ -62,9 +72,28 @@
                     <a class="EditarPublicacion" asp-page="../Publicaciones/Edit" asp-route-id="@item.PublicacionId">Editar</a>
                 </p>
              }
-            
+            @foreach(var reac in Reacciones)
+            {
+                if(reac.Like)
+                {
+                    Likes++;
+                }
+                else if(reac.DisLike)
+                {
+                    Dislikes++;
+                }
+            }
+            <p>Likes: @Likes | Dislikes: @Dislikes</p>
+            <form method="post">
+                <div class="form-group">
+                    <button type="submit" class="btn BotonForos" asp-for="@Acciones.like">Like</button>
+                    <button type="submit" class="btn BotonForos" asp-for="@Acciones.dislike">DisLike</button>
+                </div>
+            </form>
         </div>
-     }
+        Likes=0;
+        Dislikes=0;
+    }
     <br />
     <hr color="white" />
     <form enctype="multipart/form-data" class="col-sm-10 row-sm-10 FormCreacion" method="post">

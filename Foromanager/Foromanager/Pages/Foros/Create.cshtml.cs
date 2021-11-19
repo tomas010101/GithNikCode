@@ -54,7 +54,6 @@ namespace Foromanager.Pages.Foros
                     {
                         Foro.ForoPerfil = bReader.ReadBytes((int)archivoForo.Length);
 
-
                     }
                 }
 
@@ -70,35 +69,22 @@ namespace Foromanager.Pages.Foros
                     using (var bReader = new BinaryReader(archivoBanner.OpenReadStream()))
                     {
                         Foro.Forobanner = bReader.ReadBytes((int)archivoBanner.Length);
-
-
                     }
                 }
             }
-
-
 
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            /*
-            try
+            string[] categoriaLista = Categorias.Split('-');
+            Foro.Categorias = new List<Categoria>();
+            foreach (var c in categoriaLista)
             {
-                string[] categoriaLista = Categorias.Split('-');
-                Foro.Categorias = new List<Categoria>();
-                foreach (var c in categoriaLista)
-                {
-                    Foro.Categorias.Add(new Categoria() { CategoriaNombre = c });
-                }
+                Foro.Categorias.Add(new Categoria() { CategoriaNombre = c });
             }
-            catch
-            {
-                ViewData["Message"] = "Alguno de los Campos esta vacio, por favor completelos todos";
-            }*/
             
-
             Foro.OwnerID = UserManager.GetUserId(User);
             var isAuthorizated = await AuthorizationService.AuthorizeAsync(User,Foro,ForumOperations.Create);
 
@@ -111,7 +97,6 @@ namespace Foromanager.Pages.Foros
             _context.Foro.Add(Foro);
 
             await _context.SaveChangesAsync();
-
 
             return RedirectToPage("./Index");
         }
