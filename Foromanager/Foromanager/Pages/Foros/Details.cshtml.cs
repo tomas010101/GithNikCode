@@ -18,8 +18,8 @@ namespace Foromanager.Pages.Foros
     public enum Acciones
     {
         postear,
-        editar,
-        eliminar,
+        like,
+        dislike,
         aprobar,
         descartar
     }
@@ -40,15 +40,13 @@ namespace Foromanager.Pages.Foros
         public Acciones acciones {get;set;}
         
         public int PublicacionId {get;set;}
-
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             Foro = await _context.Foro
-                        .Include(s=>s.Publicaciones) 
+                        .Include(s=>s.Publicaciones)
                         .AsNoTracking()
                         .FirstOrDefaultAsync(m=>m.ForoId == id);
             
-
             if (id == null || Foro == null)
             {
                 return NotFound();
@@ -66,7 +64,7 @@ namespace Foromanager.Pages.Foros
         [BindProperty]
         public IFormFile ImgCarga { get; set; }
 
-        public async Task<IActionResult> OnPostAsync(int id)
+        public async Task<IActionResult> OnPostAsync(int id,int ForoId,int PublicacionId)
         {
             var archivo = HttpContext.Request.Form.Files.FirstOrDefault();
             Imagenes imagen = null;
@@ -78,11 +76,8 @@ namespace Foromanager.Pages.Foros
                 {
                     imagen.Imagen = bReader.ReadBytes((int)archivo.Length);
                     imagen.ImagenNombre = archivo.Name;
-
                 }
             }
-            
-
 
             Foro = await _context.Foro.FirstOrDefaultAsync(m=>m.ForoId==id);
 
@@ -101,9 +96,43 @@ namespace Foromanager.Pages.Foros
 
             switch(acciones)
             {
-                case Acciones.eliminar:
-                    var p = await _context.Publicacion.FirstOrDefaultAsync(m=>m.PublicacionId==PublicacionId);
-                    _context.Publicacion.Remove(p);
+                case Acciones.like:
+                    Publicacion = await _context.Publicacion.Include(r=>r.Reacciones).FirstOrDefaultAsync(p=>p.PublicacionId == PublicacionId); 
+                    if(Publicacion.Reacciones.Count < 0)
+                    {
+                        Publicacion.Reacciones = new List<Reaccion>();
+                    }
+                    else
+                    {
+                        var YaComentado = from l in Publicacion.Reacciones where l.Usuario == User.Identity.Name select l;
+                        if(YaComentado !=null)
+                        {
+                            return Page();
+                        }
+                        else
+                        {
+                            Publicacion.Reacciones.Add(new Reaccion(){Like=true, Usuario = User.Identity.Name});   
+                        }
+                    }
+                    break;
+                case Acciones.dislike:
+                    Publicacion = await _context.Publicacion.FirstOrDefaultAsync(p=>p.PublicacionId==PublicacionId);
+                    if(Publicacion.Reacciones.Count < 0)
+                    {
+                        Publicacion.Reacciones = new List<Reaccion>();
+                    }
+                    else
+                    {
+                        var YaComentado = from l in Publicacion.Reacciones where l.Usuario == User.Identity.Name select l;
+                        if(YaComentado !=null)
+                        {
+                            return Page();
+                        }
+                        else
+                        {
+                            Publicacion.Reacciones.Add(new Reaccion(){DisLike=true, Usuario = User.Identity.Name});   
+                        }              
+                    }
                     break;
                 case Acciones.aprobar:
                     Foro.Status = ForumStatus.Aprobado;
@@ -114,14 +143,11 @@ namespace Foromanager.Pages.Foros
                 case Acciones.postear:
                     Publicacion.ForoId = id;
                     Publicacion.Usuario = User.Identity.Name;
+                    Publicacion.Imagen = imagen;
                     Publicacion.Fecha = DateTime.Now;
                     _context.Publicacion.Add(Publicacion);
                     break;
-                case Acciones.editar:
-                    break;
             }
-            
-            Publicacion.Imagen = imagen;
 
             await _context.SaveChangesAsync();
 

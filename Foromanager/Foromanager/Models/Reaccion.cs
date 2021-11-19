@@ -9,5 +9,7 @@ namespace Foromanager.Models
 		public ICollection<Publicacion> Publicaciones{get;set;}
 		public bool Like {get;set;}
 		public bool DisLike {get;set;}
+		public string Usuario {get;set;}
+
 	}
 }
