@@ -23,48 +23,43 @@
             </section>
         </section>
         @*<h1 class="display-4">Tus foros</h1>*@
-        <section>
-            <div class="row">
-                <div class="col-12 col-md-6" style="border-bottom: groove;">
-                    <div>
-                        <h3>Tus Foros</h3>
-                    </div>
-                    @foreach(var item in Model.Foros)
-                    {
-                        <table class="forum-post-ul DivInicio">
-                            <tr>
-                                <td class="p-2">
-                                    <div>
-                                        @if (item.ForoPerfil == null)
-                                        {
-
-                                            <div class="LimitadorImagenes">
-                                                <image class="HomeForosImagenes" src="https://www.bwikotamalang.net/assets/img/blank.jpg" alt=" Imagen de Foro"></image>
-                                                <div class="ForosDatos">
-                                                    <a class="ANombre" asp-page="./Foros/Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)<i class="PFecha">@Html.DisplayFor(model => item.Fecha)</i></a>
-                                                </div>
-                                            </div>
-                                            <span class="fas text-orange" title="need"></span>
-                                        }
-                                        else
-                                        {
-                                            <div class="LimitadorImagenes">
-                                                <image class="HomeForosImagenes" src="data:image;base64,@Convert.ToBase64String(item.ForoPerfil)" ></image>
-                                                <div class="ForosDatos">
-                                                    <a class="ANombre" asp-page="./Foros/Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)<i class="PFecha">@Html.DisplayFor(model => item.Fecha)</i></a>
-                                                </div>
-                                            </div>
-                                            
-                                        }
-
-                                    </div>
-                                <td />
-                            </tr>
-                                
-                        </table>
-                    }
+        <section class="SectionForosInicio">
+                <div>
+                    <h3>Tus Foros</h3>
                 </div>
-            </div>    
+                @foreach(var item in Model.Foros)
+                {
+                    <table class="forum-post-ul DivInicio">
+                        <tr>
+                            <td class="p-2">
+                                <div>
+                                    @if (item.ForoPerfil == null)
+                                    {
+
+                                        <div class="LimitadorImagenes">
+                                            <image class="HomeForosImagenes" src="https://www.bwikotamalang.net/assets/img/blank.jpg" alt=" Imagen de Foro"></image>
+                                            <div class="ForosDatos">
+                                                <a class="ANombre" asp-page="./Foros/Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)<i class="PFecha">@Html.DisplayFor(model => item.Fecha)</i></a>
+                                            </div>
+                                        </div>
+                                        <span class="fas text-orange" title="need"></span>
+                                    }
+                                    else
+                                    {
+                                        <div class="LimitadorImagenes">
+                                            <image class="HomeForosImagenes" src="data:image;base64,@Convert.ToBase64String(item.ForoPerfil)" ></image>
+                                            <div class="ForosDatos">
+                                                <a class="ANombre" asp-page="./Foros/Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)<i class="PFecha">@Html.DisplayFor(model => item.Fecha)</i></a>
+                                            </div>
+                                        </div>
+
+                                    }
+                                </div>
+                            <td />
+                        </tr>
+
+                    </table>
+                 }
         </section>    
     </section>
     <section class="container-fluid px-4 mt-2">

@@ -411,11 +411,17 @@ header {
 
 @media (min-width: 1450px) and (max-width: 1550px) { /*Tamaño 80%*/
     .Titulonav {
-        width: 11%;
+        width: 15%;
+        height: 80px;
+    }
+
+    .Logo-titulo {
+        font-size: 60px;
     }
 
     .navheight {
-        width: 89%;
+        width: 85%;
+        height: 80px;
     }
     .container {
         margin-left: -15px;
@@ -437,11 +443,16 @@ header {
 }
 @media (min-width: 1550px){ /*Tamaño 75-70%*/
     .Titulonav {
-        width: 10%;
+        width: 15%;
+        height: 90px;
+    }
+    .Logo-titulo{
+        font-size: 60px;
     }
 
     .navheight {
-        width: 90%;
+        width: 85%;
+        height: 90px;
     }
     .container {
         margin-left: -25px;
