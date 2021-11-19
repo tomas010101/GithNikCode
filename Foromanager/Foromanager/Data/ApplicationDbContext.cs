@@ -27,7 +27,9 @@ namespace Foromanager.Data
                 .HasOne(i => i.Publicacion)
                 .WithOne(p => p.Imagen);
                 
-               
+            modelBuilder.Entity<Publicacion>()
+                 .HasMany(p => p.Reacciones)
+                 .WithMany(r => r.Publicaciones);
         }
 
         public DbSet<Foromanager.Models.Foro> Foro { get; set; }

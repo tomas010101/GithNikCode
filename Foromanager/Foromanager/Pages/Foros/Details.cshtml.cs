@@ -15,15 +15,6 @@ using System.IO;
 
 namespace Foromanager.Pages.Foros
 {
-    public enum Acciones
-    {
-        postear,
-        like,
-        dislike,
-        aprobar,
-        descartar
-    }
-
     public class DetailsModel : DI_BasePageModel
     {
         private readonly Foromanager.Data.ApplicationDbContext _context;
@@ -37,9 +28,10 @@ namespace Foromanager.Pages.Foros
         [BindProperty]
         public Publicacion Publicacion { get; set; }
 
-        public Acciones acciones {get;set;}
+        public string Acciones {get;set;}
         
         public int PublicacionId {get;set;}
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             Foro = await _context.Foro
@@ -94,10 +86,10 @@ namespace Foromanager.Pages.Foros
                 return Forbid();
             }
 
-            switch(acciones)
+            switch(Acciones)
             {
-                case Acciones.like:
-                    Publicacion = await _context.Publicacion.Include(r=>r.Reacciones).FirstOrDefaultAsync(p=>p.PublicacionId == PublicacionId); 
+                case "like":
+                    Publicacion = await _context.Publicacion.AsNoTracking().Include(r =>r.Reacciones).FirstOrDefaultAsync(p =>p.PublicacionId == PublicacionId); 
                     if(Publicacion.Reacciones.Count < 0)
                     {
                         Publicacion.Reacciones = new List<Reaccion>();
@@ -114,9 +106,10 @@ namespace Foromanager.Pages.Foros
                             Publicacion.Reacciones.Add(new Reaccion(){Like=true, Usuario = User.Identity.Name});   
                         }
                     }
+                    _context.Attach(Publicacion).State = EntityState.Modified;
                     break;
-                case Acciones.dislike:
-                    Publicacion = await _context.Publicacion.FirstOrDefaultAsync(p=>p.PublicacionId==PublicacionId);
+                case "dislike":
+                    Publicacion = await _context.Publicacion.Include(r =>r.Reacciones).FirstOrDefaultAsync(p=>p.PublicacionId==PublicacionId);
                     if(Publicacion.Reacciones.Count < 0)
                     {
                         Publicacion.Reacciones = new List<Reaccion>();
@@ -133,14 +126,16 @@ namespace Foromanager.Pages.Foros
                             Publicacion.Reacciones.Add(new Reaccion(){DisLike=true, Usuario = User.Identity.Name});   
                         }              
                     }
+                    _context.Attach(Publicacion).State = EntityState.Modified;
+
                     break;
-                case Acciones.aprobar:
+                case "aprobar":
                     Foro.Status = ForumStatus.Aprobado;
                     break;
-                case Acciones.descartar:
+                case "descartar":
                     Foro.Status = ForumStatus.Rechazado;
                     break;
-                case Acciones.postear:
+                case "postear":
                     Publicacion.ForoId = id;
                     Publicacion.Usuario = User.Identity.Name;
                     Publicacion.Imagen = imagen;
