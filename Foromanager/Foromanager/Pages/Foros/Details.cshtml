@@ -22,13 +22,13 @@
     <br />
     <div class="BannerCont">
         <div class="TituloForo"><h2>@Html.DisplayFor(model => model.Foro.Nombre)</h2></div>
-        @if (Model.Foro.ForoPerfil == null)
+        @if (Model.Foro.Forobanner == null)
          {
              <div class="BannerImage"><image class="Imagen-Banner" src="https://www.bwikotamalang.net/assets/img/blank.jpg" alt=" Imagen de Foro" ></image></div>
          }
          else
          {
-             <div class="BannerImage"><image class="Imagen-Banner" src="data:image;base64,@Convert.ToBase64String(Model.Foro.ForoPerfil)"></image></div>
+             <div class="BannerImage"><image class="Imagen-Banner" src="data:image;base64,@Convert.ToBase64String(Model.Foro.Forobanner)"></image></div>
          }
     </div>
     
