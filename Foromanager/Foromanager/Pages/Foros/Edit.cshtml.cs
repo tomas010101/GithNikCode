@@ -31,11 +31,14 @@ namespace Foromanager.Pages.Foros
         public IFormFile ImgCargaForo { get; set; }
         [BindProperty]
         public IFormFile ImgCargaBanner { get; set; }
-
+        public string Categorias {get;set;}
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            Foro = await _context.Foro.FirstOrDefaultAsync(m => m.ForoId == id);
-
+            Foro = await _context.Foro.Include(c=>c.Categorias).FirstOrDefaultAsync(m => m.ForoId == id);
+            foreach(var c in Foro.Categorias)
+            {
+                Categorias+=c.CategoriaNombre+"-";
+            }
             if (id == null)
             {
                 return NotFound();
@@ -59,8 +62,6 @@ namespace Foromanager.Pages.Foros
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync(int id)
         {
-
-
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -101,6 +102,7 @@ namespace Foromanager.Pages.Foros
             {
                 return Forbid();
             }
+
             Foro = ForoExistente;
             Foro.OwnerID = foro.OwnerID;
             _context.Attach(Foro).State = EntityState.Modified;

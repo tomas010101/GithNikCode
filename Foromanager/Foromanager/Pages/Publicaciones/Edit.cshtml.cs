@@ -43,13 +43,15 @@ namespace Foromanager.Pages.Publicaciones
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
+            var publicacion = await _context.Publicacion.AsNoTracking().FirstOrDefaultAsync(m=>m.PublicacionId == id);
+            Publicacion.PublicacionId = publicacion.PublicacionId;
+            publicacion.ForoId = publicacion.ForoId;
             _context.Attach(Publicacion).State = EntityState.Modified;
 
             try

@@ -67,9 +67,6 @@ namespace Foromanager.Pages.Foros
                     case "Date":
                         ForosIQ = ForosIQ.OrderBy(f => f.Fecha);
                         break;
-                    case "categoria":
-                        ForosIQ = ForosIQ.OrderByDescending(f => f.Categorias);
-                        break;
                     default:
                         ForosIQ = ForosIQ.OrderBy(f => f.Nombre);
                         break;
