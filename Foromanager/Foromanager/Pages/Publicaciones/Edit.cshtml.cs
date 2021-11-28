@@ -50,8 +50,9 @@ namespace Foromanager.Pages.Publicaciones
                 return Page();
             }
             var publicacion = await _context.Publicacion.AsNoTracking().FirstOrDefaultAsync(m=>m.PublicacionId == id);
-            Publicacion.PublicacionId = publicacion.PublicacionId;
-            publicacion.ForoId = publicacion.ForoId;
+            Publicacion.Fecha = publicacion.Fecha;
+            Publicacion.Usuario = publicacion.Usuario;
+            Publicacion.ForoId = publicacion.ForoId;
             _context.Attach(Publicacion).State = EntityState.Modified;
 
             try

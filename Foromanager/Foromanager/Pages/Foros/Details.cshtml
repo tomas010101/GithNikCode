@@ -86,8 +86,8 @@
             <p>Likes: @Likes | Dislikes: @Dislikes</p>
             <form method="post">
                 <div class="form-group">
-                    <button type="submit" class="btn BotonForos" asp-for="@Model.Acciones" value="like">Like</button>
-                    <button type="submit" class="btn BotonForos" asp-for="@Model.Acciones" value="dislike">DisLike</button>
+                    <button type="submit" class="btn BotonForos" asp-for="@Acciones.like">Like</button>
+                    <button type="submit" class="btn BotonForos" asp-for="@Acciones.dislike">DisLike</button>
                 </div>
             </form>
         </div>
@@ -112,7 +112,7 @@
 
         <br />
         <div class="form-group">
-            <button type="submit" class="btn BotonForos" asp-for="@Model.Acciones" value="postear">Publicar</button>
+            <button type="submit" class="btn BotonForos" asp-for="@Acciones.postear">Publicar</button>
         </div>
     </form>
 </div>
@@ -124,7 +124,7 @@
         <form style="display:inline;" method="post">
             <input type="hidden" name="id" value="@Model.Foro.ForoId" />
             <input type="hidden" name="status" value="@ForumStatus.Aprobado" />
-            <button asp-for="@Model.Acciones" value="aprobar" type="submit" class="btn btn-xs btn-success">Aprobar</button>
+            <button asp-for="@Acciones.aprobar" value="aprobar" type="submit" class="btn btn-xs btn-success">Aprobar</button>
         </form>
     }
 }
@@ -136,7 +136,7 @@
         <form style="display:inline;" method="post">
             <input type="hidden" name="id" value="@Model.Foro.ForoId" />
             <input type="hidden" name="status" value="@ForumStatus.Rechazado" />
-            <button asp-for="@Model.Acciones" value="descartar" type="submit" class="btn btn-xs btn-danger">Rechazar</button>
+            <button asp-for="@Acciones.descartar" value="descartar" type="submit" class="btn btn-xs btn-danger">Rechazar</button>
         </form>
     }
 }

@@ -15,20 +15,29 @@ using System.IO;
 
 namespace Foromanager.Pages.Foros
 {
+    public enum Acciones
+    {
+        postear,
+        like,
+        dislike,
+        aprobar,
+        descartar
+    }
+
     public class DetailsModel : DI_BasePageModel
     {
         private readonly Foromanager.Data.ApplicationDbContext _context;
-
+        
         public DetailsModel(Foromanager.Data.ApplicationDbContext context,IAuthorizationService authorizationService,UserManager<Usuario> userManager): base(context,authorizationService,userManager)
         {
             _context = context;
         }
-        
-        public Foro Foro { get; set; }
         [BindProperty]
         public Publicacion Publicacion { get; set; }
 
-        public string Acciones {get;set;}
+        public Foro Foro { get; set; }
+
+        public Acciones acciones {get;set;}
         
         public int PublicacionId {get;set;}
 
@@ -53,10 +62,11 @@ namespace Foromanager.Pages.Foros
             }
             return Page();
         }
+
         [BindProperty]
         public IFormFile ImgCarga { get; set; }
 
-        public async Task<IActionResult> OnPostAsync(int id,int ForoId,int PublicacionId)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             var archivo = HttpContext.Request.Form.Files.FirstOrDefault();
             Imagenes imagen = null;
@@ -86,56 +96,35 @@ namespace Foromanager.Pages.Foros
                 return Forbid();
             }
 
-            switch(Acciones)
+            switch(acciones)
             {
-                case "like":
+                case Acciones.like:
+                    Publicacion = await _context.Publicacion.Include(r=>r.Reacciones).FirstOrDefaultAsync(p=>p.PublicacionId == PublicacionId); 
                     Publicacion = await _context.Publicacion.AsNoTracking().Include(r =>r.Reacciones).FirstOrDefaultAsync(p =>p.PublicacionId == PublicacionId); 
                     if(Publicacion.Reacciones.Count < 0)
                     {
                         Publicacion.Reacciones = new List<Reaccion>();
-                    }
-                    else
-                    {
-                        var YaComentado = from l in Publicacion.Reacciones where l.Usuario == User.Identity.Name select l;
-                        if(YaComentado !=null)
-                        {
-                            return Page();
-                        }
-                        else
-                        {
-                            Publicacion.Reacciones.Add(new Reaccion(){Like=true, Usuario = User.Identity.Name});   
-                        }
+                        Publicacion.Reacciones.Add(new Reaccion(){Like=true, Usuario = User.Identity.Name});   
                     }
                     _context.Attach(Publicacion).State = EntityState.Modified;
                     break;
-                case "dislike":
+                case Acciones.dislike:
                     Publicacion = await _context.Publicacion.Include(r =>r.Reacciones).FirstOrDefaultAsync(p=>p.PublicacionId==PublicacionId);
                     if(Publicacion.Reacciones.Count < 0)
                     {
                         Publicacion.Reacciones = new List<Reaccion>();
-                    }
-                    else
-                    {
-                        var YaComentado = from l in Publicacion.Reacciones where l.Usuario == User.Identity.Name select l;
-                        if(YaComentado !=null)
-                        {
-                            return Page();
-                        }
-                        else
-                        {
-                            Publicacion.Reacciones.Add(new Reaccion(){DisLike=true, Usuario = User.Identity.Name});   
-                        }              
+                        Publicacion.Reacciones.Add(new Reaccion(){DisLike=true, Usuario = User.Identity.Name});   
+                                      
                     }
                     _context.Attach(Publicacion).State = EntityState.Modified;
-
                     break;
-                case "aprobar":
+                case Acciones.aprobar:
                     Foro.Status = ForumStatus.Aprobado;
                     break;
-                case "descartar":
+                case Acciones.descartar:
                     Foro.Status = ForumStatus.Rechazado;
                     break;
-                case "postear":
+                case Acciones.postear:
                     Publicacion.ForoId = id;
                     Publicacion.Usuario = User.Identity.Name;
                     Publicacion.Imagen = imagen;
