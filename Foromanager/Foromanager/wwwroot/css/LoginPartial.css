@@ -4,15 +4,13 @@
 }
 
 .Textlogin .btn {
-    margin-right: 0.5rem;
+    margin-right: 1rem;
     font-size: 16px;
     font-family: Roboto;
     font-weight: bold;
-    line-height: 1.5;
     border-radius: 1.2rem;
     font-variant: small-caps;
     color: #F0EBD2;
-    width: 95px;
     text-shadow: -2px 3px 3px rgb(150, 1, 43);
 }
 
@@ -383,11 +381,6 @@
 @media (min-width: 1450px) and (max-width: 1550px) { /*Tamaño 80%*/
     .btn {
         font-size: 18px;
-        margin-right: -10rem;
-    }
-
-    .BotonesCuenta {
-        margin-right: -10rem;
     }
 
     .Textlogin {
@@ -395,7 +388,7 @@
         width: 40px;
     }
     .cerrar {
-        width: 6rem;
+        width: 3rem;
         margin-left: 2rem;
         font-size: 23px;
     }
@@ -405,6 +398,7 @@
         width: 76px;
         height: 76px;
         margin-bottom: 2.5rem;
+        margin-right: 5rem;
         border: 4px solid #A39355;
         border-radius: 50%;
         position: absolute;
@@ -423,10 +417,12 @@
 @media (min-width: 1550px) { /*Tamaño 75-70%*/
     .btn {
         font-size: 18px;
-        margin-right: -26rem;
     }
-    .BotonesCuenta{
-        margin-right: -16rem;
+    .Opcion4{
+        margin-right: 2rem;
+    }
+    .BotonesCuenta {
+        margin-right: -10rem;
     }
     .Textlogin {
         margin-left: 5rem;
@@ -440,6 +436,10 @@
     .perfilboton {
         margin-right: -8rem;
     }
+
+    .Opcion7{
+        width: 2rem;
+    }
     .cerrar {
         margin-left: 4rem;
         font-size: 25px
@@ -450,6 +450,7 @@
         width: 76px;
         height: 76px;
         margin-bottom: 2.5rem;
+        margin-right: 3rem;
         border: 5px solid #A39355;
         border-radius: 50%;
         position: absolute;

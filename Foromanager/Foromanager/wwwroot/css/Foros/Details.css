@@ -1,17 +1,17 @@
 ﻿
 /*Encabezado del Foro*/
 .BannerCont {
-    height: 21.5rem;
+    height: 21.4rem;
     border-bottom: solid;
     border-width: 0.4mm;
     border-color: #FFFFFF;
 }
 .TituloForo {
+    top: 100%;
     padding: 1.5rem;
     text-align: center;
-
     z-index: 10;
-    background: linear-gradient(80deg, transparent, #000000, transparent);
+    background: linear-gradient(80deg, transparent,  #000000, transparent );
     position: relative;
 }
 .TituloForo h2{
