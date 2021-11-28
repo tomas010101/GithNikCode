@@ -5,7 +5,7 @@
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 <head>
-    <link rel="stylesheet" href="~/css/Identity/PerfilIndex.css" />
+    <link rel="stylesheet" href="~/css/Manage/PerfilIndex.css" />
 </head>
 
 <h4>@ViewData["Title"]</h4>
@@ -43,22 +43,16 @@
         <script> 
             $('#ImagenUsuario').change(function(e) {
 
-            if(  e.originalEvent.srcElement.files.length > 0){
+                if(  e.originalEvent.srcElement.files.length > 0){
 
-                var file = e.originalEvent.srcElement.files[0];
-
-        
-                var reader = new FileReader();
-               reader.onload = function(e) {
-                  $('#UwU').attr('src',e.target.result);
-               };
-               reader.readAsDataURL(file);
-
-
-           }       
-   
-});
-        
+                    var file = e.originalEvent.srcElement.files[0];
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                      $('#UwU').attr('src',e.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }       
+            });
         </script>
     }
 
