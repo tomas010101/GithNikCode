@@ -36,66 +36,80 @@
                 Imagen
             </th>
             <th class="TdDatos">
-                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">@Html.DisplayNameFor(model => model.Foros[0].Nombre)</a>
+                <a class="DesaparecerDatos" asp-page="./Index" asp-route-sortOrder="@Model.NameSort">@Html.DisplayNameFor(model => model.Foros[0].Nombre)</a>
+                <a class="DatosForosCel" asp-page="./Index" asp-route-sortOrder="@Model.NameSort">Foro</a>
             </th>
-            <th class="TdDatos">
+            <th class="TdDatos DesaparecerDatos">
                 @Html.DisplayNameFor(model => model.Foros[0].Categorias)
             </th>
-            <th class="TdDatos">
+            <th class="TdDatos DesaparecerDatos">
                 <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">@Html.DisplayNameFor(model => model.Foros[0].Fecha)</a>
             </th>
-            <th class="TdDatos">
+            <th class="TdDatos DesaparecerDatos">
                 Publicaciones
             </th>
-            <th class="TdDatos">
+            @*<th class="TdDatos DesaparecerDatos">
                 Estado
-            </th>
+            </th>*@
             <th class="opciones-especiales"><a asp-page="./Create" class="Cont-add"><i class="fas fa-plus Foroadd"></i></a></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Foros) {
-                <tr>
-                    <td class="TdImagenes">
-                        @if (item.ForoPerfil == null)
-                        {
-                            <a asp-page="./Details" asp-route-id="@item.ForoId"><image src="https://www.bwikotamalang.net/assets/img/blank.jpg" alt=" Imagen de Foro" class="ImagenForos"></image></a>
-                        }
-                        else
-                        {
-                            <a asp-page="./Details" asp-route-id="@item.ForoId"><image src="data:image;base64,@Convert.ToBase64String(item.ForoPerfil)" class="ImagenForos"></image></a>
-                        }
-                    </td>
-                    <td class="TdDatos">
+            <tr>
+                <td class="TdImagenes">
+                    @if (item.ForoPerfil == null)
+                    {
+                        <a asp-page="./Details" asp-route-id="@item.ForoId"><image src="https://www.bwikotamalang.net/assets/img/blank.jpg" alt=" Imagen de Foro" class="ImagenForos"></image></a>
+                    }
+                    else
+                    {
+                        <a asp-page="./Details" asp-route-id="@item.ForoId"><image src="data:image;base64,@Convert.ToBase64String(item.ForoPerfil)" class="ImagenForos"></image></a>
+                    }
+                </td>
+                <td class="TdDatos">
+                    <div>
                         <a asp-page="./Details" asp-route-id="@item.ForoId">@Html.DisplayFor(modelItem => item.Nombre)</a>
-                    </td>
-
-                    <td class="TdDatos">
+                    </div>
+                    
+                    <div class="DatosForosCel">
                         @foreach (var cat in item.Categorias)
                         {
-                            @Html.DisplayFor(modelItem => cat.CategoriaNombre)
+                            @Html.DisplayFor(modelItem => cat.CategoriaNombre) <blockquote> </blockquote>
                         }
-                    </td>
-                    <td class="TdDatos">
+                    </div>
+                    <div class="DatosForosCel">
                         @item.Fecha.ToString("MM/dd/yyyy")
-                    </td>
-                    <td class="TdDatos">
-                        @Html.DisplayFor(modelItem => item.Publicaciones.Count)
-                    </td>
-                    <td class="TdDatos">
+                    </div>
+                </td>
+
+                <td class="TdDatos DesaparecerDatos">
+                    @foreach (var cat in item.Categorias)
+                     {
+                        @Html.DisplayFor(modelItem => cat.CategoriaNombre) <blockquote> </blockquote>
+                     }
+                </td>
+                <td class="TdDatos DesaparecerDatos">
+                    @item.Fecha.ToString("MM/dd/yyyy")
+                </td>
+                <td class="TdDatos DesaparecerDatos">
+                    @Html.DisplayFor(modelItem => item.Publicaciones.Count)
+                </td>
+                @*<td class="TdDatos">
                         @Html.DisplayFor(modelItem => item.Status)
-                    </td>
-                    <td class="opciones-especiales">
-                        @if ((await AuthorizationService.AuthorizeAsync(User, item, ForumOperations.Update)).Succeeded && Model.CurrentUserId == item.OwnerID)
-                        {
-                            <a asp-page="./Edit" asp-route-id="@item.ForoId" class="EditarForo">Editar</a>
-                        }
-                        @if ((await AuthorizationService.AuthorizeAsync(User, item, ForumOperations.Delete)).Succeeded && Model.CurrentUserId == item.OwnerID)
-                        {
-                            <a asp-page="./Delete" asp-route-id="@item.ForoId" class="EliminarForo">Eliminar</a>
-                        }
-                    </td>
-                </tr>
+                  </td>*@
+            <td class="opciones-especiales">
+                @if ((await AuthorizationService.AuthorizeAsync(User, item, ForumOperations.Update)).Succeeded && Model.CurrentUserId == item.OwnerID)
+                {
+                    <a asp-page="./Edit" asp-route-id="@item.ForoId" class="EditarForo">Editar</a>
+                    <blockquote> </blockquote>
+                }
+                @if ((await AuthorizationService.AuthorizeAsync(User, item, ForumOperations.Delete)).Succeeded && Model.CurrentUserId == item.OwnerID)
+                {
+                    <a asp-page="./Delete" asp-route-id="@item.ForoId" class="EliminarForo">Eliminar</a>
+                }
+            </td>
+            </tr>
          }
     </tbody>
 

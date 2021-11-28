@@ -114,12 +114,13 @@ td{
     max-height: 30rem;
 }
 
+.DatosForosCel{
+    display: none;
+}
 
-.EditarForo{
+
+.EditarForo {
     padding-right: 0.5rem;
-    border-right: solid;
-    border-width: 0.7mm;
-    border-color: #FFFFFF;
 }
 .EditarForo:hover{
     color: #D09045;
@@ -153,13 +154,23 @@ td{
         margin-left: 3rem;
     }
 
+
     .table {
         margin-left: 1rem;
     }
 
     .TdDatos {
         width: 5rem;
-        font-size: 3px;
+        font-size: 3vw;
+    }
+
+    .DesaparecerDatos{
+        display: none;
+    }
+
+    .DatosForosCel {
+        display: block;
+        margin-top: 2rem;
     }
 
     .ImagenForos {
