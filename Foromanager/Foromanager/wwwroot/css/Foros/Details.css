@@ -8,15 +8,15 @@
     border-color: #FFFFFF;
 }
 .TituloForo {
-    top: 50%;
-    padding: 1.5rem;
+    top: 72%;
+    padding: 1rem;
     text-align: center;
     z-index: 10;
     background: linear-gradient(80deg, transparent,  #000000, transparent );
     position: relative;
 }
 .TituloForo h2{
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 .BannerImage {
@@ -43,6 +43,7 @@
     margin-top: 5rem;
     margin-bottom: 0%;
     margin-left: 4rem;
+    position: relative;
 
 
     border-bottom: solid;
@@ -51,12 +52,22 @@
     border-radius: 0.75rem 0.75rem 0 0;
     background-color: #B64848;
 }
+.DivNombreUsuario h3{
+    width: 25rem;
+}
+.DivNombreUsuario p{
+    position: absolute;
+    right: 0;
+    top: 1rem;
+}
+
 /*Cuerpo de las Publicaciones*/
 .DivPublicaciones {
     padding-top: 0.5rem;
     width: 60%;
     margin-left: 4rem;
     margin-top: 0%;
+    text-align: center;
     border-radius: 0 0 0.75rem 0.75rem;
     background-color: #C84A4A;
     padding-bottom: 0.5rem;
@@ -97,6 +108,22 @@
     margin-top: 1.5rem;
     margin-bottom: 1rem;
 }
+
+
+.likeydislike {
+    width: 4rem;
+    height 4rem;
+    margin-top: 2rem;
+    background-color: #efb018;
+    color: #000000;
+    font-weight: bold;
+}
+
+    .likeydislike:hover {
+        color: #000000;
+        background-color: #FFD777;
+    }
+
 
 .BotonesPublicaciones{
     text-align: center;
@@ -160,17 +187,38 @@
 
 @media (max-width: 550px) { /*Tamaño 250%*/
     .BannerCont {
-        margin-top: 4rem;
         height: 16.1rem;
+        width: 100%;
+        margin-top: 6.3rem;
     }
-
     .BannerImage {
-        margin-top: 4rem;
+        width: 100%;
+        margin-top: 6.3rem;
         height: 20rem;
     }
+    .TituloForo {
+        width: 75%;
+        top: 78%;
+        padding: 0;
+        margin-left: 2rem;
+        font-size: 40px;
+        background: linear-gradient(80deg, #000000, transparent, #000000 );
+    }
 
+    .DivNombreUsuario{
+        width: 80%;
+        margin-left: 2rem;
+    }
     .NombreUsuario {
-        font-size: 14px;
+        font-size: 13px;
+    }
+    .DivNombreUsuario p {
+        top: 0.75rem;
+        font-size: 9px;
+    }
+    .DivPublicaciones {
+        width: 80%;
+        margin-left: 2rem;
     }
 
     .Titulo-input {
@@ -184,6 +232,10 @@
 @media (min-width: 550px) and (max-width: 650px) { /*Tamaño 200%*/
     .NombreUsuario {
         font-size: 16px;
+    }
+    .DivNombreUsuario p {
+        top: 0.75rem;
+        font-size: 10px;
     }
 
     .Titulo-input {
@@ -199,6 +251,10 @@
     .NombreUsuario {
         font-size: 18px;
     }
+    .DivNombreUsuario p {
+        top: 0.5rem;
+        font-size: 12px;
+    }
 
     .Titulo-input {
         width: 50%;
@@ -213,6 +269,10 @@
     .NombreUsuario {
         font-size: 20px;
     }
+    .DivNombreUsuario p{
+        top: 0.5rem;
+    }
+
     .Titulo-input {
         width: 50%;
     }

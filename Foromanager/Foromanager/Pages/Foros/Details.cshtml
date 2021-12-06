@@ -1,4 +1,4 @@
-@page
+@page "/Foro"
 @model Foromanager.Pages.Foros.DetailsModel
 @using Microsoft.AspNetCore.Identity
 @using Foromanager.Pages.Foros
@@ -9,7 +9,7 @@
 
 
 @{ 
-    ViewData["Title"] = "Detalles";
+    ViewData["Title"] = "Foro";
 }
 
 <head>
@@ -49,6 +49,7 @@
         <br />
         <div class="DivNombreUsuario">
             <h3 class="NombreUsuario">@Html.DisplayFor(modelItem => item.Usuario):</h3>
+            <p>@Html.DisplayFor(modelItem => item.Fecha)</p>
         </div>
         <div>
             <input type="hidden" name="PublicacionId" value="@item.PublicacionId" />
@@ -56,7 +57,6 @@
         </div>
         <div class="DivPublicaciones">
             <p class="TituloPublicacion">@Html.DisplayFor(modelItem => item.Titulo)</p>
-            <p>@Html.DisplayFor(modelItem => item.Fecha)</p>
             <p class="ComentarioPublicacion">@Html.DisplayFor(modelItem => item.Descripcion)</p>
             <div class="DivImagen">
                 @if (imagenes.Count > 0)
@@ -64,14 +64,6 @@
                     <image class="ImagenPublicacion" src="data:image;base64,@Convert.ToBase64String(imagenes[0].Imagen)"></image>
                 }
             </div>
-            @if (item.Usuario == @User.Identity.Name)
-            {
-                <br />
-                <p class="BotonesPublicaciones">
-                    <a class="BorrarPublicacion" asp-page="../Publicaciones/Delete" asp-route-id="@item.PublicacionId">Borrar</a>
-                    <a class="EditarPublicacion" asp-page="../Publicaciones/Edit" asp-route-id="@item.PublicacionId">Editar</a>
-                </p>
-            }
             @foreach (var reac in Reacciones)
             {
                 if (reac.Like)
@@ -83,19 +75,27 @@
                     Dislikes++;
                 }
             }
-            <p>Likes: @Likes | Dislikes: @Dislikes</p>
             <form method="post">
                 <div class="form-group">
-                    <button type="submit" class="btn BotonForos" asp-for="@Acciones.like">Like</button>
-                    <button type="submit" class="btn BotonForos" asp-for="@Acciones.dislike">DisLike</button>
+                    <button type="submit" class="btn likeydislike" asp-for="@Acciones.like"><i class="far fa-thumbs-up"></i> @Likes </button>
+                    <button type="submit" class="btn likeydislike" asp-for="@Acciones.dislike"><i class="far fa-thumbs-down"></i> @Dislikes</button>
                 </div>
             </form>
+
+
+            @if (item.Usuario == @User.Identity.Name)
+            {
+                <br />
+                <p class="BotonesPublicaciones">
+                    <a class="BorrarPublicacion" asp-page="../Publicaciones/Delete" asp-route-id="@item.PublicacionId">Borrar</a>
+                    <a class="EditarPublicacion" asp-page="../Publicaciones/Edit" asp-route-id="@item.PublicacionId">Editar</a>
+                </p>
+            }
         </div>
         Likes = 0;
         Dislikes = 0;
     }
     <br />
-    <hr color="white" />
     <form enctype="multipart/form-data" class="col-sm-10 row-sm-10 FormCreacion" method="post">
 
         <dv class="CrearTitulo">

@@ -1,8 +1,8 @@
-@page
+@page "/Editar_Foros"
 @model Foromanager.Pages.Foros.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Foro";
 }
 <head>
     <link rel="stylesheet" href="~/css/Foros/BotonesForos.css" />
@@ -17,6 +17,12 @@
         <form enctype = "multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdForo" />
+            
+            <div class="form-group">
+                <label class="control-label">Imagen</label>
+                <input asp-for="ImgCargaForo" type="file" accept=".jpg, .png, .jpeg" />
+            </div>
+            
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
                 <input asp-for="Nombre" class="form-control EditarInputs" />
@@ -27,8 +33,11 @@
                 <textarea asp-for="Descripcion" rows="5" cols="40" class="EditarInputs"></textarea>
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
-            <input asp-for="ImgCargaForo" type="file" accept=".jpg, .png, .jpeg" />
-            <input asp-for="ImgCargaBanner" type="file" accept=".jpg, .png, .jpeg" />
+            <div class="form-group">
+                <label class="control-label">Banner</label>
+                <input asp-for="ImgCargaBanner" type="file" accept=".jpg, .png, .jpeg" />
+            </div>
+            
 
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn BotonForos" />
