@@ -22,19 +22,31 @@ namespace Foromanager
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment enviroment)
         {
             Configuration = configuration;
+            Enviroment = enviroment;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Enviroment { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            if (Enviroment.IsDevelopment())
+            {
+                services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            }
+            else
+            {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("ConnectionAzure")));
+            }
+
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddDefaultIdentity<Usuario>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
@@ -62,8 +74,9 @@ namespace Foromanager
       o.TokenLifespan = TimeSpan.FromHours(3));
         }
 
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider servicios)
         {
             if (env.IsDevelopment())
             {
@@ -89,6 +102,11 @@ namespace Foromanager
             {
                 endpoints.MapRazorPages();
             });
+
+            using(var scope = servicios.CreateScope())
+            {
+                scope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
+            }
         }
     }
 }
