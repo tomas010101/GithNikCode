@@ -40,6 +40,9 @@
                 <a class="DatosForosCel" asp-page="./Index" asp-route-sortOrder="@Model.NameSort">Foro</a>
             </th>
             <th class="TdDatos DesaparecerDatos">
+                @Html.DisplayNameFor(model => model.Foros[0].Descripcion)
+            </th>
+            <th class="TdDatos DesaparecerDatos">
                 @Html.DisplayNameFor(model => model.Foros[0].Categorias)
             </th>
             <th class="TdDatos DesaparecerDatos">
@@ -49,8 +52,8 @@
                 Publicaciones
             </th>
             @*<th class="TdDatos DesaparecerDatos">
-                Estado
-            </th>*@
+            Estado
+        </th>*@
             <th class="opciones-especiales"><a asp-page="./Create" class="Cont-add"><i class="fas fa-plus Foroadd"></i></a></th>
         </tr>
     </thead>
@@ -81,6 +84,9 @@
                     <div class="DatosForosCel">
                         @item.Fecha.ToString("MM/dd/yyyy")
                     </div>
+                </td>
+                <td class="TdDatos DesaparecerDatos">
+                    @Html.DisplayFor(modelItem => item.Descripcion)
                 </td>
 
                 <td class="TdDatos DesaparecerDatos">
