@@ -89,28 +89,28 @@ namespace Foromanager.Pages.Foros
             if(Foro == null)
                 Foro = await _context.Foro.FirstOrDefaultAsync(f => f.ForoId == IdForo);
 
-            var ArchivoDeForo = HttpContext.Request.Form.Files.FirstOrDefault();
+            
 
             if(Foro ==null)
             {
                 return NotFound();
             }
 
-            if (ArchivoDeForo != null)
+            if (ImgCargaForo != null)
             {
-                using (var bReader = new BinaryReader(ArchivoDeForo.OpenReadStream()))
+                using (var bReader = new BinaryReader(ImgCargaForo.OpenReadStream()))
                 {
-                    Foro.ForoPerfil = bReader.ReadBytes((int)ArchivoDeForo.Length);
+                    Foro.ForoPerfil = bReader.ReadBytes((int)ImgCargaForo.Length);
                 }
             }      
             
-            var ArchivoDeForoBanner = HttpContext.Request.Form.Files.FirstOrDefault();
+            
 
-            if (ArchivoDeForoBanner != null)
+            if (ImgCargaBanner != null)
             {
-                using (var bReader = new BinaryReader(ArchivoDeForoBanner.OpenReadStream()))
+                using (var bReader = new BinaryReader(ImgCargaBanner.OpenReadStream()))
                 {
-                    Foro.Forobanner = bReader.ReadBytes((int)ArchivoDeForoBanner.Length);
+                    Foro.Forobanner = bReader.ReadBytes((int)ImgCargaBanner.Length);
                 }
             }
 
