@@ -50,7 +50,7 @@ namespace Foromanager.Areas.Identity.Pages.Account
 
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"No se puede cargar el usuario de autenticación de dos factores.");
             }
 
             ReturnUrl = returnUrl;
@@ -71,7 +71,7 @@ namespace Foromanager.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"No se puede cargar el usuario de autenticación de dos factores.");
             }
 
             var authenticatorCode = Input.TwoFactorCode.Replace(" ", string.Empty).Replace("-", string.Empty);
@@ -80,17 +80,17 @@ namespace Foromanager.Areas.Identity.Pages.Account
 
             if (result.Succeeded)
             {
-                _logger.LogInformation("User with ID '{UserId}' logged in with 2fa.", user.Id);
+                _logger.LogInformation("Usuario con ID '{UserId}' iniciado sesión con 2fa.", user.Id);
                 return LocalRedirect(returnUrl);
             }
             else if (result.IsLockedOut)
             {
-                _logger.LogWarning("User with ID '{UserId}' account locked out.", user.Id);
+                _logger.LogWarning("Usuario con cuenta de ID '{UserId}' bloqueada.", user.Id);
                 return RedirectToPage("./Lockout");
             }
             else
             {
-                _logger.LogWarning("Invalid authenticator code entered for user with ID '{UserId}'.", user.Id);
+                _logger.LogWarning("Se ingresó un código de autenticación no válido para el usuario con ID '{UserId}'.", user.Id);
                 ModelState.AddModelError(string.Empty, "Invalid authenticator code.");
                 return Page();
             }

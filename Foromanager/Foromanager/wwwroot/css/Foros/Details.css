@@ -1,13 +1,14 @@
 ﻿
 /*Encabezado del Foro*/
 .BannerCont {
+    margin-top: 4.3rem;
     height: 21.4rem;
     border-bottom: solid;
     border-width: 0.4mm;
     border-color: #FFFFFF;
 }
 .TituloForo {
-    top: 100%;
+    top: 50%;
     padding: 1.5rem;
     text-align: center;
     z-index: 10;
@@ -21,6 +22,7 @@
 .BannerImage {
     width: 99.88%;
     height: 25.3rem;
+    margin-top: 4.3rem;
 
     position: absolute;
     top: 0;

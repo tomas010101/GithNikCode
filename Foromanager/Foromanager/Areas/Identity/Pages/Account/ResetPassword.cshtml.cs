@@ -49,7 +49,7 @@ namespace Foromanager.Areas.Identity.Pages.Account
         {
             if (code == null)
             {
-                return BadRequest("A code must be supplied for password reset.");
+                return BadRequest("Se debe proporcionar un código para restablecer la contraseña.");
             }
             else
             {

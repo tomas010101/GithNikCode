@@ -37,19 +37,19 @@ namespace Foromanager.Areas.Identity.Pages.Account
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{userId}'.");
+                return NotFound($"No se pudo cargar el usuario con ID '{userId}'.");
             }
 
             code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
             var result = await _userManager.ConfirmEmailAsync(user, code);
             if (result.Succeeded)
             {
-                StatusMessage = "Thank you for confirming your email.";
+                StatusMessage = "Gracias por confirmar su correo electrónico.";
                 await _signInManager.SignInAsync(user, true);
             }
             else
             {
-                StatusMessage = "Error confirming your email.";
+                StatusMessage = "Error al confirmar su correo electrónico.";
             }            
             
             return Redirect("~/Foros");

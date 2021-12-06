@@ -72,13 +72,13 @@ namespace Foromanager.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (remoteError != null)
             {
-                ErrorMessage = $"Error from external provider: {remoteError}";
+                ErrorMessage = $"Error del proveedor externo: {remoteError}";
                 return RedirectToPage("./Login", new {ReturnUrl = returnUrl });
             }
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
-                ErrorMessage = "Error loading external login information.";
+                ErrorMessage = "Error al cargar la información de inicio de sesión externa.";
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 
@@ -86,7 +86,7 @@ namespace Foromanager.Areas.Identity.Pages.Account
             var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor : true);
             if (result.Succeeded)
             {
-                _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
+                _logger.LogInformation("{Name} iniciado sesión con {LoginProvider} proveedor.", info.Principal.Identity.Name, info.LoginProvider);
                 return LocalRedirect(returnUrl);
             }
             if (result.IsLockedOut)
@@ -116,7 +116,7 @@ namespace Foromanager.Areas.Identity.Pages.Account
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
-                ErrorMessage = "Error loading external login information during confirmation.";
+                ErrorMessage = "Error al cargar la información de inicio de sesión externa durante la confirmación.";
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 
@@ -130,7 +130,7 @@ namespace Foromanager.Areas.Identity.Pages.Account
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {
-                        _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
+                        _logger.LogInformation("El usuario creó una cuenta con {Name} proveedor.", info.LoginProvider);
 
                         var userId = await _userManager.GetUserIdAsync(user);
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -141,8 +141,8 @@ namespace Foromanager.Areas.Identity.Pages.Account
                             values: new { area = "Identity", userId = userId, code = code },
                             protocol: Request.Scheme);
 
-                        await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                            $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                        await _emailSender.SendEmailAsync(Input.Email, "Confirme su email",
+                            $"Confirme su cuenta haciendo <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>Click aqui</a>.");
 
                         // If account confirmation is required, we need to show the link if we don't have a real email sender
                         if (_userManager.Options.SignIn.RequireConfirmedAccount)
