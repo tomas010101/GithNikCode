@@ -25,20 +25,34 @@ namespace Foromanager.Pages.Foros
             _context = context;
         }
 
-        [BindProperty]
         public Foro Foro { get; set; }
+
         [BindProperty]
         public IFormFile ImgCargaForo { get; set; }
+
         [BindProperty]
         public IFormFile ImgCargaBanner { get; set; }
+
+        [BindProperty]
+        public string Nombre {get; set;}
+
+        [BindProperty]
+        public string Descripcion { get; set; }
+
+        [BindProperty]
+        public int IdForo {get; set;}
+
         public string Categorias {get;set;}
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             Foro = await _context.Foro.Include(c=>c.Categorias).FirstOrDefaultAsync(m => m.ForoId == id);
+            
             foreach(var c in Foro.Categorias)
             {
                 Categorias+=c.CategoriaNombre+"-";
             }
+        
             if (id == null)
             {
                 return NotFound();
@@ -48,6 +62,12 @@ namespace Foromanager.Pages.Foros
             {
                 return NotFound();
             }
+
+            Nombre = Foro.Nombre;
+            Descripcion = Foro.Descripcion;
+
+            IdForo = Foro.ForoId;
+
             var isAuthorizated = await AuthorizationService.AuthorizeAsync(User,Foro,ForumOperations.Update);
 
             if(!isAuthorizated.Succeeded)
@@ -58,42 +78,40 @@ namespace Foromanager.Pages.Foros
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync(int id)
+       
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            var ForoExistente = await _context.Foro.AsNoTracking().FirstOrDefaultAsync(m => m.ForoId == id);
+            if(Foro == null)
+                Foro = await _context.Foro.FirstOrDefaultAsync(f => f.ForoId == IdForo);
+
             var ArchivoDeForo = HttpContext.Request.Form.Files.FirstOrDefault();
+
+            if(Foro ==null)
+            {
+                return NotFound();
+            }
 
             if (ArchivoDeForo != null)
             {
                 using (var bReader = new BinaryReader(ArchivoDeForo.OpenReadStream()))
                 {
-                    ForoExistente.ForoPerfil = bReader.ReadBytes((int)ArchivoDeForo.Length);
+                    Foro.ForoPerfil = bReader.ReadBytes((int)ArchivoDeForo.Length);
                 }
-            }
-
-            var ForoExistenteBanner = await _context.Foro.AsNoTracking().FirstOrDefaultAsync(m => m.ForoId == id);
+            }      
+            
             var ArchivoDeForoBanner = HttpContext.Request.Form.Files.FirstOrDefault();
 
             if (ArchivoDeForoBanner != null)
             {
                 using (var bReader = new BinaryReader(ArchivoDeForoBanner.OpenReadStream()))
                 {
-                    ForoExistenteBanner.Forobanner = bReader.ReadBytes((int)ArchivoDeForoBanner.Length);
+                    Foro.Forobanner = bReader.ReadBytes((int)ArchivoDeForoBanner.Length);
                 }
-            }
-
-            var foro = await _context.Foro.AsNoTracking().FirstOrDefaultAsync(m=>m.ForoId == id);
-
-            if(foro ==null)
-            {
-                return NotFound();
             }
 
             var isAuthorizated = await AuthorizationService.AuthorizeAsync(User,Foro,ForumOperations.Update);
@@ -103,10 +121,8 @@ namespace Foromanager.Pages.Foros
                 return Forbid();
             }
 
-            Foro = ForoExistente;
-            Foro.OwnerID = foro.OwnerID;
-            _context.Attach(Foro).State = EntityState.Modified;
-
+            Foro.Nombre = Nombre;
+            Foro.Descripcion = Descripcion;
 
             if(Foro.Status == ForumStatus.Aprobado)
             {
@@ -117,6 +133,7 @@ namespace Foromanager.Pages.Foros
                     Foro.Status = ForumStatus.Enviado;
                 }
             }
+
             await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }

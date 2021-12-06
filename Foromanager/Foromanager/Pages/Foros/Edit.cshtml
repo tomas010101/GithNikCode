@@ -10,22 +10,22 @@
 </head>
 
 
-<h1>Editar @Html.DisplayFor(model => model.Foro.Nombre)</h1>
+<h1>Editar @Html.DisplayFor(model => model.Nombre)</h1>
 <div class="LimHr"><hr color="white" /></div>
 <div class="row">
     <div class="col-md-4">
         <form enctype = "multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Foro.ForoId" />
+            <input type="hidden" asp-for="IdForo" />
             <div class="form-group">
-                <label asp-for="Foro.Nombre" class="control-label"></label>
-                <input asp-for="Foro.Nombre" class="form-control EditarInputs" />
-                <span asp-validation-for="Foro.Nombre" class="text-danger"></span>
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control EditarInputs" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Foro.Descripcion" class="control-label"></label>
-                <textarea asp-for="Foro.Descripcion" rows="5" cols="40" class="EditarInputs"></textarea>
-                <span asp-validation-for="Foro.Descripcion" class="text-danger"></span>
+                <label asp-for="Descripcion" class="control-label"></label>
+                <textarea asp-for="Descripcion" rows="5" cols="40" class="EditarInputs"></textarea>
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <input asp-for="ImgCargaForo" type="file" name="imagen" accept=".jpg, .png, .jpeg" />
             <input asp-for="ImgCargaBanner" type="file" name="imagenBanner" accept=".jpg, .png, .jpeg" />
