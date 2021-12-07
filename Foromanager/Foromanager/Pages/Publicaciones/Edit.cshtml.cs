@@ -74,11 +74,10 @@ namespace Foromanager.Pages.Publicaciones
                     throw;
                 }
             }
-            Imagenes imagen = null;
+            Imagenes imagen = new Imagenes();
 
             if (ImgCarga != null)
             {
-                imagen = new Imagenes();
                 using (var bReader = new BinaryReader(ImgCarga.OpenReadStream()))
                 {
                     imagen.Imagen = bReader.ReadBytes((int)ImgCarga.Length);
