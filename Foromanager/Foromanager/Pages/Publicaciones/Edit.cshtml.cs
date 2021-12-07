@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Foromanager.Data;
 using Foromanager.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Foromanager.Pages.Publicaciones
 {
@@ -20,6 +22,7 @@ namespace Foromanager.Pages.Publicaciones
             _context = context;
         }
 
+        Foro Foro { get; set; }
         [BindProperty]
         public Publicacion Publicacion { get; set; }
 
@@ -37,12 +40,13 @@ namespace Foromanager.Pages.Publicaciones
             {
                 return NotFound();
             }
-           ViewData["ForoId"] = new SelectList(_context.Foro, "ForoId", "ForoId");
+            ViewData["ForoId"] = new SelectList(_context.Foro, "ForoId", "ForoId");
             return Page();
         }
+        
+        [BindProperty]
+        public IFormFile ImgCarga { get; set; }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync(int id)
         {
             if (!ModelState.IsValid)
@@ -70,7 +74,18 @@ namespace Foromanager.Pages.Publicaciones
                     throw;
                 }
             }
+            Imagenes imagen = null;
 
+            if (ImgCarga != null)
+            {
+                imagen = new Imagenes();
+                using (var bReader = new BinaryReader(ImgCarga.OpenReadStream()))
+                {
+                    imagen.Imagen = bReader.ReadBytes((int)ImgCarga.Length);
+                }
+            }
+           
+            await _context.SaveChangesAsync();
             return RedirectToPage("../Foros/Index");
         }
 

@@ -11,7 +11,7 @@
 <hr style="background-color: white"/>
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form  enctype = "multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Publicacion.Titulo" class="control-label"></label>
@@ -22,6 +22,9 @@
                 <label asp-for="Publicacion.Descripcion" class="control-label"></label>
                 <input asp-for="Publicacion.Descripcion" class="form-control" />
                 <span asp-validation-for="Publicacion.Descripcion" class="text-danger"></span>
+            </div>
+            <div class="EditarImagen">
+                 <input asp-for="ImgCarga" type="file" accept=".jpg, .png, .jpeg" />
             </div>
             <div class="form-group">
                 <input type="hidden" asp-for="Publicacion.PublicacionId" />
