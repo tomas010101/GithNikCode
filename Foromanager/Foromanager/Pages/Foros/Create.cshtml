@@ -1,4 +1,4 @@
-@page
+@page 
 @model Foromanager.Pages.Foros.CreateModel
 
 @{
@@ -34,6 +34,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Categorias" class="control-label"></label>
+                <label>Para crear mas de una categoria, utilice como separador al caracter "-"</label>
                 <input asp-for="Categorias" class="form-control" type="text" />
             </div>
 

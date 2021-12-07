@@ -33,16 +33,18 @@ namespace Foromanager.Pages.Foros
         public string DateSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
+        public string CategoriaFiltro { get; set; }
+
         public PaginatedList<Foro> Foros { get; set; }
         
-        public async Task OnGetAsync(string sortOrder,string currentFilter,string searchString,int? pageIndex)
+        public async Task OnGetAsync(string sortOrder,string currentFilter,string searchString,int? pageIndex,string CategoriaBusqueda)
         {
             await Task.Run(async ()=>
             { 
                 NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
                 DateSort = sortOrder == "Date" ? "date_desc" : "Date";
                 CurrentFilter = searchString;
-                
+
                 CurrentUserId = UserManager.GetUserId(User);
 
                 if (searchString != null)
@@ -56,7 +58,12 @@ namespace Foromanager.Pages.Foros
                 IQueryable<Foro> ForosIQ = from f in _context.Foro.Include(s=>s.Publicaciones).Include(c=>c.Categorias).AsNoTracking() select f;
                 if(!String.IsNullOrEmpty(searchString))
                 {
-                    ForosIQ = ForosIQ.Where(f => f.Nombre.ToUpper().Contains(searchString.ToUpper()));// || f.Categorias[0].ToUpper().Contains(searchString.ToUpper())));
+                    ForosIQ = ForosIQ.Where(f => f.Nombre.ToUpper().Contains(searchString.ToUpper()));
+                }
+                else if(!String.IsNullOrEmpty(CategoriaBusqueda))
+                {
+                    var categoria = _context.Categoria.FirstOrDefault(c => c.CategoriaNombre == CategoriaBusqueda);
+                    ForosIQ = (IQueryable<Foro>)ForosIQ.Where(f => f.Categorias.Contains(categoria));
                 }
 
                 switch (sortOrder)
