@@ -126,7 +126,7 @@ namespace Foromanager.Pages.Foros
                     break;
                 case Acciones.postear:
                     Publicacion.ForoId = id;
-                    Publicacion.Usuario = User.Identity.Name;
+                    Publicacion.Usuario = User.Identity.Name.Split('-')[0]+" "+ User.Identity.Name.Split('-')[1];
                     Publicacion.Imagen = imagen;
                     Publicacion.Fecha = DateTime.Now;
                     _context.Publicacion.Add(Publicacion);

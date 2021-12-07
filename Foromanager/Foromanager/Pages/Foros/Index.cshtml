@@ -32,7 +32,7 @@
     <div class="form-actions no-color">
         <p>
             <h5>Encontrar por Categoria:</h5>
-            <input type="text" name="CategoriaBusqueda" value="@Model.CategoriaFiltro" />
+            <input type="text" name="CategoriaBusqueda"  />
             <button type="submit" name="header_search_submit" class="button-reset Lupaboton db o-60 absolute center-v right-1 hover-primary6">
                 <a class="lupa">
                     <i class="fas fa-redo-alt fa-search"></i>
@@ -59,7 +59,7 @@
                 @Html.DisplayNameFor(model => model.Foros[0].Descripcion)
             </th>
             <th class="TdDatos DesaparecerDatos">
-                @Html.DisplayNameFor(model => model.Foros[0].Categorias)
+                <a class="DesaparecerDatos" asp-page="./Index" asp-route-sortOrder="@Model.CategoriaFiltro">@Html.DisplayNameFor(model => model.Foros[0].Categorias)</a>
             </th>
             <th class="TdDatos DesaparecerDatos">
                 <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">@Html.DisplayNameFor(model => model.Foros[0].Fecha)</a>

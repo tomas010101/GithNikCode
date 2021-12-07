@@ -44,6 +44,7 @@ namespace Foromanager.Pages.Foros
                 NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
                 DateSort = sortOrder == "Date" ? "date_desc" : "Date";
                 CurrentFilter = searchString;
+                CategoriaFiltro = String.IsNullOrEmpty(sortOrder) ? "categoria" : "";
 
                 CurrentUserId = UserManager.GetUserId(User);
 
@@ -62,7 +63,7 @@ namespace Foromanager.Pages.Foros
                 }
                 else if(!String.IsNullOrEmpty(CategoriaBusqueda))
                 {
-                    var categoria = _context.Categoria.FirstOrDefault(c => c.CategoriaNombre == CategoriaBusqueda);
+                    var categoria = _context.Categoria.FirstOrDefault(c => c.CategoriaNombre.ToUpper() == CategoriaBusqueda.ToUpper());
                     ForosIQ = (IQueryable<Foro>)ForosIQ.Where(f => f.Categorias.Contains(categoria));
                 }
 
@@ -73,6 +74,10 @@ namespace Foromanager.Pages.Foros
                         break;
                     case "Date":
                         ForosIQ = ForosIQ.OrderBy(f => f.Fecha);
+                        break;
+                    case "categoria":
+                        var categoria = _context.Categoria.OrderBy(c=>c.CategoriaNombre);
+                        ForosIQ = ForosIQ.OrderBy(f => f.Categorias.Contains(categoria.First()));
                         break;
                     default:
                         ForosIQ = ForosIQ.OrderBy(f => f.Nombre);

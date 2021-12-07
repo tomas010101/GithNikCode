@@ -48,7 +48,7 @@
         var imagenes = await DbContext.Imagenes.Where(i => i.PublicacionId == item.PublicacionId).ToListAsync();
         <br />
         <div class="DivNombreUsuario">
-            <h3 class="NombreUsuario">@Html.DisplayFor(modelItem => item.Usuario):</h3>
+            <h3 class="NombreUsuario">@Html.DisplayFor(modelItem => item.Usuario)</h3>
             <p>@Html.DisplayFor(modelItem => item.Fecha)</p>
         </div>
         <div>
