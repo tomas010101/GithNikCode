@@ -42,6 +42,8 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Número de Tléfono")]
             public string PhoneNumber { get; set; }
+            public string Nombre { get; set; }
+            public string Apellido { get; set; }
         }
 
         private async Task LoadAsync(Usuario user)
@@ -72,7 +74,8 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
         public Usuario Usuario { get; set; }
         [BindProperty]
         public IFormFile ImgCargaUsuario { get; set; }
-
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
         public async Task<IActionResult> OnPostAsync()
         {
             var usuarioActual = await _userManager.GetUserAsync(User);
@@ -100,7 +103,7 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
                 await LoadAsync(user);
                 return Page();
             }
-
+            
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             if (Input.PhoneNumber != phoneNumber)
             {
@@ -110,6 +113,12 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
                     StatusMessage = "Error inesperado al intentar establecer un número de teléfono.";
                     return RedirectToPage();
                 }
+            }
+            var usernameresult = await _userManager.SetUserNameAsync(user,Nombre + "-" + Apellido);
+            if (!usernameresult.Succeeded)
+            {
+                StatusMessage = "Error inesperado al intentar establecer un nuevo nombre de usuario.";
+                return RedirectToPage();
             }
             await _dbcontext.SaveChangesAsync();
             await _signInManager.RefreshSignInAsync(user);

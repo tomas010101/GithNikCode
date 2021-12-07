@@ -61,7 +61,7 @@ namespace Foromanager.Pages.Foros
                 {
                     ForosIQ = ForosIQ.Where(f => f.Nombre.ToUpper().Contains(searchString.ToUpper()));
                 }
-                else if(!String.IsNullOrEmpty(CategoriaBusqueda))
+                 if(!String.IsNullOrEmpty(CategoriaBusqueda))
                 {
                     var categoria = _context.Categoria.FirstOrDefault(c => c.CategoriaNombre.ToUpper() == CategoriaBusqueda.ToUpper());
                     ForosIQ = (IQueryable<Foro>)ForosIQ.Where(f => f.Categorias.Contains(categoria));
