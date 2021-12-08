@@ -123,11 +123,12 @@ namespace Foromanager.Pages.Foros
 			if (Publicacion.Reacciones.Any(r => r.Like && r.Usuario == User.Identity.Name))
 			{
 				Reaccion r = Publicacion.Reacciones.SingleOrDefault(r => r.PublicacionId == idp);
+				Publicacion.Reacciones.Remove(r);
 				r.Like = false;
 				Publicacion.Reacciones.Add(r);
 				_context.Attach(Publicacion).State = EntityState.Modified;
 			}
-			if (!_context.Reaccion.Any(r => r.Usuario == User.Identity.Name))
+			if (!_context.Reaccion.Any(r => r.PublicacionId==idp && r.Usuario == User.Identity.Name))
 			{
 				Publicacion.Reacciones.Add(new Reaccion() { Like = true, Usuario = User.Identity.Name, PublicacionId = idp });
 				_context.Attach(Publicacion).State = EntityState.Modified;
@@ -149,7 +150,7 @@ namespace Foromanager.Pages.Foros
 				Publicacion.Reacciones.Add(r);
 				_context.Attach(Publicacion).State = EntityState.Modified;
 			}
-			if (!_context.Reaccion.Any(r => r.Usuario == User.Identity.Name))
+			if (!_context.Reaccion.Any(r => r.PublicacionId == idp && r.Usuario == User.Identity.Name))
 			{
 				Publicacion.Reacciones.Add(new Reaccion() { DisLike = true, Usuario = User.Identity.Name, PublicacionId = idp });
 				_context.Attach(Publicacion).State = EntityState.Modified;

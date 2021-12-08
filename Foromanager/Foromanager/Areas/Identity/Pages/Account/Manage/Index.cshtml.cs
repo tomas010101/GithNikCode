@@ -29,8 +29,6 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
             _dbcontext = dbcontex;
         }
 
-        public string Username { get; set; }
-
         [TempData]
         public string StatusMessage { get; set; }
 
@@ -42,8 +40,8 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Número de Tléfono")]
             public string PhoneNumber { get; set; }
-            public string Nombre { get; set; }
-            public string Apellido { get; set; }
+            [Display(Name = "Nombre de Usuario")]
+            public string UserName { get; set; }
         }
 
         private async Task LoadAsync(Usuario user)
@@ -51,11 +49,10 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
-            Username = userName;
-
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                UserName = userName
             };
         }
 
@@ -74,24 +71,10 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
         public Usuario Usuario { get; set; }
         [BindProperty]
         public IFormFile ImgCargaUsuario { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
         public async Task<IActionResult> OnPostAsync()
         {
-            var usuarioActual = await _userManager.GetUserAsync(User);
             var archivoUsuario = HttpContext.Request.Form.Files.FirstOrDefault();
-            Usuario imagen = null;
 
-
-            if (archivoUsuario != null)
-            {
-                imagen = new Usuario();
-                using (var bReader = new BinaryReader(archivoUsuario.OpenReadStream()))
-                {
-                    usuarioActual.FotodePerfil = bReader.ReadBytes((int)archivoUsuario.Length);
-
-                }
-            }
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -103,7 +86,7 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
                 await LoadAsync(user);
                 return Page();
             }
-            
+
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             if (Input.PhoneNumber != phoneNumber)
             {
@@ -114,11 +97,21 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
-            var usernameresult = await _userManager.SetUserNameAsync(user,Nombre + "-" + Apellido);
+            var usernameresult = await _userManager.SetUserNameAsync(user, Input.UserName);
             if (!usernameresult.Succeeded)
             {
                 StatusMessage = "Error inesperado al intentar establecer un nuevo nombre de usuario.";
                 return RedirectToPage();
+            }
+            Usuario imagen = null;
+
+            if (archivoUsuario != null)
+            {
+                imagen = new Usuario();
+                using (var bReader = new BinaryReader(archivoUsuario.OpenReadStream()))
+                {
+                    user.FotodePerfil = bReader.ReadBytes((int)archivoUsuario.Length);
+                }
             }
             await _dbcontext.SaveChangesAsync();
             await _signInManager.RefreshSignInAsync(user);
@@ -127,4 +120,3 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
         }
     }
 }
-
