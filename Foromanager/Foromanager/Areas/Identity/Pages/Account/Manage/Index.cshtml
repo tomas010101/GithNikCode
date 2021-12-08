@@ -40,10 +40,7 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-
-   
-        
-
+       
         <script> 
             $('#ImagenUsuario').change(function(e) {
 
@@ -52,7 +49,7 @@
                     var file = e.originalEvent.srcElement.files[0];
                     var reader = new FileReader();
                     reader.onload = function(e) {
-                      $('#UwU').attr('src',e.target.result);
+                        $('[data-uwu]').attr('src',e.target.result);
                     };
                     reader.readAsDataURL(file);
                 }       
