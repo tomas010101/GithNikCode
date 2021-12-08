@@ -53,27 +53,3 @@ else
     </ul>
 }
 
-@section Scripts {
-        
-        @RenderSection("Scripts", required: false)
-        <script> 
-            $('#ImagenUsuario').change(function(e) {
-
-            if(  e.originalEvent.srcElement.files.length > 0){
-
-                var file = e.originalEvent.srcElement.files[0];
-
-        
-                var reader = new FileReader();
-               reader.onload = function(e) {
-                  $('#UwU').attr('src',e.target.result);
-               };
-               reader.readAsDataURL(file);
-
-
-           }       
-   
-});
-        
-        </script>
-    }
