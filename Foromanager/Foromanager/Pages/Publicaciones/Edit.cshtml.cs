@@ -59,6 +59,26 @@ namespace Foromanager.Pages.Publicaciones
             Publicacion.ForoId = publicacion.ForoId;
             _context.Attach(Publicacion).State = EntityState.Modified;
 
+           
+
+            if (ImgCarga != null)
+            {
+                 Imagenes imagen = await _context.Imagenes.SingleOrDefaultAsync(i => i.PublicacionId == id);
+                if (imagen == null)
+                {
+                    imagen = new Imagenes()
+                    {
+                        PublicacionId = id
+                    };
+                    _context.Add(imagen);
+                }
+                using (var bReader = new BinaryReader(ImgCarga.OpenReadStream()))
+                {
+                    imagen.Imagen = bReader.ReadBytes((int)ImgCarga.Length);
+                }
+            }
+
+
             try
             {
                 await _context.SaveChangesAsync();
@@ -74,6 +94,7 @@ namespace Foromanager.Pages.Publicaciones
                     throw;
                 }
             }
+<<<<<<< Updated upstream
             Imagenes imagen = new Imagenes();
 
             if (ImgCarga != null)
@@ -86,6 +107,11 @@ namespace Foromanager.Pages.Publicaciones
            
             await _context.SaveChangesAsync();
             return RedirectToPage("../Foros/Index");
+=======
+
+
+            return RedirectToPage("Details", new { id = id });
+>>>>>>> Stashed changes
         }
 
         private bool PublicacionExists(int id)
