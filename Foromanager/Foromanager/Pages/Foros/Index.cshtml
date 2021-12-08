@@ -120,7 +120,7 @@
                 @*<td class="TdDatos">
                         @Html.DisplayFor(modelItem => item.Status)
                   </td>*@
-            <td class="opciones-especiales">
+            <td class="opciones-especiales TdDatos">
                 @if ((await AuthorizationService.AuthorizeAsync(User, item, ForumOperations.Update)).Succeeded && Model.CurrentUserId == item.OwnerID)
                 {
                     <a asp-page="./Edit" asp-route-id="@item.ForoId" class="EditarForo">Editar</a>
