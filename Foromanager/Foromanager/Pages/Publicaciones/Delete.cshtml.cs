@@ -54,7 +54,7 @@ namespace Foromanager.Pages.Publicaciones
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("../Foros/Index");
+            return RedirectToPage("../Foros/Details", new { id = Publicacion.ForoId });
         }
     }
 }
