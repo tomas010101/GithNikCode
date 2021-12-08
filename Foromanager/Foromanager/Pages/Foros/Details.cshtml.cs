@@ -124,22 +124,29 @@ namespace Foromanager.Pages.Foros
 
 			return RedirectToPage("Details", new { id = id });
 		}
-		public async Task<IActionResult> OnPostLike(int idp,int id )
-        {
+		public async Task<IActionResult> OnPostLike(int idp, int id)
+		{
 			Publicacion = await _context.Publicacion.AsNoTracking().Include(r => r.Reacciones).FirstOrDefaultAsync(p => p.PublicacionId == idp);
 			if (!Publicacion.Reacciones.Any())
-            {
-                Publicacion.Reacciones = new List<Reaccion>();
-            }
-			else if(_context.Reaccion.Where(r => r.Usuario == User.Identity.Name).ToList().Count < 1)
-            {
+			{
+				Publicacion.Reacciones = new List<Reaccion>();
+			}
+			if (!_context.Reaccion.Any(r => r.Usuario == User.Identity.Name))
+			{
 				Publicacion.Reacciones.Add(new Reaccion() { Like = true, Usuario = User.Identity.Name, PublicacionId = idp });
 				_context.Attach(Publicacion).State = EntityState.Modified;
-				await _context.SaveChangesAsync();
 			}
+			if (Publicacion.Reacciones.Any(r => r.Like && r.Usuario == User.Identity.Name))
+			{
+				Reaccion r = Publicacion.Reacciones.SingleOrDefault(r => r.PublicacionId == idp);
+				r.Like = false;
+				Publicacion.Reacciones.Add(r);
+				_context.Attach(Publicacion).State = EntityState.Modified;
+			}
+			await _context.SaveChangesAsync();
 			return RedirectToPage("Details", new { id = id });
 		}
-		public async Task<IActionResult> OnPostDisLike(int idp,int id)
+		public async Task<IActionResult> OnPostDisLike(int idp, int id)
 		{
 			Publicacion = await _context.Publicacion.AsNoTracking().Include(r => r.Reacciones).FirstOrDefaultAsync(p => p.PublicacionId == idp);
 			if (!Publicacion.Reacciones.Any())
@@ -150,27 +157,31 @@ namespace Foromanager.Pages.Foros
 			{
 				Publicacion.Reacciones.Add(new Reaccion() { DisLike = true, Usuario = User.Identity.Name });
 				_context.Attach(Publicacion).State = EntityState.Modified;
-				await _context.SaveChangesAsync();
 			}
+			await _context.SaveChangesAsync();
 			return RedirectToPage("Details", new { id = id });
 		}
 		public async Task<IActionResult> OnPostPostear(int id)
-        {
-            Publicacion.ForoId = id;
-            Publicacion.Usuario = User.Identity.Name.Split('-')[0] + " " + User.Identity.Name.Split('-')[1];
-            Publicacion.Imagen = imagen;
-            Publicacion.Fecha = DateTime.Now;
-            _context.Publicacion.Add(Publicacion);
+		{
+			Publicacion.ForoId = id;
+			Publicacion.Usuario = User.Identity.Name.Split('-')[0] + " " + User.Identity.Name.Split('-')[1];
+			Publicacion.Imagen = imagen;
+			Publicacion.Fecha = DateTime.Now;
+			_context.Publicacion.Add(Publicacion);
 			await _context.SaveChangesAsync();
 			return RedirectToPage("Details", new { id = id });
-        }
-        public void OnPostAprobar()
-        {
-			Foro.Status = ForumStatus.Aprobado;
 		}
-		public void OnPostRechazar()
-        {
+		public async Task<IActionResult> OnPostAprobar(int id)
+		{
+			Foro.Status = ForumStatus.Aprobado;
+			await _context.SaveChangesAsync();
+			return RedirectToPage("Details", new { id = id });
+		}
+		public async Task<IActionResult> OnPostRechazar(int id)
+		{
 			Foro.Status = ForumStatus.Rechazado;
+			await _context.SaveChangesAsync();
+			return RedirectToPage("Details", new { id = id });
 		}
 
 	}
