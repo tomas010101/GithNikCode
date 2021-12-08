@@ -92,7 +92,7 @@ namespace Foromanager.Pages.Publicaciones
                 }
             }
 
-            return RedirectToPage("../Foros/Index");
+            return RedirectToPage("../Foros/Details", new { id = Publicacion.ForoId});
         }
 
         private bool PublicacionExists(int id)
