@@ -275,7 +275,7 @@
         border: 4px solid #A39355;
         border-radius: 50%;
         position: absolute;
-        right: 10rem;
+        right: 8rem;
     }
 
         .perfil-avatar img {
@@ -308,7 +308,7 @@
     }
 
     .cerrar {
-        width: 6rem;
+        width: 5rem;
         font-size: 16px;
         margin-right: -3rem;
         margin-left: 2rem;
@@ -322,7 +322,7 @@
         border: 4px solid #A39355;
         border-radius: 50%;
         position: absolute;
-        right: 12rem;
+        right: 10rem;
     }
 
         .perfil-avatar img {
@@ -336,7 +336,7 @@
 
 @media (min-width: 1050px) and (max-width: 1150px) { /*Tamaño 110%*/
     .cerrar {
-        width: 6rem;
+        width: 5rem;
         margin-left: 3rem;
         font-size: 16px;
     }
@@ -347,6 +347,10 @@
         width: 6rem;
         margin-left: 3rem;
         font-size: 18px;
+    }
+    .perfil-avatar {
+        position: absolute;
+        right: 10rem;
     }
 }
 
@@ -388,9 +392,11 @@
         width: 40px;
     }
     .cerrar {
-        width: 3rem;
+        width: 5rem;
         margin-left: 2rem;
         font-size: 23px;
+        position: absolute;
+        right: 6rem;
     }
 
     .perfil-avatar {
@@ -402,7 +408,7 @@
         border: 4px solid #A39355;
         border-radius: 50%;
         position: absolute;
-        right: 13rem;
+        right: 8rem;
     }
 
         .perfil-avatar img {
@@ -441,8 +447,11 @@
         width: 2rem;
     }
     .cerrar {
+        width: 6rem;
         margin-left: 4rem;
-        font-size: 25px
+        font-size: 25px;
+        position: absolute;
+        right: 6rem;
     }
 
     .perfil-avatar {
@@ -454,7 +463,7 @@
         border: 5px solid #A39355;
         border-radius: 50%;
         position: absolute;
-        right: 16rem;
+        right: 12rem;
     }
 
         .perfil-avatar img {

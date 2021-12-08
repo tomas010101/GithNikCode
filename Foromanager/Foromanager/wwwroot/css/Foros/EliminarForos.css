@@ -1,3 +1,13 @@
 ﻿.MarginIzquierda {
     margin-left: 4rem;
+    width: 90%;
+}
+.MarginIzquierda dt, .MarginIzquierda dd{
+    width: 12rem;
+}
+
+@media (max-width: 550px) { /*Tamaño 250%*/
+    .MarginIzquierda {
+        margin-left: 1rem;
+    }
 }
