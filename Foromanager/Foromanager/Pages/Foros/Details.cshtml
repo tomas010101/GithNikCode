@@ -1,4 +1,4 @@
-@page
+@page "/Foro"
 @model Foromanager.Pages.Foros.DetailsModel
 @using Microsoft.AspNetCore.Identity
 @using Foromanager.Pages.Foros
@@ -41,14 +41,19 @@
 
     @foreach (var item in Model.Foro.Publicaciones)
     {
-        int Likes = 0;
-        int Dislikes = 0;
+        
         var Reacciones = await DbContext.Reaccion.Where(i => i.PublicacionId == item.PublicacionId).ToListAsync();
+        @*
+        int Likes = item.Reacciones != null ? item.Reacciones.Count(r => r.Like) : 0;
+        int Dislikes = item.Reacciones != null ? item.Reacciones.Count(r => r.DisLike) : 0;
+        *@
+        int Likes = Reacciones != null ? Reacciones.Count(r=>r.Like) : 0;
+        int DisLikes = Reacciones != null ? Reacciones.Count(r=>r.DisLike) : 0;
 
         var imagenes = await DbContext.Imagenes.Where(i => i.PublicacionId == item.PublicacionId).ToListAsync();
         <br />
         <div class="DivNombreUsuario">
-            <h3 class="NombreUsuario">@Html.DisplayFor(modelItem => item.Usuario):</h3>
+            <h3 class="NombreUsuario">@Html.DisplayFor(modelItem => item.Usuario)</h3>
             <p>@Html.DisplayFor(modelItem => item.Fecha)</p>
         </div>
         <div>
@@ -64,26 +69,30 @@
                     <image class="ImagenPublicacion" src="data:image;base64,@Convert.ToBase64String(imagenes[0].Imagen)"></image>
                 }
             </div>
-            @foreach (var reac in Reacciones)
+            @*@foreach (var reac in Reacciones)
+        {
+            if (reac.Like)
             {
-                if (reac.Like)
-                {
-                    Likes++;
-                }
-                else if (reac.DisLike)
-                {
-                    Dislikes++;
-                }
+                Likes++;
             }
-            <form method="post">
-                <div class="form-group">
-                    <button type="submit" class="btn likeydislike" asp-for="@Acciones.like"><i class="far fa-thumbs-up"></i> @Likes </button>
-                    <button type="submit" class="btn likeydislike" asp-for="@Acciones.dislike"><i class="far fa-thumbs-down"></i> @Dislikes</button>
-                </div>
+            else if (reac.DisLike)
+            {
+                Dislikes++;
+            }
+        }*@
+        <div class="form-group">
+            <form asp-page-handler="like">
+                <input type="hidden" name="idp" value="@item.PublicacionId" />
+                <input type="hidden" name="id" value="@item.ForoId" />
+                <button type="submit" class="btn likeydislike"><i class="far fa-thumbs-up"></i> @Likes </button>
             </form>
-
-
-            @if (item.Usuario == @User.Identity.Name)
+            <form asp-page-handler="dislike">
+                <input type="hidden" name="idp" value="@item.PublicacionId" />
+                <input type="hidden" name="id" value="@item.ForoId" />
+                <button type="submit" class="btn likeydislike"><i class="far fa-thumbs-down"></i> @DisLikes</button>
+            </form>
+        </div>
+            @if (item.Usuario == @User.Identity.Name.Split('-')[0] + " " + @User.Identity.Name.Split('-')[1])
             {
                 <br />
                 <p class="BotonesPublicaciones">
@@ -93,13 +102,13 @@
             }
         </div>
         Likes = 0;
-        Dislikes = 0;
+        DisLikes = 0;
     }
     <br />
-    <form enctype="multipart/form-data" class="col-sm-10 row-sm-10 FormCreacion" method="post">
-
+    <form asp-page-handler="postear" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <dv class="CrearTitulo">
-            <input asp-for="Publicacion.Titulo" class="form-control Titulo-input" type="text" placeholder="Titulo"></input>
+            <input asp-for="Publicacion.Titulo" class="form-control Titulo-input" type="text" placeholder="Titulo" />
             <span asp-validation-for="Publicacion.Titulo" class="text-danger Titulo-span"></span>
         </dv>
 
@@ -112,7 +121,8 @@
 
         <br />
         <div class="form-group">
-            <button type="submit" class="btn BotonForos" asp-for="@Acciones.postear">Publicar</button>
+            <input type="hidden" name="id" value="@Model.Foro.ForoId" />
+            <button type="submit" class="btn BotonForos">Publicar</button>
         </div>
     </form>
 </div>
@@ -121,10 +131,10 @@
 {
     @if ((await AuthorizationService.AuthorizeAsync(User, Model.Foro, ForumOperations.Approve)).Succeeded)
     {
-        <form style="display:inline;" method="post">
+        <form style="display:inline;" asp-page-handler="aprobar" method="post">
             <input type="hidden" name="id" value="@Model.Foro.ForoId" />
             <input type="hidden" name="status" value="@ForumStatus.Aprobado" />
-            <button asp-for="@Acciones.aprobar" value="aprobar" type="submit" class="btn btn-xs btn-success">Aprobar</button>
+            <button type="submit" class="btn btn-xs btn-success">Aprobar</button>
         </form>
     }
 }
@@ -133,10 +143,13 @@
 {
     @if ((await AuthorizationService.AuthorizeAsync(User, Model.Foro, ForumOperations.Reject)).Succeeded)
     {
-        <form style="display:inline;" method="post">
+        <form style="display:inline;" asp-page-handler="rechazar" method="post">
             <input type="hidden" name="id" value="@Model.Foro.ForoId" />
             <input type="hidden" name="status" value="@ForumStatus.Rechazado" />
-            <button asp-for="@Acciones.descartar" value="descartar" type="submit" class="btn btn-xs btn-danger">Rechazar</button>
+            <button type="submit" class="btn btn-xs btn-danger">Rechazar</button>
         </form>
     }
+}
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
 }

@@ -43,7 +43,7 @@ namespace Foromanager.Pages.Publicaciones
             ViewData["ForoId"] = new SelectList(_context.Foro, "ForoId", "ForoId");
             return Page();
         }
-        
+
         [BindProperty]
         public IFormFile ImgCarga { get; set; }
 
@@ -53,11 +53,28 @@ namespace Foromanager.Pages.Publicaciones
             {
                 return Page();
             }
-            var publicacion = await _context.Publicacion.AsNoTracking().FirstOrDefaultAsync(m=>m.PublicacionId == id);
+            var publicacion = await _context.Publicacion.AsNoTracking().FirstOrDefaultAsync(m => m.PublicacionId == id);
             Publicacion.Fecha = publicacion.Fecha;
             Publicacion.Usuario = publicacion.Usuario;
             Publicacion.ForoId = publicacion.ForoId;
             _context.Attach(Publicacion).State = EntityState.Modified;
+
+            if (ImgCarga != null)
+            {
+                Imagenes imagen = await _context.Imagenes.SingleOrDefaultAsync(i => i.PublicacionId == id);
+                if (imagen == null)
+                {
+                    imagen = new Imagenes()
+                    {
+                        PublicacionId = id
+                    };
+                    _context.Add(imagen);
+                }
+                using (var bReader = new BinaryReader(ImgCarga.OpenReadStream()))
+                {
+                    imagen.Imagen = bReader.ReadBytes((int)ImgCarga.Length);
+                }
+            }
 
             try
             {
@@ -74,18 +91,7 @@ namespace Foromanager.Pages.Publicaciones
                     throw;
                 }
             }
-            Imagenes imagen = null;
 
-            if (ImgCarga != null)
-            {
-                imagen = new Imagenes();
-                using (var bReader = new BinaryReader(ImgCarga.OpenReadStream()))
-                {
-                    imagen.Imagen = bReader.ReadBytes((int)ImgCarga.Length);
-                }
-            }
-           
-            await _context.SaveChangesAsync();
             return RedirectToPage("../Foros/Index");
         }
 

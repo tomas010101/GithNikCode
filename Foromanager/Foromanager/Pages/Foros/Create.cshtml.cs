@@ -53,7 +53,6 @@ namespace Foromanager.Pages.Foros
                     using (var bReader = new BinaryReader(archivoForo.OpenReadStream()))
                     {
                         Foro.ForoPerfil = bReader.ReadBytes((int)archivoForo.Length);
-
                     }
                 }
 

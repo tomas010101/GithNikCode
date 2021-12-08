@@ -12,34 +12,35 @@
 <partial name="_StatusMessage" model="Model.StatusMessage" />
 <div class="row">
     <div class="col-md-6">
-         <form enctype = "multipart/form-data" method="post">
-             @Html.AntiForgeryToken();
-         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form enctype="multipart/form-data" method="post">
+            @Html.AntiForgeryToken();
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Username">Nombre de Usuario</label>
-                <input asp-for="Username" class="form-control" disabled />
+                <label asp-for="Nombre">Nombre de Usuario</label>
+                <input asp-for="Nombre" value="Model.Username"class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellido">Apellido de Usuario</label>
+                <input asp-for="Apellido" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="Input.PhoneNumber">Número de Telefono</label>
                 <input asp-for="Input.PhoneNumber" class="form-control" />
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
-             <input asp-for = "ImgCargaUsuario" id="ImagenUsuario" type="file" class="boton-avatar">
-                    <i class="far fa-image"></i>@*NO TOCAR!!!, Esta hecho asi nomas pero funciona y es lo importante*@
-                </input> 
-            <button id="update-profile-button" type="submit" class="btn btn-primary Managebotones">Guardar</button>    
-         
-         </form>
+            <input asp-for="ImgCargaUsuario" id="ImagenUsuario" type="file" class="boton-avatar">
+            <i class="far fa-image"></i>@*NO TOCAR!!!, Esta hecho asi nomas pero funciona y es lo importante*@
+            </input>
+            <button id="update-profile-button" type="submit" class="btn btn-primary Managebotones">Guardar</button>
+
+        </form>
     </div>
 
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-
-   
-        
-
+       
         <script> 
             $('#ImagenUsuario').change(function(e) {
 
@@ -48,7 +49,7 @@
                     var file = e.originalEvent.srcElement.files[0];
                     var reader = new FileReader();
                     reader.onload = function(e) {
-                      $('#UwU').attr('src',e.target.result);
+                        $('[data-uwu]').attr('src',e.target.result);
                     };
                     reader.readAsDataURL(file);
                 }       
