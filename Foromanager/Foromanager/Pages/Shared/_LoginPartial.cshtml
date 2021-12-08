@@ -53,22 +53,15 @@ else
     </ul>
 }
 
-<<<<<<< Updated upstream
 @section Scripts {
         
         @RenderSection("Scripts", required: false)
-=======
- @section Scripts {
-     <partial name="_ValidationScriptsPartial" />
-        
->>>>>>> Stashed changes
         <script> 
             $('#ImagenUsuario').change(function(e) {
 
             if(  e.originalEvent.srcElement.files.length > 0){
 
                 var file = e.originalEvent.srcElement.files[0];
-<<<<<<< Updated upstream
 
         
                 var reader = new FileReader();
@@ -84,16 +77,3 @@ else
         
         </script>
     }
-=======
-                var reader = new FileReader();
-               reader.onload = function(e) {
-                  $('[data-uwu]').attr('src',e.target.result);
-               };
-               reader.readAsDataURL(file);
-           }       
-
-});
-        
-        </script>
-    }
->>>>>>> Stashed changes
