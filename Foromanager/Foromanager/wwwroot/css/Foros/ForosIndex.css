@@ -7,7 +7,7 @@ a:hover {
     color: #e5cccc;
 }
 
-/*Estos estilos afectan al form e input donde escribiremos el nombre de algun foro a buscar*/
+
 .FormBuscador{
     margin-left: 3rem;
 }
@@ -15,8 +15,6 @@ a:hover {
     width: 13rem;
 }
 
-
-/*Se ajusta el tamaño, colr y posicion al boton que nos permite bucar foros y al boton que nos permite refrescar la página*/
 .Lupaboton {
     width: 4rem;
     color: #FFFFFF;
@@ -61,14 +59,11 @@ a:hover {
     -webkit-background-clip: text;
 }
 
-/*Se da un borde a las etiqueatas a que permiten editar y eliminar los foros para separarlas del resto*/
 .opciones-especiales{
     border-left: solid;
     border-width: 0.2mm;
     border-color: #FFFFFF;
 }
-
-/*Se ajusta el tamaño, color y posición del boton que permite crear un nuevo foro*/
 .Cont-add {
     text-align: center;
     font-size: 25px;
@@ -92,7 +87,6 @@ a:hover {
     text-shadow: 2px 4px 28px rgb(0 0 0);
 }
 
-/*Se ajusta el tamaño, color y psición de la tabla y lo que contiene*/
 .table {
     width: 90%;
     margin-top: 3rem;
