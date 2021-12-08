@@ -105,7 +105,7 @@
         DisLikes = 0;
     }
     <br />
-    <form asp-page-handler="postear" method="post">
+    <form asp-page-handler="postear" method="post" class="FormCreacion">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <dv class="CrearTitulo">
             <input asp-for="Publicacion.Titulo" class="form-control Titulo-input" type="text" placeholder="Titulo" />
@@ -117,8 +117,10 @@
             <span asp-validation-for="Publicacion.Descripcion" class="text-danger Comentario-span"></span>
         </div>
 
+        <br />
         <div class="CrearImagen"><input asp-for="ImgCarga" type="file" name="imagen" /></div>
 
+        <br />
         <br />
         <div class="form-group">
             <input type="hidden" name="id" value="@Model.Foro.ForoId" />
