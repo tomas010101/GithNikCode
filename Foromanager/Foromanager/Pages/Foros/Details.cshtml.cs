@@ -57,18 +57,7 @@ namespace Foromanager.Pages.Foros
 		public Imagenes imagen = null;
 		public async Task<IActionResult> OnPostAsync(int id)
 		{
-			var archivo = HttpContext.Request.Form.Files.FirstOrDefault();
 			
-			if (archivo != null)
-			{
-				imagen = new Imagenes();
-				using (var bReader = new BinaryReader(archivo.OpenReadStream()))
-				{
-					imagen.Imagen = bReader.ReadBytes((int)archivo.Length);
-					imagen.ImagenNombre = archivo.Name;
-				}
-			}
-
 			Foro = await _context.Foro.FirstOrDefaultAsync(m => m.ForoId == id);
 
 			if (Foro == null)
@@ -170,6 +159,18 @@ namespace Foromanager.Pages.Foros
 		}
 		public async Task<IActionResult> OnPostPostear(int id)
 		{
+			var archivo = HttpContext.Request.Form.Files.FirstOrDefault();
+
+			if (archivo != null)
+			{
+				imagen = new Imagenes();
+				using (var bReader = new BinaryReader(archivo.OpenReadStream()))
+				{
+					imagen.Imagen = bReader.ReadBytes((int)archivo.Length);
+					imagen.ImagenNombre = archivo.Name;
+				}
+			}
+
 			Publicacion.ForoId = id;
 			Publicacion.Usuario = User.Identity.Name.Split('-')[0] + " " + User.Identity.Name.Split('-')[1];
 			Publicacion.Imagen = imagen;
