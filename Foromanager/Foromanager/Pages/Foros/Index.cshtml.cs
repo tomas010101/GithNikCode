@@ -61,10 +61,9 @@ namespace Foromanager.Pages.Foros
                 {
                     ForosIQ = ForosIQ.Where(f => f.Nombre.ToUpper().Contains(searchString.ToUpper()));
                 }
-                 if(!String.IsNullOrEmpty(CategoriaBusqueda))
-                {
-                    var categoria = _context.Categoria.FirstOrDefault(c => c.CategoriaNombre.ToUpper() == CategoriaBusqueda.ToUpper());
-                    ForosIQ = (IQueryable<Foro>)ForosIQ.Where(f => f.Categorias.Contains(categoria));
+                if(!String.IsNullOrEmpty(CategoriaBusqueda))
+                {                    
+                    ForosIQ = (IQueryable<Foro>)ForosIQ.Where(f => f.Categorias.Any(c => c.CategoriaNombre.ToUpper().Contains(CategoriaBusqueda.ToUpper())));
                 }
 
                 switch (sortOrder)
