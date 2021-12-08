@@ -131,16 +131,16 @@ namespace Foromanager.Pages.Foros
 			{
 				Publicacion.Reacciones = new List<Reaccion>();
 			}
+			if (!_context.Reaccion.Any(r => r.Usuario == User.Identity.Name))
+			{
+				Publicacion.Reacciones.Add(new Reaccion() { Like = true, Usuario = User.Identity.Name, PublicacionId = idp });
+				_context.Attach(Publicacion).State = EntityState.Modified;
+			}
 			if (Publicacion.Reacciones.Any(r => r.Like && r.Usuario == User.Identity.Name))
 			{
 				Reaccion r = Publicacion.Reacciones.SingleOrDefault(r => r.PublicacionId == idp);
 				r.Like = false;
 				Publicacion.Reacciones.Add(r);
-				_context.Attach(Publicacion).State = EntityState.Modified;
-			}
-			if (!_context.Reaccion.Any(r => r.Usuario == User.Identity.Name))
-			{
-				Publicacion.Reacciones.Add(new Reaccion() { Like = true, Usuario = User.Identity.Name, PublicacionId = idp });
 				_context.Attach(Publicacion).State = EntityState.Modified;
 			}
 			await _context.SaveChangesAsync();
@@ -153,16 +153,9 @@ namespace Foromanager.Pages.Foros
 			{
 				Publicacion.Reacciones = new List<Reaccion>();
 			}
-			if (Publicacion.Reacciones.Any(r => r.Like && r.Usuario == User.Identity.Name))
+			else if (_context.Reaccion.Where(r => r.Usuario == User.Identity.Name).ToList().Count < 1)
 			{
-				Reaccion r = Publicacion.Reacciones.SingleOrDefault(r => r.PublicacionId == idp);
-				r.DisLike = false;
-				Publicacion.Reacciones.Add(r);
-				_context.Attach(Publicacion).State = EntityState.Modified;
-			}
-			if (!_context.Reaccion.Any(r => r.Usuario == User.Identity.Name))
-			{
-				Publicacion.Reacciones.Add(new Reaccion() { DisLike = true, Usuario = User.Identity.Name, PublicacionId = idp });
+				Publicacion.Reacciones.Add(new Reaccion() { DisLike = true, Usuario = User.Identity.Name });
 				_context.Attach(Publicacion).State = EntityState.Modified;
 			}
 			await _context.SaveChangesAsync();

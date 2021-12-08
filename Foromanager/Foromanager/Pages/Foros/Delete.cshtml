@@ -5,37 +5,35 @@
     ViewData["Title"] = "Eliminar Foro";
 }
 <head>
-    <link rel="stylesheet" href="~/css/Foros/EliminarForos.css" />
+    <link rel="stylesheet" href="~/css/Foros/EliminarForos.css" />º
 </head>
 
 <h1 class="MarginIzquierda">Eliminar @Html.DisplayFor(model => model.Foro.Nombre)</h1>
 
-<h3 class="MarginIzquierda">Esta seguro que desea eliminarlo?</h3>
-
-<div class="LimHr"><hr color="white" /></div>
-
+<h3 class="MarginIzquierda">¿ Esta seguro que desea eliminarlo?</h3>
 <div class="MarginIzquierda">
+    <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            <p>@Html.DisplayNameFor(model => model.Foro.Nombre):</p>
+            <p>@Html.DisplayNameFor(model => model.Foro.Nombre)</p>
         </dt>
         <dd class="col-sm-10">
             <p>@Html.DisplayFor(model => model.Foro.Nombre)</p>
         </dd>
         <dt class="col-sm-2">
-            <p>@Html.DisplayNameFor(model => model.Foro.Descripcion):</p>
+            <p>@Html.DisplayNameFor(model => model.Foro.Descripcion)</p>
         </dt>
         <dd class="col-sm-10">
             <p>@Html.DisplayFor(model => model.Foro.Descripcion)</p>
         </dd>
         <dt class="col-sm-2">
-            <p>@Html.DisplayNameFor(model => model.Foro.Categorias):</p>
+            <p>@Html.DisplayNameFor(model => model.Foro.Categorias)</p>
         </dt>
         <dd class="col-sm-10">
             <p>@Html.DisplayFor(model => model.Foro.Categorias)</p>
         </dd>
         <dt class="col-sm-2">
-            <p>@Html.DisplayNameFor(model => model.Foro.Fecha):</p>
+            <p>@Html.DisplayNameFor(model => model.Foro.Fecha)</p>
         </dt>
         <dd class="col-sm-10">
             <p>@Html.DisplayFor(model => model.Foro.Fecha)</p>
@@ -44,7 +42,7 @@
 
     <form method="post" class="MarginIzquierda">
         <input type="hidden" asp-for="Foro.ForoId" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <input type="submit" value="Eliminar" class="btn-danger" /> |
         <a asp-page="./Index">Regresar</a>
     </form>
 </div>

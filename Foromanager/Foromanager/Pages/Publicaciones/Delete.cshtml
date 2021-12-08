@@ -5,17 +5,11 @@
     ViewData["Title"] = "Eliminar";
 }
 
-<head>
-    <link rel="stylesheet" href="~/css/Publicaciones/EliminaryEditar.css" />
-</head>
+<h1>Borrar</h1>
 
-<h1 class="Espaciado">Borrar</h1>
-
-<h3 class="Espaciado">Estas seguro que quieres borrar esta publicacion?</h3>
-
-<div class="LimHr"><hr color="white" /></div>
-
-<div class="Espaciado">
+<h3>Estas seguro que quieres borrar esta publicacion?</h3>
+<div>
+    <hr style="background-color: white;" />
     <dl class="row">
         <dt class="col-sm-2">
             <p>@Html.DisplayNameFor(model => model.Publicacion.Usuario)</p>
@@ -45,7 +39,7 @@
     
     <form method="post">
         <input type="hidden" asp-for="Publicacion.PublicacionId" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" />
-        <a asp-page="../Foros/Index">Regresar</a>
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-page="../Foros/Index">Volver a la lista</a>
     </form>
 </div>

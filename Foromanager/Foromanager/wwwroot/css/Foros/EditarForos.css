@@ -4,30 +4,10 @@
     margin-bottom: 0%;
 }
 
-.MarginIzquierda a{
-    margin-left: 2rem;
-}
-
-.MarginIzquierda{
-    margin-left: 4rem;
-    width: 90%;
-}
-
 .LimHr {
     width: 100%;
 }
 
 .EditarInputs{
     width: 30rem;
-}
-
-
-@media (max-width: 550px) { /*Tamaño 250%*/
-    .MarginIzquierda{
-        margin-left: 0;
-    }
-
-    .EditarInputs{
-        width: 20rem;
-    }
 }
