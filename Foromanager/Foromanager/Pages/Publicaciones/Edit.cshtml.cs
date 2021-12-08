@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Foromanager.Data;
 using Foromanager.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Foromanager.Pages.Publicaciones
 {
@@ -20,6 +22,7 @@ namespace Foromanager.Pages.Publicaciones
             _context = context;
         }
 
+        Foro Foro { get; set; }
         [BindProperty]
         public Publicacion Publicacion { get; set; }
 
@@ -37,23 +40,41 @@ namespace Foromanager.Pages.Publicaciones
             {
                 return NotFound();
             }
-           ViewData["ForoId"] = new SelectList(_context.Foro, "ForoId", "ForoId");
+            ViewData["ForoId"] = new SelectList(_context.Foro, "ForoId", "ForoId");
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
+        [BindProperty]
+        public IFormFile ImgCarga { get; set; }
+
         public async Task<IActionResult> OnPostAsync(int id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            var publicacion = await _context.Publicacion.AsNoTracking().FirstOrDefaultAsync(m=>m.PublicacionId == id);
+            var publicacion = await _context.Publicacion.AsNoTracking().FirstOrDefaultAsync(m => m.PublicacionId == id);
             Publicacion.Fecha = publicacion.Fecha;
             Publicacion.Usuario = publicacion.Usuario;
             Publicacion.ForoId = publicacion.ForoId;
             _context.Attach(Publicacion).State = EntityState.Modified;
+
+            if (ImgCarga != null)
+            {
+                Imagenes imagen = await _context.Imagenes.SingleOrDefaultAsync(i => i.PublicacionId == id);
+                if (imagen == null)
+                {
+                    imagen = new Imagenes()
+                    {
+                        PublicacionId = id
+                    };
+                    _context.Add(imagen);
+                }
+                using (var bReader = new BinaryReader(ImgCarga.OpenReadStream()))
+                {
+                    imagen.Imagen = bReader.ReadBytes((int)ImgCarga.Length);
+                }
+            }
 
             try
             {

@@ -22,12 +22,11 @@
 
                     @if (usuario.FotodePerfil == null)
                     {
-
-                        <img id="UwU" src="https://cdn.myminifactory.com/assets/object-assets/5a87156690514/images/720X720-i6jnn7b.jpg" alt="img-avatar">
+                        <img data-uwu src="https://cdn.myminifactory.com/assets/object-assets/5a87156690514/images/720X720-i6jnn7b.jpg" alt="img-avatar">
                     }
                     else
                     {
-                        <image src="data:image;base64,@Convert.ToBase64String(usuario.FotodePerfil)" class="ImagenParfil"></image>
+                        <image data-uwu src="data:image;base64,@Convert.ToBase64String(usuario.FotodePerfil)" class="ImagenParfil"></image>
                     }
 
                 </a>
