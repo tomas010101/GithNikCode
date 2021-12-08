@@ -98,7 +98,7 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
                 return NotFound($"No se puede cargar el usuario con ID '{_userManager.GetUserId(User)}'.");
             }
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 await LoadAsync(user);
                 return Page();
