@@ -7,6 +7,8 @@
 <head>
     <link rel="stylesheet" href="~/css/Foros/BotonesForos.css" />
     <link rel="stylesheet" href="~/css/Foros/EditarForos.css" />
+    <link rel="stylesheet" href="~/css/InputFileStyle.css" />
+    <link rel="stylesheet" href="~/css/EditarYEliminarResponsive.css" />
 </head>
 
 
@@ -23,25 +25,31 @@
             <div class="form-group">
                 <label class="control-label">Imagen</label>
                 <br />
-                <input asp-for="ImgCargaForo" type="file" accept=".jpg, .png, .jpeg" />
+                <label class="Aviso">Se recomienda que la Imagen del Banner sea de 1200px x 600px (No obligatorio)</label>
+                <br />
+                <input id="file" class="InputFile" asp-for="ImgCargaForo" type="file" accept=".jpg, .png, .jpeg" />
+                <label class="BotonImagen" for="file"> <i class="fas fa-upload"></i> Subir Imagen</label>
             </div>
             
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
                 <br />
-                <input asp-for="Nombre" class="form-control EditarInputs" />
+                <input asp-for="Nombre" class="form-control EditarInputs InputWidth" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Descripcion" class="control-label"></label>
                 <br />
-                <textarea asp-for="Descripcion" rows="5" cols="40" class="EditarInputs"></textarea>
+                <textarea asp-for="Descripcion" rows="5" cols="40" class="EditarInputs InputWidth"></textarea>
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Banner</label>
                 <br />
-                <input asp-for="ImgCargaBanner" type="file" accept=".jpg, .png, .jpeg" />
+                <label class="Aviso">Se recomienda que la Imagen del Banner sea de 1200px x 400px (No obligatorio)</label>
+                <br />
+                <input id="file" class="InputFile" asp-for="ImgCargaBanner" type="file" accept=".jpg, .png, .jpeg" />
+                <label class="BotonImagen" for="file"> <i class="fas fa-upload"></i> Subir Imagen</label>
             </div>
             
 
@@ -49,7 +57,7 @@
                 <br />
                 <br />
                 <input type="submit" value="Guardar" class="btn BotonForos" /> 
-                <a asp-page="./Index">Regresar</a>
+                <a class="BotonRegresar" asp-page="./Index">Regresar</a>
             </div>
         </form>
     </div>

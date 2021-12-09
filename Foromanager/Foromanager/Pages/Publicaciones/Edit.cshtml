@@ -7,41 +7,45 @@
 
 <head>
     <link rel="stylesheet" href="~/css/Publicaciones/EliminaryEditar.css" />
+    <link rel="stylesheet" href="~/css/Foros/BotonesForos.css" />
+    <link rel="stylesheet" href="~/css/InputFileStyle.css" />
+    <link rel="stylesheet" href="~/css/EditarYEliminarResponsive.css" />
 </head>
 
-<h1>Editar</h1>
+<h1 class="Espaciado">Editar Publicacion</h1>
 
-<h4>Publicacion</h4>
+
 <div class="LimHr"><hr color="white" /></div>
 
-<div class="row Espaciado">
-    <div class="col-md-4">
+<div class="Espaciado">
+    <div>
         <form enctype="multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <br />
             <div class="form-group">
                 <label asp-for="Publicacion.Titulo" class="control-label"></label>
-                <input asp-for="Publicacion.Titulo" class="form-control" />
+                <input asp-for="Publicacion.Titulo" class="form-control InputWidth" />
                 <span asp-validation-for="Publicacion.Titulo" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Publicacion.Descripcion" class="control-label"></label>
-                <input asp-for="Publicacion.Descripcion" class="form-control" />
+                <input asp-for="Publicacion.Descripcion" class="form-control InputWidth" />
                 <span asp-validation-for="Publicacion.Descripcion" class="text-danger"></span>
             </div>
+            <br />
             <div class="EditarImagen">
-                <input asp-for="ImgCarga" type="file" accept=".jpg, .png, .jpeg" />
+                <input id="file" class="InputFile" asp-for="ImgCarga" type="file" accept=".jpg, .png, .jpeg" />
+                <label class="BotonImagen" for="file"> <i class="fas fa-upload"></i> Subir Imagen</label>
             </div>
+            <br />
             <div class="form-group">
                 <input type="hidden" asp-for="Publicacion.PublicacionId" />
                 <input type="hidden" asp-for="Publicacion.ForoId" />
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn BotonForos" /> <a class="BotonRegresar" asp-page="../Foros/Index"> Regresar</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-page="../Foros/Index">Volver a la Lista</a>
 </div>
 
 @section Scripts {

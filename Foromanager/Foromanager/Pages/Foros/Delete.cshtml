@@ -6,6 +6,7 @@
 }
 <head>
     <link rel="stylesheet" href="~/css/Foros/EliminarForos.css" />
+    <link rel="stylesheet" href="~/css/EditarYEliminarResponsive.css" />
 </head>
 
 <h1 class="MarginIzquierda">Eliminar @Html.DisplayFor(model => model.Foro.Nombre)</h1>
@@ -45,6 +46,6 @@
     <form method="post" class="MarginIzquierda">
         <input type="hidden" asp-for="Foro.ForoId" />
         <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a asp-page="./Index">Regresar</a>
+        <a class="BotonRegresar" asp-page="./Index">Regresar</a>
     </form>
 </div>

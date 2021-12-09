@@ -115,8 +115,6 @@
 
 /*En este bloque se le da estilo a los botones de las publicaciones*/
 .likeydislike {
-    width: 4rem;
-    height 4rem;
     margin-top: 2rem;
     background-color: #efb018;
     color: #000000;
@@ -150,6 +148,7 @@
     .BorrarPublicacion:hover {
         text-decoration: none;
         background-color: #CB3A2B;
+        border-color: #A50000;
         color: #000000;
     }
 
@@ -175,8 +174,12 @@
 
 /*Zona para crear una nueva publicación*/
 
+hr{
+    margin-left: -4rem;
+}
+
 .FormCreacion {
-    margin-top: 6rem;
+    margin-top: 10rem;
     margin-left: 4rem;
 }
 
@@ -184,9 +187,16 @@
     width: 40%;
 }
 
+.CrearTitulo span {
+    color: #ff0000;
+}
+
 .CrearComentario {
     margin-top: 2rem;
 }
+    .CrearComentario span {
+        color: #ff0000;
+    }
 
 .Comentario-textarea {
     width: 40%;
@@ -335,7 +345,7 @@
 @media (min-width: 750px) and (max-width: 850px) { /*Tamaño 150%*/
 
     .BannerCont {
-        height: 200px;
+        height: 250px;
         margin-top: 0.4rem;
     }
 
@@ -347,7 +357,7 @@
         }
 
     .BannerImage {
-        height: 200px;
+        height: 250px;
         margin-top: 4.4rem;
     }
 
@@ -481,6 +491,40 @@
     .ComentarioPublicacion {
         font-size: 25px;
     }
+
+    .BorrarPublicacion {
+        margin-right: 1rem;
+        font-size: 18px;
+    }
+
+    .EditarPublicacion {
+        margin-right: 1rem;
+        font-size: 18px;
+    }
+
+    /*Zona para crear una nueva publicación*/
+
+    .Titulo-input {
+        font-size: 20px;
+        width: 45%;
+    }
+
+    .CrearTitulo span {
+        font-size: 20px;
+    }
+
+    .Comentario-textarea {
+        font-size: 20px;
+        width: 45%;
+    }
+
+    .CrearComentario span {
+        font-size: 20px;
+    }
+
+    .Imagen-Input {
+        font-size: 20px;
+    }
 }
 
 @media (min-width: 1550px) and (max-width: 1750px) { /*Tamaño 75-70%*/
@@ -506,20 +550,76 @@
     }
 
 
+    .DivNombreUsuario{
+        margin-left: 6rem;
+    }
     .NombreUsuario {
         font-size: 35px;
     }
-
     .DivNombreUsuario p {
         font-size: 20px;
     }
 
+
+    .DivPublicaciones{
+        margin-left: 6rem;
+    }
     .TituloPublicacion {
         font-size: 35px;
     }
-
     .ComentarioPublicacion {
         font-size: 25px;
+    }
+
+
+    .likeydislike {
+        width: 4rem;
+        height: 3rem;
+    }
+
+    .BorrarPublicacion {
+        margin-right: 1rem;
+        border-radius: 0.5rem;
+        font-size: 20px;
+    }
+
+    .EditarPublicacion {
+        margin-right: 1rem;
+        border-radius: 0.5rem;
+        font-size: 20px;
+    }
+
+    /*Zona para crear una nueva publicación*/
+
+    hr {
+        margin-left: -6rem;
+    }
+
+    .FormCreacion {
+        margin-top: 20rem;
+        margin-left: 6rem;
+    }
+
+    .Titulo-input {
+        font-size: 26px;
+        width: 45%;
+    }
+
+    .CrearTitulo span {
+        font-size: 26px;
+    }
+
+    .Comentario-textarea {
+        font-size: 26px;
+        width: 45%;
+    }
+
+    .CrearComentario span {
+        font-size: 26px;
+    }
+
+    .Imagen-Input {
+        font-size: 20px;
     }
 }
 
@@ -545,6 +645,12 @@
     .Imagen-Banner {
     }
 
+    .DivNombreUsuario{
+        margin-left: 10rem;
+    }
+    .DivNombreUsuario h3 {
+        width: 50%;
+    }
 
     .NombreUsuario {
         font-size: 45px;
@@ -554,11 +660,67 @@
         font-size: 25px;
     }
 
+    .DivPublicaciones{
+        margin-left: 10rem;
+    }
+
     .TituloPublicacion {
         font-size: 40px;
     }
 
     .ComentarioPublicacion {
+        font-size: 30px;
+    }
+
+    .likeydislike {
+        font-size: 20px;
+    }
+
+    .BorrarPublicacion {
+        margin-right: 1rem;
+        border-radius: 0.5rem;
+        font-size: 20px;
+    }
+
+    .EditarPublicacion {
+        margin-right: 1rem;
+        border-radius: 0.5rem;
+        font-size: 20px;
+    }
+
+    /*Zona para crear una nueva publicación*/
+
+    hr {
+        margin-left: -10rem;
+    }
+
+    .FormCreacion {
+        margin-top: 20rem;
+        margin-left: 10rem;
+    }
+        .FormCreacion h2 {
+            font-size: 45px;
+        }
+
+    .Titulo-input {
+        font-size: 35px;
+        width: 45%;
+    }
+
+    .CrearTitulo span {
+        font-size: 30px;
+    }
+
+    .Comentario-textarea {
+        font-size: 35px;
+        width: 45%;
+    }
+
+    .CrearComentario span {
+        font-size: 30px;
+    }
+
+    .Imagen-Input {
         font-size: 30px;
     }
 }
@@ -587,6 +749,13 @@
     }
 
 
+    .DivNombreUsuario{
+        margin-left: 10rem;
+    }
+    .DivNombreUsuario h3 {
+        width: 50%;
+    }
+
     .NombreUsuario {
         font-size: 60px;
     }
@@ -595,12 +764,69 @@
         font-size: 32px;
     }
 
+    .DivPublicaciones{
+        margin-left: 10rem;
+    }
+
     .TituloPublicacion {
         font-size: 50px;
     }
 
     .ComentarioPublicacion {
         font-size: 38px;
+    }
+
+    .likeydislike {
+        font-size: 28px;
+    }
+
+    .BorrarPublicacion {
+        margin-right: 1rem;
+        border-radius: 0.7rem;
+        font-size: 25px;
+    }
+
+    .EditarPublicacion {
+        margin-right: 1rem;
+        border-radius: 0.7rem;
+        font-size: 25px;
+    }
+
+    /*Zona para crear una nueva publicación*/
+
+    hr{
+        margin-left: -10rem;
+    }
+
+    .FormCreacion {
+        margin-top: 20rem;
+        margin-left: 10rem;
+    }
+        .FormCreacion h2 {
+            font-size: 55px;
+            margin-bottom: 6rem;
+        }
+
+    .Titulo-input {
+        font-size: 45px;
+        width: 45%;
+    }
+
+    .CrearTitulo span {
+        font-size: 45px;
+    }
+
+    .Comentario-textarea {
+        font-size: 45px;
+        width: 45%;
+    }
+
+    .CrearComentario span {
+        font-size: 45px;
+    }
+
+    .Imagen-Input {
+        font-size: 40px;
     }
 }
 
@@ -630,8 +856,11 @@
 
     .DivNombreUsuario {
         width: 50%;
-        margin-left: 20rem;
+        margin-left: 15rem;
     }
+        .DivNombreUsuario h3 {
+            width: 50%;
+        }
 
     .NombreUsuario {
         font-size: 65px;
@@ -643,7 +872,7 @@
 
     .DivPublicaciones {
         width: 50%;
-        margin-left: 20rem;
+        margin-left: 15rem;
     }
 
     .TituloPublicacion {
@@ -657,6 +886,65 @@
     .ImagenPublicacion {
         max-width: 100%;
         max-height: 60rem;
+    }
+
+    .likeydislike {
+        font-size: 32px;
+    }
+
+    .BotonesPublicaciones {
+        margin-top: 3rem;
+    }
+
+    .BorrarPublicacion {
+        margin-right: 1rem;
+        padding: 1.2rem 1.5rem;
+        border-radius: 1rem;
+        font-size: 32px;
+    }
+
+    .EditarPublicacion {
+        margin-right: 1rem;
+        padding: 1.2rem 1.5rem;
+        border-radius: 1rem;
+        font-size: 32px;
+    }
+
+
+    /*Zona para crear una nueva publicación*/
+
+    hr{
+        margin-left: -15rem
+    }
+
+    .FormCreacion {
+        margin-top: 20rem;
+        margin-left: 15rem;
+    }
+        .FormCreacion h2 {
+            font-size: 65px;
+            margin-top: 2rem;
+            margin-bottom: 6rem;
+        }
+
+    .Titulo-input {
+        font-size: 55px;
+    }
+
+    .CrearTitulo span {
+        font-size: 55px;
+    }
+
+    .Comentario-textarea {
+        font-size: 55px;
+    }
+
+    .CrearComentario span {
+        font-size: 55px;
+    }
+
+    .Imagen-Input {
+        font-size: 55px;
     }
 }
 
@@ -688,6 +976,9 @@
         width: 45%;
         margin-left: 20rem;
     }
+    .DivNombreUsuario h3{
+        width: 50%;
+    }
 
     .NombreUsuario {
         font-size: 75px;
@@ -713,5 +1004,61 @@
     .ImagenPublicacion {
         max-width: 100%;
         max-height: 80rem;
+    }
+
+    .likeydislike {
+        font-size: 45px;
+    }
+
+
+    .BotonesPublicaciones{
+        margin-top: 3rem;
+    }
+    .BorrarPublicacion {
+        margin-right: 1rem;
+        padding: 1.2rem 1.5rem;
+        border-radius: 1rem;
+        font-size: 50px;
+    }
+
+    .EditarPublicacion {
+        margin-right: 1rem;
+        padding: 1.2rem 1.5rem;
+        border-radius: 1rem;
+        font-size: 50px;
+    }
+
+    /*Zona para crear una nueva publicación*/
+
+    hr{
+        margin-left: -20rem;
+    }
+
+    .FormCreacion {
+        margin-top: 20rem;
+        margin-left: 20rem;
+    }
+        .FormCreacion h2 {
+            font-size: 100px;
+            margin-top: 2rem;
+            margin-bottom: 6rem;
+        }
+
+    .Titulo-input {
+       font-size: 75px;
+    }
+    .CrearTitulo span {
+        font-size: 75px;
+    }
+
+    .Comentario-textarea {
+        font-size: 75px;
+    }
+
+    .CrearComentario span {
+        font-size: 75px;
+    }
+    .Imagen-Input {
+        font-size: 70px;
     }
 }

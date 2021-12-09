@@ -21,6 +21,11 @@
     width: 30rem;
 }
 
+.Aviso {
+    font-size: 18px;
+    color: #f80b0b;
+}
+
 
 @media (max-width: 550px) { /*Tamaño 250%*/
     .MarginIzquierda{

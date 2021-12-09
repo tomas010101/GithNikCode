@@ -1,9 +1,22 @@
-﻿body{
-    margin-right: 15px;
-    margin-left: 15px;
-    margin-bottom: 0%;
+﻿.Espaciado{
+    margin-left: 4rem;
 }
+
+.Divwidth{
+    width: 80%;
+    margin-top: 4rem;
+}
+
 .LimHr {
     width: 100%;
 }
-
+.inputwidth {
+    width: 25rem;
+}
+form label{
+    font-size: 20px;
+}
+.Aviso{
+    font-size: 18px;
+    color: #f80b0b;
+}
