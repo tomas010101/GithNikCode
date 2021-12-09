@@ -122,9 +122,20 @@ namespace Foromanager.Pages.Foros
 			}
 			if (Publicacion.Reacciones.Any(r => r.Like && r.Usuario == User.Identity.Name))
 			{
-				Reaccion r = Publicacion.Reacciones.SingleOrDefault(r => r.PublicacionId == idp);
+				Reaccion r = Publicacion.Reacciones.SingleOrDefault(r => r.PublicacionId == idp && r.Usuario==User.Identity.Name && r.Like);
 				Publicacion.Reacciones.Remove(r);
+				_context.Reaccion.Remove(r);
 				r.Like = false;
+				Publicacion.Reacciones.Add(r);
+				_context.Attach(Publicacion).State = EntityState.Modified;
+			}
+			if (Publicacion.Reacciones.Any(r => r.DisLike && r.Usuario == User.Identity.Name))
+			{
+				Reaccion r = Publicacion.Reacciones.SingleOrDefault(r => r.PublicacionId == idp && r.Usuario == User.Identity.Name && r.DisLike);
+				Publicacion.Reacciones.Remove(r);
+				_context.Reaccion.Remove(r);
+				r.DisLike = false;
+				r.Like = true;
 				Publicacion.Reacciones.Add(r);
 				_context.Attach(Publicacion).State = EntityState.Modified;
 			}
@@ -143,10 +154,22 @@ namespace Foromanager.Pages.Foros
 			{
 				Publicacion.Reacciones = new List<Reaccion>();
 			}
+			if (Publicacion.Reacciones.Any(r => r.DisLike && r.Usuario == User.Identity.Name))
+			{
+				Reaccion r = Publicacion.Reacciones.SingleOrDefault(r => r.PublicacionId == idp && r.Usuario == User.Identity.Name && r.DisLike);
+				_context.Reaccion.Remove(r);
+				Publicacion.Reacciones.Remove(r);
+				r.DisLike = false;
+				Publicacion.Reacciones.Add(r);
+				_context.Attach(Publicacion).State = EntityState.Modified;
+			}
 			if (Publicacion.Reacciones.Any(r => r.Like && r.Usuario == User.Identity.Name))
 			{
-				Reaccion r = Publicacion.Reacciones.SingleOrDefault(r => r.PublicacionId == idp);
-				r.DisLike = false;
+				Reaccion r = Publicacion.Reacciones.SingleOrDefault(r => r.PublicacionId == idp && r.Usuario == User.Identity.Name && r.Like);
+				Publicacion.Reacciones.Remove(r);
+				_context.Reaccion.Remove(r);
+				r.Like = false;
+				r.DisLike = true;
 				Publicacion.Reacciones.Add(r);
 				_context.Attach(Publicacion).State = EntityState.Modified;
 			}
