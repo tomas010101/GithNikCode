@@ -27,7 +27,7 @@ namespace WebPWrecover.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("ggithnik@gmail.com", "Password Recovery"),
+                From = new EmailAddress("ggithnik@gmail.com", "Confirmacion de Correo GithNik"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
