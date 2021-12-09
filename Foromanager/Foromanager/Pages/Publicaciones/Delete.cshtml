@@ -7,6 +7,7 @@
 
 <head>
     <link rel="stylesheet" href="~/css/Publicaciones/EliminaryEditar.css" />
+    <link rel="stylesheet" href="~/css/EditarYEliminarResponsive.css" />
 </head>
 
 <h1 class="Espaciado">Borrar</h1>
@@ -46,6 +47,6 @@
     <form method="post">
         <input type="hidden" asp-for="Publicacion.PublicacionId" />
         <input type="submit" value="Eliminar" class="btn btn-danger" />
-        <a asp-page="../Foros/Index">Regresar</a>
+        <a class="BotonRegresar" asp-page="../Foros/Index"> Regresar</a>
     </form>
 </div>

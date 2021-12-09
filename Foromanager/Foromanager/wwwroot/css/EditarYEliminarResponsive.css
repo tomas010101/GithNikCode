@@ -1,45 +1,185 @@
 ﻿@media (min-width: 1350px) and (max-width: 1450px) { /*Tamaño 90%*/
 
-
+    .btn-danger {
+        width: 6rem;
+        margin-right: 4rem;
+        font-size: 18px;
+        border-radius: 0.5rem;
+    }
 }
 
 @media (min-width: 1450px) and (max-width: 1550px) { /*Tamaño 80%*/
+
+    h1 {
+        font-size: 40px;
+    }
+
+    form label {
+        font-size: 20px;
+        margin-top: 2rem;
+    }
 
     .InputWidth {
         width: 30rem;
         font-size: 20px;
     }
+
+    dt p {
+        font-size: 20px;
+    }
+    dd p {
+        font-size: 20px;
+    }
+    .btn-danger {
+        width: 7rem;
+        margin-right: 4rem;
+        font-size: 20px;
+        border-radius: 0.5rem;
+    }
 }
 
 @media (min-width: 1550px) and (max-width: 1750px) { /*Tamaño 75-70%*/
+
+    h1 {
+        font-size: 50px;
+    }
+    h3 {
+        font-size: 30px;
+    }
+
+    form label {
+        font-size: 22px;
+        margin-top: 2rem;
+    }
 
     .InputWidth {
         width: 35rem;
         font-size: 22px;
     }
+    .BotonRegresar{
+        font-size: 22px;
+    }
+
+    dt p {
+        font-size: 22px;
+    }
+    dd p {
+        font-size: 22px;
+    }
+    .btn-danger {
+        width: 8rem;
+        margin-right: 4rem;
+        font-size: 22px;
+        border-radius: 0.5rem;
+    }
 }
 
 @media (min-width: 1750px) and (max-width: 1950px) { /*Tamaño 60-69%*/
+
+    h1 {
+        font-size: 60px;
+    }
+    h3 {
+        font-size: 35px;
+    }
+
+    form label {
+        font-size: 24px;
+        margin-top: 2rem;
+    }
 
     .InputWidth {
         width: 38rem;
         font-size: 24px;
     }
+    .BotonRegresar {
+        font-size: 24px;
+    }
+
+    dt p {
+        font-size: 24px;
+    }
+    dd p {
+        font-size: 24px;
+    }
+    .btn-danger {
+        width: 10rem;
+        margin-right: 4rem;
+        font-size: 24px;
+        border-radius: 0.5rem;
+    }
 }
 
 @media (min-width: 1950px) and (max-width: 2550px) { /*Tamaño 50-59%*/
+
+    h1 {
+        font-size: 70px;
+    }
+    h3 {
+        font-size: 50px;
+    }
+
+    form label {
+        font-size: 28px;
+        margin-top: 2rem;
+    }
+
 
     .InputWidth {
         width: 45rem;
         font-size: 28px;
     }
+    .BotonRegresar {
+        font-size: 28px;
+    }
+
+    dt p {
+        font-size: 28px;
+    }
+    dd p {
+        font-size: 28px;
+    }
+    .btn-danger {
+        width: 15rem;
+        margin-right: 4rem;
+        font-size: 35px;
+        border-radius: 1rem;
+    }
 }
 
 @media (min-width: 2550px) and (max-width: 3750px) { /*Tamaño 30-49%*/
 
+    h1 {
+        font-size: 100px;
+    }
+    h3 {
+        font-size: 70px;
+    }
+
+    form label {
+        font-size: 38px;
+        margin-top: 2rem;
+    }
+
     .InputWidth {
         width: 65rem;
         font-size: 38px;
+    }
+    .BotonRegresar {
+        font-size: 38px;
+    }
+
+    dt p {
+        font-size: 38px;
+    }
+    dd p {
+        font-size: 38px;
+    }
+    .btn-danger {
+        width: 20rem;
+        margin-right: 4rem;
+        font-size: 45px;
+        border-radius: 1rem;
     }
 }
 
@@ -48,23 +188,35 @@
     h1 {
         font-size: 200px;
     }
-
-    h4 {
-        font-size: 120px;
+    h3 {
+        font-size: 100px;
     }
 
-    .Espaciado label {
+    form label {
         font-size: 62px;
         margin-top: 2rem;
     }
 
-    .Espaciado form {
-        margin-top: 10rem;
-    }
 
     .InputWidth {
         width: 95rem;
         font-size: 62px;
         margin-bottom: 2rem;
+    }
+    .BotonRegresar {
+        font-size: 62px;
+    }
+
+    dt p {
+        font-size: 62px;
+    }
+    dd p {
+        font-size: 62px;
+    }
+    .btn-danger{
+        width: 25rem;
+        margin-right: 4rem;
+        font-size: 58px;
+        border-radius: 1rem;
     }
 }

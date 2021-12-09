@@ -6,6 +6,7 @@
 }
 <head>
     <link rel="stylesheet" href="~/css/Manage/PerfilIndex.css" />
+    <link rel="stylesheet" href="~/css/InputFileStyle.css" />
 </head>
 
 <h4>@ViewData["Title"]</h4>
@@ -25,7 +26,8 @@
                 <input asp-for="Input.PhoneNumber" class="form-control" />
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
-            <input asp-for="ImgCargaUsuario" id="ImagenUsuario" type="file" class="boton-avatar" />
+            <input asp-for="ImgCargaUsuario" id="ImagenUsuario" type="file" class="boton-avatar InputFile" />
+            <label class="BotonImagen" for="ImagenUsuario"> <i class="fas fa-upload"></i> Subir Imagen</label>
             <i class="far fa-image"></i>@*NO TOCAR!!!, Esta hecho asi nomas pero funciona y es lo importante*@
             <br />
             <br />

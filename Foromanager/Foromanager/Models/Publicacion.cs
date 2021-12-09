@@ -13,9 +13,9 @@ namespace Foromanager.Models
 
 		public string Usuario {get;set;}
 
-		[Display(Name = "Titulo"), Required(ErrorMessage = "Titulo Requerido")]
+		[Display(Name = "Titulo"), Required(ErrorMessage = "* Titulo Requerido")]
 		public string Titulo {get;set;}
-		[Display(Name = "Descripcion"), Required(ErrorMessage = "Descripcion Requerida")]
+		[Display(Name = "Descripcion"), Required(ErrorMessage = "* Descripcion Requerida")]
 		public string Descripcion {get;set;}
 		public Foro Foro {get;set;}
 		public ICollection<Reaccion> Reacciones {get;set;}

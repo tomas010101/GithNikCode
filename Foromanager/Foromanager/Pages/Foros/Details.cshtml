@@ -15,11 +15,13 @@
 <head>
     <link rel="stylesheet" href="~/css/Foros/Details.css" />
     <link rel="stylesheet" href="~/css/Foros/BotonesForos.css" />
+    <link rel="stylesheet" href="~/css/InputFileStyle.css" />
 </head>
 
 
 <div>
     <br />
+    @* Este codigo se utiliza para la Imagen Banner del Foro *@
     <div class="BannerCont">
         <div class="TituloForo"><h2>@Html.DisplayFor(model => model.Foro.Nombre)</h2></div>
         @if (Model.Foro.Forobanner == null)
@@ -33,22 +35,19 @@
     </div>
 
     <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+
+    @* Lo que esta dentro del Foreach es la visualizacion de las publicaciones *@
 
     @foreach (var item in Model.Foro.Publicaciones)
     {
-        
+
         var Reacciones = await DbContext.Reaccion.Where(i => i.PublicacionId == item.PublicacionId).ToListAsync();
         @*
-        int Likes = item.Reacciones != null ? item.Reacciones.Count(r => r.Like) : 0;
-        int Dislikes = item.Reacciones != null ? item.Reacciones.Count(r => r.DisLike) : 0;
+            int Likes = item.Reacciones != null ? item.Reacciones.Count(r => r.Like) : 0;
+            int Dislikes = item.Reacciones != null ? item.Reacciones.Count(r => r.DisLike) : 0;
         *@
-        int Likes = Reacciones != null ? Reacciones.Count(r=>r.Like) : 0;
-        int DisLikes = Reacciones != null ? Reacciones.Count(r=>r.DisLike) : 0;
+        int Likes = Reacciones != null ? Reacciones.Count(r => r.Like) : 0;
+        int DisLikes = Reacciones != null ? Reacciones.Count(r => r.DisLike) : 0;
 
         var imagenes = await DbContext.Imagenes.Where(i => i.PublicacionId == item.PublicacionId).ToListAsync();
         <br />
@@ -70,28 +69,28 @@
                 }
             </div>
             @*@foreach (var reac in Reacciones)
-        {
-            if (reac.Like)
-            {
-                Likes++;
-            }
-            else if (reac.DisLike)
-            {
-                Dislikes++;
-            }
-        }*@
-        <div class="form-group">
-            <form asp-page-handler="like">
-                <input type="hidden" name="idp" value="@item.PublicacionId" />
-                <input type="hidden" name="id" value="@item.ForoId" />
-                <button type="submit" class="btn likeydislike"><i class="far fa-thumbs-up"></i> @Likes </button>
-            </form>
-            <form asp-page-handler="dislike">
-                <input type="hidden" name="idp" value="@item.PublicacionId" />
-                <input type="hidden" name="id" value="@item.ForoId" />
-                <button type="submit" class="btn likeydislike"><i class="far fa-thumbs-down"></i> @DisLikes</button>
-            </form>
-        </div>
+                    {
+                    if (reac.Like)
+                    {
+                        Likes++;
+                    }
+                    else if (reac.DisLike)
+                    {
+                        Dislikes++;
+                    }
+                }*@
+            <div class="form-group">
+                <form asp-page-handler="like">
+                    <input type="hidden" name="idp" value="@item.PublicacionId" />
+                    <input type="hidden" name="id" value="@item.ForoId" />
+                    <button type="submit" class="btn likeydislike"><i class="far fa-thumbs-up"></i> @Likes </button>
+                </form>
+                <form asp-page-handler="dislike">
+                    <input type="hidden" name="idp" value="@item.PublicacionId" />
+                    <input type="hidden" name="id" value="@item.ForoId" />
+                    <button type="submit" class="btn likeydislike"><i class="far fa-thumbs-down"></i> @DisLikes</button>
+                </form>
+            </div>
             @if (item.Usuario == @User.Identity.Name.Split('-')[0] + " " + @User.Identity.Name.Split('-')[1])
             {
                 <br />
@@ -104,23 +103,37 @@
         Likes = 0;
         DisLikes = 0;
     }
+
+
     <br />
+    
+    @*  En este form se encuentran los inputs necesarios para crear una publicacion y el boton para publicarla*@
     <form enctype="multipart/form-data" asp-page-handler="postear" method="post" class="FormCreacion">
+
+        <hr color="white" />
+        <br />
+        <h2>Nueva publicacion</h2>
+        <br />
+
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <dv class="CrearTitulo">
-            <input asp-for="Publicacion.Titulo" class="form-control Titulo-input" type="text" placeholder="Titulo" />
             <span asp-validation-for="Publicacion.Titulo" class="text-danger Titulo-span"></span>
+            <br />
+            <input asp-for="Publicacion.Titulo" class="form-control Titulo-input" type="text" placeholder="Titulo" />
         </dv>
 
         <div class="CrearComentario">
-            <textarea asp-for="Publicacion.Descripcion" rows="5" cols="40" class="Comentario-textarea" placeholder="Comentario"></textarea>
             <span asp-validation-for="Publicacion.Descripcion" class="text-danger Comentario-span"></span>
+            <br />
+            <textarea asp-for="Publicacion.Descripcion" rows="5" cols="40" class="Comentario-textarea" placeholder="Comentario"></textarea>
         </div>
 
         <br />
-        <div class="CrearImagen"><input asp-for="ImgCarga" type="file" name="imagen" /></div>
+        <div class="CrearImagen">
+            <input id="file" class="Imagen-Input InputFile" asp-for="ImgCarga" type="file" name="imagen" />
+            <label class="BotonImagen" for="file"> <i class="fas fa-upload"></i> Subir Imagen</label>
+        </div>
 
-        <br />
         <br />
         <div class="form-group">
             <input type="hidden" name="id" value="@Model.Foro.ForoId" />
