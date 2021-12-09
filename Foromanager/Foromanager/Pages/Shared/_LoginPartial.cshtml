@@ -19,8 +19,8 @@
         <li class="nav-item Opcion6">
             <div class="perfil-avatar">
                 <a class="nav-link perfilboton " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-
-                    @if (usuario.FotodePerfil == null)
+                    @* Para pruebas en la pagina *@
+                    @if (usuario == null || usuario.FotodePerfil == null)
                     {
                         <img data-uwu src="https://cdn.myminifactory.com/assets/object-assets/5a87156690514/images/720X720-i6jnn7b.jpg" alt="img-avatar">
                     }
