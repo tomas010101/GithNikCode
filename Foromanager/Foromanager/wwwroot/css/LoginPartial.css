@@ -3,7 +3,7 @@
     src: url("~/css/Perpetua.ttf");
 }
 
-.Textlogin .btn {
+.BotonesCuenta .btn {
     margin-right: 1rem;
     font-size: 16px;
     font-family: Roboto;
@@ -77,14 +77,14 @@
           margin-top: -0.7rem;
       }
 
-      .Textlogin .btn {
+      .BotonesCuenta .btn {
         width: 4.5rem;
         padding: 2px 2px;
         font-size: 7px;
         background-color: #c1853f;
         text-shadow: -2px 2px 2px #976123;
     }
-        .Textlogin .btn .btn:hover {
+        .BotonesCuenta .btn:hover {
             background-color: #b67f3e;
         }
 
@@ -92,11 +92,6 @@
         width: 4rem;
     }
 
-    .Textlogin {
-        margin-top: 0.6rem;
-        margin-left: 1rem;
-        width: 4rem;
-    }
 
     .Opcion4{
         float: left;
@@ -154,18 +149,20 @@
 
 @media (min-width: 550px) and (max-width: 650px) { /*Tamaño 200%*/
 
-    .Textlogin .btn {
-        font-size: 7px;
-        width: 4rem;
+    .BotonesCuenta .btn {
+        font-size: 8px;
     }
 
-    .Textlogin {
-        margin-left: 2rem;
-        margin-right: 1rem;
-        width: 30px;
-    }
     .BotonesCuenta {
         margin-right: -2rem;
+    }
+
+    .Opcion4 a {
+        width: 5rem;
+    }
+
+    .Opcion5 a {
+        width: 4rem;
     }
 
     .perfilboton {
@@ -201,15 +198,18 @@
 }
 @media (min-width: 650px) and (max-width: 750px) { /*Tamaño 175*/
 
-    .Textlogin .btn {
+    .BotonesCuenta .btn {
         font-size: 9px;
-        width: 6rem;
+    }
+    .BotonesCuenta {
+        margin-right: -2rem;
     }
 
-    .Textlogin {
-        margin-left: 3rem;
-        margin-right: 1rem;
-        width: 30px;
+    .Opcion4 a{
+        width: 5rem;
+    }
+    .Opcion5 a{
+        width: 4rem;
     }
 
     .perfilboton {
@@ -246,14 +246,19 @@
 
 @media (min-width: 750px) and (max-width: 850px) { /*Tamaño 150%*/
 
-    .Textlogin .btn {
+    .BotonesCuenta .btn {
         font-size: 11px;
     }
+    .BotonesCuenta{
+        margin-right: -1rem;
+    }
 
-    .Textlogin {
-        margin-left: 3rem;
-        margin-right: 1rem;
-        width: 30px;
+    .Opcion4 a {
+        width: 6rem;
+    }
+
+    .Opcion5 a {
+        width: 5rem;
     }
 
     .perfilboton {
@@ -275,7 +280,7 @@
         border: 4px solid #A39355;
         border-radius: 50%;
         position: absolute;
-        right: 8rem;
+        right: 10rem;
     }
 
         .perfil-avatar img {
@@ -289,7 +294,7 @@
 
 @media (min-width: 950px) and (max-width: 1050px) { /*Tamaño 125%*/
 
-    .Textlogin .btn{
+    .BotonesCuenta .btn{
         font-size: 13px;
     }
 
@@ -297,10 +302,12 @@
         margin-right: -2rem;
     }
 
-    .Textlogin {
-        margin-left: 3rem;
-        margin-right: 1rem;
-        width: 30px;
+    .Opcion4 a {
+        width: 7rem;
+    }
+
+    .Opcion5 a {
+        width: 5rem;
     }
 
     .perfilboton {
@@ -308,7 +315,7 @@
     }
 
     .cerrar {
-        width: 5rem;
+        width: 6rem;
         font-size: 16px;
         margin-right: -3rem;
         margin-left: 2rem;
@@ -322,7 +329,7 @@
         border: 4px solid #A39355;
         border-radius: 50%;
         position: absolute;
-        right: 10rem;
+        right: 12rem;
     }
 
         .perfil-avatar img {
@@ -335,26 +342,38 @@
 }
 
 @media (min-width: 1050px) and (max-width: 1150px) { /*Tamaño 110%*/
+
+    .Opcion5 a {
+        width: 6rem;
+    }
     .cerrar {
-        width: 5rem;
+        width: 6rem;
         margin-left: 3rem;
         font-size: 16px;
     }
 }
 
 @media (min-width: 1150px) and (max-width: 1250px) { /*Tamaño 100%*/
+
+    .Opcion5 a {
+        width: 7rem;
+    }
     .cerrar {
         width: 6rem;
         margin-left: 3rem;
         font-size: 18px;
     }
-    .perfil-avatar {
-        position: absolute;
-        right: 10rem;
-    }
 }
 
 @media (min-width: 1350px) and (max-width: 1450px) { /*Tamaño 90%*/
+
+    .Opcion4 a {
+        width: 8rem;
+    }
+
+    .Opcion5 a {
+        width: 6rem;
+    }
     .cerrar {
         width: 6rem;
         margin-left: 3rem;
@@ -383,20 +402,28 @@
 }
 
 @media (min-width: 1450px) and (max-width: 1550px) { /*Tamaño 80%*/
-    .btn {
-        font-size: 18px;
+
+    .BotonesCuenta{
+        margin-right: -4rem;
     }
 
-    .Textlogin {
-        margin-left: 5rem;
-        width: 40px;
+    .BotonesCuenta .btn {
+        font-size: 20px;
+        margin-left: 1rem;
     }
+
+    .Opcion4 a{
+        width: 9rem;
+    }
+    .Opcion5 a{
+        width: 8rem;
+    }
+
+
     .cerrar {
         width: 5rem;
         margin-left: 2rem;
         font-size: 23px;
-        position: absolute;
-        right: 6rem;
     }
 
     .perfil-avatar {
@@ -404,11 +431,11 @@
         width: 76px;
         height: 76px;
         margin-bottom: 2.5rem;
-        margin-right: 5rem;
+        margin-right: 7rem;
         border: 4px solid #A39355;
         border-radius: 50%;
         position: absolute;
-        right: 8rem;
+        right: 13rem;
     }
 
         .perfil-avatar img {
@@ -420,38 +447,36 @@
         }
 }
 
-@media (min-width: 1550px) { /*Tamaño 75-70%*/
-    .btn {
-        font-size: 18px;
-    }
-    .Opcion4{
-        margin-right: 2rem;
-    }
+@media (min-width: 1550px) and (max-width: 1750px) { /*Tamaño 75-70%*/
+
     .BotonesCuenta {
-        margin-right: -10rem;
-    }
-    .Textlogin {
-        margin-left: 5rem;
-        width: 40px;
+        margin-right: -12rem;
     }
 
-    .rwidth {
-        width: 150px;
+        .BotonesCuenta .btn {
+            font-size: 20px;
+            margin-left: 1rem;
+        }
+
+    .Opcion4 a {
+        width: 10rem;
+    }
+
+    .Opcion5 a {
+        width: 8rem;
     }
 
     .perfilboton {
         margin-right: -8rem;
     }
 
-    .Opcion7{
+    .Opcion7 {
         width: 2rem;
     }
+
     .cerrar {
-        width: 6rem;
         margin-left: 4rem;
-        font-size: 25px;
-        position: absolute;
-        right: 6rem;
+        font-size: 25px
     }
 
     .perfil-avatar {
@@ -463,7 +488,7 @@
         border: 5px solid #A39355;
         border-radius: 50%;
         position: absolute;
-        right: 12rem;
+        right: 16rem;
     }
 
         .perfil-avatar img {
@@ -472,5 +497,230 @@
             position: relative;
             border-radius: 50%;
             left: calc(50% - 45.5px);
+        }
+}
+@media (min-width: 1750px) and (max-width: 1950px) { /*Tamaño 60-69%*/
+
+    .BotonesCuenta {
+        margin-right: -18rem;
+    }
+
+        .BotonesCuenta .btn {
+            font-size: 25px;
+            margin-left: 2rem;
+            border-radius: 3rem;
+        }
+
+    .Opcion4 a {
+        width: 12rem;
+    }
+
+    .Opcion5 a {
+        width: 11rem;
+        width: 150px;
+    }
+
+    .perfilboton {
+        margin-right: -8rem;
+    }
+
+    .Opcion7 {
+        width: 8rem;
+        position: absolute;
+        top: 1.7rem;
+        right: 8rem;
+    }
+
+    .cerrar {
+        font-size: 30px;
+    }
+
+    .perfil-avatar {
+        display: flex;
+        width: 98px;
+        height: 98px;
+        margin-bottom: 3rem;
+        margin-right: 3rem;
+        border: 10px solid #A39355;
+        border-radius: 50%;
+        position: absolute;
+    }
+
+        .perfil-avatar img {
+            width: 88px;
+            height: 88px;
+            position: relative;
+            border-radius: 50%;
+            left: calc(50% - 57px);
+        }
+}
+
+@media (min-width: 1950px) and (max-width: 2550px) { /*Tamaño 50-59%*/
+
+    .BotonesCuenta {
+        margin-right: -36rem;
+    }
+
+        .BotonesCuenta .btn {
+            font-size: 34px;
+            margin-left: 4rem;
+            border-radius: 4rem;
+        }
+
+    .Opcion4 a {
+        width: 16rem;
+    }
+
+    .Opcion5 a {
+        width: 13rem;
+    }
+
+    .perfilboton {
+        margin-right: -8rem;
+    }
+
+    .Opcion7 {
+        width: 10rem;
+        position: absolute;
+        top: 2rem;
+        right: 8rem;
+    }
+
+    .cerrar {
+        font-size: 40px;
+    }
+
+    .perfil-avatar {
+        display: flex;
+        width: 125px;
+        height: 125px;
+        margin-bottom: 3rem;
+        margin-right: 3rem;
+        border: 10px solid #A39355;
+        border-radius: 50%;
+        position: absolute;
+        right: 20rem;
+    }
+
+        .perfil-avatar img {
+            width: 113px;
+            height: 113px;
+            position: relative;
+            border-radius: 50%;
+            left: calc(50% - 68px);
+        }
+}
+
+@media (min-width: 2550px) and (max-width: 3750px) { /*Tamaño 30-49%*/
+
+    .BotonesCuenta {
+        margin-right: -92rem;
+    }
+
+        .BotonesCuenta .btn {
+            font-size: 50px;
+            margin-left: 4rem;
+            border-radius: 5rem;
+        }
+
+    .Opcion4 a {
+        width: 23rem;
+    }
+
+    .Opcion5 a {
+        width: 18rem;
+    }
+
+    .perfilboton {
+        margin-right: -8rem;
+    }
+
+    .Opcion7 {
+        width: 15rem;
+        position: absolute;
+        top: 2.5rem;
+        right: 10rem;
+    }
+
+    .cerrar {
+        width: 15rem;
+        font-size: 55px;
+    }
+
+    .perfil-avatar {
+        display: flex;
+        width: 165px;
+        height: 165px;
+        margin-bottom: 3rem;
+        margin-right: 3rem;
+        border: 15px solid #A39355;
+        border-radius: 50%;
+        position: absolute;
+        right: 28rem;
+    }
+
+        .perfil-avatar img {
+            width: 145px;
+            height: 145px;
+            position: relative;
+            border-radius: 50%;
+            left: calc(50% - 86px);
+        }
+}
+
+@media (min-width: 3750px) and (max-width: 5050px) { /*Tamaño 25-29%*/
+
+    .BotonesCuenta {
+        margin-right: -145rem;
+    }
+
+        .BotonesCuenta .btn {
+            font-size: 65px;
+            margin-left: 6rem;
+            border-radius: 6rem;
+        }
+
+    .Opcion4 a {
+        width: 29rem;
+    }
+
+    .Opcion5 a {
+        width: 22rem;
+    }
+
+    .perfilboton {
+        margin-right: -8rem;
+    }
+
+    .Opcion7 {
+        width: 15rem;
+        position: absolute;
+        top: 2.5rem;
+        right: 16rem;
+    }
+
+    .cerrar {
+        width: 20rem;
+        font-size: 70px;
+    }
+
+    .perfil-avatar {
+        display: flex;
+        width: 220px;
+        height: 220px;
+        margin-bottom: 3rem;
+        margin-right: 3rem;
+        border: 20px solid #A39355;
+        border-radius: 50%;
+        position: absolute;
+        right: 36rem;
+    }
+
+        .perfil-avatar img {
+            width: 190px;
+            height: 190px;
+            position: relative;
+            border-radius: 50%;
+            left: calc(50% - 110px);
         }
 }
