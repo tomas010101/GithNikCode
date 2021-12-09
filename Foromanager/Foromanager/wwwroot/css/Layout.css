@@ -234,7 +234,7 @@ header {
 
     .navheight {
         width: 100%;
-        height: 40px;
+        height: 45px;
         margin-top: 3.4rem;
         text-align: center;
 
@@ -260,6 +260,7 @@ header {
         margin-top: -0.5rem;
         width: 100%;
         height: 125%;
+        position: relative;
     }
 
     .container ul {
@@ -267,7 +268,7 @@ header {
     }
 
     .opciones-pags {
-        padding: 4px 4px;
+        padding: 6px 6px;
         font-size: 10px;
         background-color: #c1853f;
         text-shadow: -2px 2px 2px #976123;
@@ -278,24 +279,31 @@ header {
             text-shadow: -2px 2px 2px #976123;
         }
 
-    .Opcion1{
+    .Opcion1 {
         width: 3rem;
-        float:left;
+        float: left;
+        position: absolute;
+        top: 0.5rem;
+        left: 7.7rem;
     }
     .Opcion2 {
-        width: 5rem;
+        width: 3rem;
         float: left;
+        position: absolute;
+        top: 0.5rem;
+        left: 4rem;
     }
     .Opcion3 {
         width: 3rem;
         float: left;
+        position: absolute;
+        top: 0.5rem;
     }
 }
 
 @media (min-width: 550px) and (max-width: 650px) { /*Tamaño 200*/
     .Titulonav {
         width: 25%;
-        height: 45px;
     }
 
     .Logo-titulo {
@@ -304,7 +312,10 @@ header {
 
     .navheight {
         width: 75%;
-        height: 45px;
+    }
+
+    .navcolor{
+        border-width: 0.7mm;
     }
 
     .container {
@@ -312,23 +323,21 @@ header {
     }
 
     .opciones-pags {
-        padding: 10px 16px;
-        font-size: 10px;
+        padding: 24px 16px;
+        font-size: 12px;
     }
 }
 
 @media (min-width: 650px) and (max-width: 750px) { /*Tamaño 175*/
     .Titulonav {
         width: 25%;
-        height: 45px;
     }
     .Logo-titulo {
-        font-size: 35px;
+        font-size: 45px;
     }
 
     .navheight {
         width: 75%;
-        height: 45px;
     }
 
     .container {
@@ -336,8 +345,8 @@ header {
     }
 
     .opciones-pags {
-        padding: 10px 16px;
-        font-size: 10px;
+        padding: 24px 16px;
+        font-size: 14px;
     } 
 }
 
@@ -345,6 +354,9 @@ header {
     .Titulonav {
         width: 25%;
     }
+    .Logo-titulo{
+        font-size: 50px;
+    }
 
     .navheight {
         width: 75%;
@@ -355,7 +367,7 @@ header {
     }
 
     .opciones-pags {
-        padding: 15px 18px;
+        padding: 22px 18px;
         font-size: 14px;
     }
 }
@@ -363,6 +375,7 @@ header {
 @media (min-width: 950px) and (max-width: 1050px) { /*Tamaño 125%*/
     .Titulonav {
         width: 18%;
+        font-size: 40px;
     }
 
     .navheight {
@@ -372,30 +385,63 @@ header {
         margin-left: -24px;
     }
     .opciones-pags {
-        padding: 18px 18px;
+        padding: 22px 18px;
         font-size: 17px;
     }
 }
 
-
-
-@media (min-width: 1350px) and (max-width: 1450px) { /*Tamaño 90%*/
-
+@media (min-width: 1050px) and (max-width: 1150px) { /*Tamaño 110%*/
 
     .Titulonav {
-        width: 22%;
+        width: 18%;
+    }
+
+    .Logo-titulo {
+        font-size: 45px;
     }
 
     .navheight {
-        width: 88%;
+        width: 82%;
+    }
+
+    .opciones-pags {
+        padding: 20px 20px;
+    }
+}
+
+@media (min-width: 1150px) and (max-width: 1250px) { /*Tamaño 100%*/
+
+    .Logo-titulo {
+        font-size: 48px;
+    }
+
+    .opciones-pags {
+        padding: 20px 20px;
+    }
+}
+
+@media (min-width: 1350px) and (max-width: 1450px) { /*Tamaño 90%*/
+
+    .Logo-titulo {
+        font-size: 55px;
+    }
+
+    .Titulonav {
+        width: 15%;
+        height: 80px;
+    }
+
+    .navheight {
+        width: 85%;
+        height: 80px;
     }
     .container {
         margin-left: -15px;
     }
 
     .opciones-pags {
-        padding: 18px 20px;
-        font-size: 20px;
+        padding: 22px 20px;
+        font-size: 22px;
     }
 
     /*.Aparecer {
@@ -414,7 +460,7 @@ header {
 @media (min-width: 1450px) and (max-width: 1550px) { /*Tamaño 80%*/
     .Titulonav {
         width: 15%;
-        height: 80px;
+        height: 85px;
     }
 
     .Logo-titulo {
@@ -423,14 +469,14 @@ header {
 
     .navheight {
         width: 85%;
-        height: 80px;
+        height: 85px;
     }
     .container {
         margin-left: -15px;
     }
 
     .opciones-pags {
-        padding: 18px 20px;
+        padding: 23px 20px;
         font-size: 25px;
     }
 
@@ -444,12 +490,17 @@ header {
     }*/
 }
 @media (min-width: 1550px) and (max-width: 1750px) { /*Tamaño 75-70%*/
+
+    .navcolor{
+        border-width: 1.2mm;
+    }
+
     .Titulonav {
         width: 15%;
         height: 90px;
     }
     .Logo-titulo{
-        font-size: 60px;
+        font-size: 65px;
     }
 
     .navheight {
@@ -461,8 +512,8 @@ header {
     }
 
     .opciones-pags {
-        padding: 18px 20px;
-        font-size: 25px;
+        padding: 25px 20px;
+        font-size: 28px;
     }
 
    /*
@@ -482,7 +533,7 @@ header {
     .Titulonav {
         width: 16%;
         height: 120px;
-        border-right-width: 1mm;
+        border-right-width: 1.5mm;
     }
 
     .Logo-titulo {
@@ -517,7 +568,7 @@ header {
     }
 
     .Logo-titulo {
-        font-size: 100px;
+        font-size: 110px;
         margin-left: 10%;
     }
 
@@ -581,7 +632,7 @@ header {
     }
 
     .Logo-titulo {
-        font-size: 200px;
+        font-size: 190px;
         margin-left: 10%;
     }
 
