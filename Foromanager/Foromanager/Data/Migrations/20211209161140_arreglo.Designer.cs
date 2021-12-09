@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Foromanager.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211209020009_Renacer")]
-    partial class Renacer
+    [Migration("20211209161140_arreglo")]
+    partial class arreglo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -2,7 +2,7 @@
 
 namespace Foromanager.Data.Migrations
 {
-    public partial class Renacer : Migration
+    public partial class arreglo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

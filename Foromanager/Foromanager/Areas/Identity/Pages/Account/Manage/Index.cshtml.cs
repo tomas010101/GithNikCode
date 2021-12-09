@@ -40,7 +40,8 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Número de Tléfono")]
             public string PhoneNumber { get; set; }
-            [Display(Name = "Nombre de Usuario")]
+            [Required]
+            [Display(Name ="Nombre de Usuario")]
             public string UserName { get; set; }
         }
 
@@ -74,7 +75,12 @@ namespace Foromanager.Areas.Identity.Pages.Account.Manage
         public async Task<IActionResult> OnPostAsync()
         {
             var archivoUsuario = HttpContext.Request.Form.Files.FirstOrDefault();
-
+            
+            if( !Input.UserName.Contains('-') || String.IsNullOrEmpty(Input.UserName.Split('-')[0]) || String.IsNullOrEmpty(Input.UserName.Split('-')[1]))
+            {
+                StatusMessage = "Nombre de usuario invalido";
+                return RedirectToPage();
+            }
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
