@@ -8,14 +8,27 @@ a:hover {
     color: #e5cccc;
 }
 
-/*Estos estilos afectan al form e input donde escribiremos el nombre de algun foro a buscar*/
-.FormBuscador {
+/*Estos estilos afectan al form e input donde escribiremos el nombre o categoria de algun foro a buscar*/
+
+.DivBuscador{
+    height: 100px;
+    margin-top: 8rem;
+}
+
+.FormBuscador { 
+    width: 40%;
     margin-left: 3rem;
 }
 
     .FormBuscador input {
         width: 13rem;
     }
+
+.Categoriassearch{
+    position: relative;
+    bottom: 7rem;
+    left: 53%
+}
 
 
 /*Se ajusta el tamaño, colr y posicion al boton que nos permite bucar foros y al boton que nos permite refrescar la página*/
@@ -99,7 +112,7 @@ a:hover {
 /*Se ajusta el tamaño, color y psición de la tabla y lo que contiene*/
 .table {
     width: 90%;
-    margin-top: 3rem;
+    margin-top: 0.5rem;
     margin-left: 3rem;
     margin-right: 3rem;
     background-color: #434343;
@@ -172,21 +185,65 @@ td {
 
 @media (max-width: 550px) { /*Tamaño 250%*/
 
+    .DivBuscador {
+        height: 100px;
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+    }
+
     .FormBuscador {
+        width: 95%;
         margin-left: 1rem;
+        position: relative;
+    }
+
+        .FormBuscador input {
+            width: 16.8rem;
+            height: 1.5rem;
+        }
+
+    .Categoriassearch {
+        position: relative;
+        bottom: 0;
+        left: 0;
+    }
+
+    .Lupaboton {
+        width: 2.5rem;
+        height: 1.5rem;
+        margin-left: 1rem;
+        position: absolute;
+        top: 2rem;
+        border-width: 0.5mm;
+        border-radius: 0.3rem;
+        font-size: 10px;
+        display: inline-block;
+    }
+
+    .reload {
+        width: 2.5rem;
+        height: 1.5rem;
+        margin-left: 0.5rem;
+        position: absolute;
+        top: 2rem;
+        right: 1.2rem;
+        border-width: 0.5mm;
+        border-radius: 0.3rem;
+        font-size: 10px;
+        display: inline-block;
     }
 
     .table {
         margin-left: 1rem;
     }
 
-    .mextprevious {
-        margin-left: 1rem;
-    }
-
     .TdDatos {
         width: 5rem;
         font-size: 3vw;
+    }
+
+    .mextprevious {
+            margin-left: 1rem;
     }
 
     .DesaparecerDatos {
@@ -200,44 +257,273 @@ td {
 }
 
 @media (min-width: 550px) and (max-width: 650px) { /*Tamaño 200%*/
+
+    .table{
+        margin-top: -2rem;
+    }
     .TdDatos {
         width: 5rem;
         font-size: 8px;
     }
+
+    .DivBuscador {
+        height: 100px;
+        margin-top: 6rem;
+    }
+
+    .FormBuscador {
+        width: 40%;
+        margin-left: 3rem;
+        position: relative;
+    }
+
+        .FormBuscador input {
+            width: 10rem;
+            height: 1.5rem;
+        }
+
+    .Categoriassearch {
+        position: relative;
+        bottom: 4.5rem;
+        left: 52%;
+    }
+
+    .Lupaboton {
+        width: 2.5rem;
+        height: 1.5rem;
+        margin-left: 1rem;
+        position: absolute;
+        top: 2rem;
+        border-width: 0.5mm;
+        border-radius: 0.3rem;
+        font-size: 10px;
+        display: inline-block;
+    }
+
+    .reload {
+        width: 2.5rem;
+        height: 1.5rem;
+        margin-left: 0.5rem;
+        position: absolute;
+        top: 2rem;
+        right: 1rem;
+
+        border-width: 0.5mm;
+        border-radius: 0.3rem;
+        font-size: 10px;
+        display: inline-block;
+    }
 }
 
 @media (min-width: 650px) and (max-width: 750px) { /*Tamaño 175*/
+
+    .table {
+        margin-top: -2rem;
+    }
     .TdDatos {
         width: 5rem;
         font-size: 10px;
+    }
+
+    .DivBuscador {
+        height: 100px;
+        margin-top: 6rem;
+    }
+
+    .FormBuscador {
+        width: 40%;
+        margin-left: 3rem;
+        position: relative;
+    }
+
+        .FormBuscador input {
+            width: 12rem;
+            height: 1.5rem;
+        }
+
+    .Categoriassearch {
+        position: relative;
+        bottom: 4.5rem;
+        left: 53%;
+    }
+
+    .Lupaboton {
+        width: 2.5rem;
+        height: 1.5rem;
+        margin-left: 1rem;
+        position: absolute;
+        top: 2rem;
+
+        border-width: 0.5mm;
+        border-radius: 0.3rem;
+        font-size: 10px;
+        display: inline-block;
+    }
+
+    .reload {
+        width: 2.5rem;
+        height: 1.5rem;
+        margin-left: 0.5rem;
+        position: absolute;
+        top: 2rem;
+        right: 1.5rem;
+
+        border-width: 0.5mm;
+        border-radius: 0.3rem;
+        font-size: 10px;
+        display: inline-block;
     }
 }
 
 @media (min-width: 750px) and (max-width: 850px) { /*Tamaño 150%*/
+
+    .table {
+        margin-top: -1.5rem;
+    }
     .TdDatos {
         width: 5rem;
         font-size: 10px;
     }
+
+    .DivBuscador {
+        height: 100px;
+        margin-top: 6rem;
+    }
+
+    .FormBuscador {
+        width: 40%;
+        margin-left: 3rem;
+        position: relative;
+    }
+        .FormBuscador input{
+            width: 12rem;
+            height: 1.5rem;
+        }
+
+    .Categoriassearch {
+        position: relative;
+        bottom: 4.5rem;
+        left: 53%;
+    }
+
+    .Lupaboton {
+        width: 2.8rem;
+        height: 1.5rem;
+        margin-left: 1rem;
+        position: absolute;
+        top: 2rem;
+
+        border-width: 0.7mm;
+        border-radius: 0.3rem;
+        font-size: 12px;
+        display: inline-block;
+    }
+
+    .reload {
+        width: 2.8rem;
+        height: 1.5rem;
+        margin-left: 0.5rem;
+        position: absolute;
+        top: 2rem;
+        right: 1.5rem;
+
+        border-width: 0.7mm;
+        border-radius: 0.3rem;
+        font-size: 12px;
+        display: inline-block;
+    }
+
 }
 
 @media (min-width: 950px) and (max-width: 1050px) { /*Tamaño 125%*/
+
+
     .TdDatos {
         width: 5rem;
         font-size: 12px;
     }
+
+    .DivBuscador {
+        height: 100px;
+        margin-top: 6rem;
+    }
+
+    .FormBuscador {
+        width: 40%;
+        margin-left: 3rem;
+        position: relative;
+    }
+
+    .Categoriassearch {
+        position: relative;
+        bottom: 5rem;
+        left: 55%;
+    }
 }
 
-@media (min-width: 1050px) and (max-width: 1150px) {
+@media (min-width: 1050px) and (max-width: 1150px) {/*Tamaño 110%*/
+
+    .table {
+        margin-top: 0.5rem;
+    }
     .TdDatos {
         width: 5rem;
         font-size: 15px;
+    }
+
+    .DivBuscador {
+        height: 100px;
+        margin-top: 6rem;
+    }
+
+    .FormBuscador {
+        width: 35%;
+        margin-left: 3rem;
+        position: relative;
+    }
+
+    .Categoriassearch {
+        position: relative;
+        bottom: 5rem;
+        left: 59%;
+    }
+}
+
+@media (min-width: 1150px) and (max-width: 1250px) { /*Tamaño 100%*/
+
+    .DivBuscador {
+        height: 100px;
+        margin-top: 6rem;
+    }
+
+    .FormBuscador {
+        width: 30%;
+        margin-left: 4.5rem;
+        position: relative;
+    }
+
+    .Categoriassearch {
+        position: relative;
+        bottom: 5rem;
+        left: 60%;
+    }
+
+    .reload {
+        margin-top: 0.2rem;
     }
 }
 
 @media (min-width: 1350px) and (max-width: 1450px) { /*Tamaño 90%*/
 
+    .DivBuscador {
+        height: 100px;
+        margin-top: 6rem;
+    }
+
     .FormBuscador {
-        margin-left: 4rem;
+        width: 40%;
+        margin-left: 4.5rem;
+        position: relative;
     }
 
         .FormBuscador h5 {
@@ -251,6 +537,13 @@ td {
             margin-top: 1rem;
             font-size: 20px;
         }
+
+    .Categoriassearch {
+        position: relative;
+        bottom: 7rem;
+        left: 52%;
+    }
+
 
     .table {
         margin-left: 4rem;
@@ -300,8 +593,16 @@ td {
 @media (min-width: 1450px) and (max-width: 1550px) { /*Tamaño 80%*/
 
 
+    .DivBuscador {
+        height: 100px;
+        margin-top: 8rem;
+        margin-bottom: 2rem;
+    }
+
     .FormBuscador {
-        margin-left: 4rem;
+        width: 45%;
+        margin-left: 4.5rem;
+        position: relative;
     }
 
         .FormBuscador h5 {
@@ -316,7 +617,11 @@ td {
             font-size: 20px;
         }
 
-
+    .Categoriassearch {
+        position: relative;
+        bottom: 8rem;
+        left: 49%;
+    }
 
     .table {
         margin-left: 4rem;
@@ -371,8 +676,16 @@ td {
         font-size: 85px;
     }
 
+    .DivBuscador {
+        height: 100px;
+        margin-top: 14rem;
+        margin-bottom: 4rem;
+    }
+
     .FormBuscador {
+        width: 40%;
         margin-left: 4.5rem;
+        position: relative;
     }
 
         .FormBuscador h5 {
@@ -381,11 +694,17 @@ td {
         }
 
         .FormBuscador input {
-            width: 30rem;
+            width: 25rem;
             height: 3rem;
             margin-top: 1rem;
             font-size: 20px;
         }
+
+    .Categoriassearch {
+        position: relative;
+        bottom: 9.5rem;
+        left: 52%;
+    }
 
 
     .table {
@@ -440,8 +759,16 @@ td {
         font-size: 90px;
     }
 
+    .DivBuscador {
+        height: 100px;
+        margin-top: 14rem;
+        margin-bottom: 6rem;
+    }
+
     .FormBuscador {
+        width: 40%;
         margin-left: 5.5rem;
+        position: relative;
     }
 
         .FormBuscador h5 {
@@ -455,6 +782,12 @@ td {
             margin-top: 1rem;
             font-size: 25px;
         }
+
+    .Categoriassearch {
+        position: relative;
+        bottom: 10.5rem;
+        left: 50%;
+    }
 
 
     .table {
@@ -507,10 +840,17 @@ td {
 @media (min-width: 1950px) and (max-width: 2550px) { /*Tamaño 50-59%*/
 
     h1 {
-        font-size: 150px;
+        font-size: 120px;
+    }
+
+    .DivBuscador {
+        height: 100px;
+        margin-top: 18rem;
+        margin-bottom: 8rem;
     }
 
     .FormBuscador {
+        width: 30%;
         margin-left: 6rem;
         position: relative;
     }
@@ -521,11 +861,18 @@ td {
         }
 
         .FormBuscador input {
-            width: 40rem;
+            width: 35rem;
             height: 6rem;
             margin-top: 1rem;
             font-size: 35px;
         }
+
+    .Categoriassearch {
+        position: relative;
+        bottom: 13rem;
+        left: 55%;
+    }
+
 
     .table {
         margin-left: 6rem;
@@ -551,7 +898,7 @@ td {
         margin-left: 1rem;
         position: absolute;
         top: 6rem;
-        left: 54rem;
+        left: 45rem;
         border-width: 2mm;
         border-radius: 1rem;
         font-size: 40px;
@@ -594,7 +941,14 @@ td {
         font-size: 200px;
     }
 
+    .DivBuscador {
+        height: 100px;
+        margin-top: 18rem;
+        margin-bottom: 18rem;
+    }
+
     .FormBuscador {
+        width: 30%;
         margin-left: 7.5rem;
         position: relative;
     }
@@ -610,6 +964,12 @@ td {
             margin-top: 1rem;
             font-size: 55px;
         }
+
+    .Categoriassearch {
+        position: relative;
+        bottom: 16.8rem;
+        left: 57%;
+    }
 
     .table {
         margin-left: 7.5rem;
@@ -677,7 +1037,14 @@ td {
         font-size: 200px;
     }
 
+    .DivBuscador {
+        height: 100px;
+        margin-top: 18rem;
+        margin-bottom: 18rem;
+    }
+
     .FormBuscador {
+        width: 30%;
         margin-left: 9.5rem;
         position: relative;
     }
@@ -693,6 +1060,12 @@ td {
             margin-top: 1rem;
             font-size: 55px;
         }
+
+    .Categoriassearch {
+        position: relative;
+        bottom: 16.8rem;
+        left: 65%;
+    }
 
     .table {
         margin-left: 9.5rem;
